@@ -35,7 +35,7 @@ export const renderRoutes = () => (
       <Route path="/Contact" component={Contact}/>
       <Route path="/Courses" component={Courses}/>
 
-      <Route path="/Course_details" component={Course_details}/>
+      <Route path="/Course_details/:id" component={Course_details}/>
 
 
       <Route path="/Elements" component={Elements}/>
