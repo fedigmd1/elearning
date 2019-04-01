@@ -23,7 +23,7 @@ import New_Post from '../../ui/pages/new/new_post.jsx';
 import New from '../../ui/pages/new/new.jsx';
 import Teachers from '../../ui/pages/new/teachers.jsx';
 
-//ghdfbxbf
+
 export const renderRoutes = () => (
   <Router>
     <div>
