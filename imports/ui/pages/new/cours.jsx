@@ -219,7 +219,7 @@ export default withTracker(() => {
     
     courses: Courses.find({}).fetch(),
     incompleteCount: Courses.find({ checked: { $ne: true } }).count(),
-        currentUser: Meteor.user(),
+    currentUser: Meteor.user(),
 
   };
 }) (Cours); 

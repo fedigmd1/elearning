@@ -17,6 +17,8 @@ import Contact from '../../ui/pages/new/contact.jsx';
 import Courses from '../../ui/pages/new/cours.jsx';
 
 import Course_details from '../../ui/pages/new/course_details.jsx';
+import My_Courses from '../../ui/pages/new/my_courses.jsx';
+
 
 import Elements from '../../ui/pages/new/elements.jsx';
 import New_Post from '../../ui/pages/new/new_post.jsx';
@@ -35,6 +37,7 @@ export const renderRoutes = () => (
       <Route path="/Contact" component={Contact}/>
       <Route path="/Courses" component={Courses}/>
 
+      <Route path="/MyCourses" component={My_Courses}/>
       <Route path="/Course_details/:id" component={Course_details}/>
 
 
