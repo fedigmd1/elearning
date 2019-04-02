@@ -1,5 +1,5 @@
 {
-  "name": "auth-app",
+  "name": "e_learning",
   "private": true,
   "scripts": {
     "start": "meteor run",

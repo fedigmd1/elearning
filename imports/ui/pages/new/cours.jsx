@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import {withHistory} from 'react-router-dom'
 import {withTracker} from 'meteor/react-meteor-data'
+import { Link } from 'react-router-dom'
 import Header from './header'
 import Footer from './footer'
 
@@ -11,14 +12,17 @@ import author from '../../../../client/assets/images/author.jpg'
 
 import {Courses} from '../../../api/courses.jsx'
 import Course from '../../containers/Course.jsx'
+import Cour from './course_details'
 
 //import backgroun from '../../../../client/assets/images/courses_background.jpg'
 
 
-export class Cours extends Component { 
+class Cours extends Component { 
 
   constructor(props) {
     super(props);
+    // this.details = this.details.bind(this);
+
  
     this.state = {
       text: "",
@@ -84,8 +88,20 @@ export class Cours extends Component {
     )
   }
 
+
+  /* 
+  details(id){
+
+    let url = '/Course_details/'+id
+    if (this.state !== undefined ) {
+      this.props.history.push({url});      
+    }
+
+  }
+  */  
+
   render(){
-    
+    let e ;
     return (
       <div className="super_container">
       
@@ -93,7 +109,7 @@ export class Cours extends Component {
        {/* <Header/>   */}
 
 
-          <div className="">
+        <div className="">
             <h1>Courses </h1>
             <label className="hide-completed">
               <input
@@ -121,12 +137,11 @@ export class Cours extends Component {
                 />
               </form> : ''
             }          
-          </div>
+        </div>
 
-          <div className="" >
+        <div className="" >
             {this.renderCourses()}
-          </div>
-
+        </div>
 
         <div className="home">
           <div className="home_background_container prlx_parent">
@@ -158,10 +173,11 @@ export class Cours extends Component {
                         alt="https://unsplash.com/@kimberlyfarmer"
                       />  
                       
+                          
 
                       <div className="card-body text-center">
                         <div className="card-title">
-                          <a href="/Course_details">{course.text}</a>                          
+                          <Link to={`/Course_details/${course._id}`}>{course.text}</Link>   
                         </div>
                         <div className="card-text">
                           {course._id}
