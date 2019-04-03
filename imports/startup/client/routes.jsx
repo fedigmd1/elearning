@@ -36,15 +36,15 @@ export const renderRoutes = () => (
       <Route path="/signup" component={SignupPage}/>
       <Route exact={true} path="/" component={AppContainer}/>
 
-      <Route path="/Courses" component={Courses}/>
+      <Route exact={true} path="/Courses" component={Courses}/>
+      <Route path="/Courses/:id" component={Course_details}/>
       <Route path="/MyCourses" component={My_Courses}/>
-      <Route path="/Course_details/:id" component={Course_details}/>
       <Route path="/AddCourse" component={AddCourse}/>
-
 
       <Route exact={true} path="/profil" component={profil}/>
       <Route path="/profil/:id" component={profil}/>
 
+      
       
       <Route path="/Contact" component={Contact}/>
       <Route path="/Elements" component={Elements}/>

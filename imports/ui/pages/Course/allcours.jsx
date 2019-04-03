@@ -177,7 +177,7 @@ class Cours extends Component {
 
                       <div className="card-body text-center">
                         <div className="card-title">
-                          <Link to={`/Course_details/${course._id}`}><span>{course.text}</span></Link>   
+                          <Link to={`/Courses/${course._id}`}><span>{course.text}</span></Link>   
                         </div>
                         <div className="card-text">
                           {course._id}
