@@ -4,16 +4,21 @@ import { withHistory } from 'react-router-dom';
 import MainContainer from './MainContainer.jsx';
 import Header from '../../ui/pages/new/header';
 import Footer from '../../ui/pages/new/footer';
-//const logo = './logo.png';
+
+// images
+import slider_background from '../../../client/assets/images/slider_background.jpg'
+import books from '../../../client/assets/images/books.svg'
+import professor from '../../../client/assets/images/professor.svg'
+import earth_globe from '../../../client/assets/images/earth-globe.svg'
+import course_1 from '../../../client/assets/images/course_1.jpg'
+import author from '../../../client/assets/images/author.jpg'
+import course_2 from '../../../client/assets/images/course_2.jpg'
+import course_3 from '../../../client/assets/images/course_3.jpg'
+// images 
 
 
 
-/*
-const fedi = './fedi.jpg';
-const logo = './logo.png';
-const logo1 = './phone-call.svg';
 
-*/
 
 export default class AppContainer extends Component {
   constructor(props){
@@ -134,7 +139,7 @@ export default class AppContainer extends Component {
                 <div
                   className="hero_slide_background"
                   style={{
-                    backgroundImage: "url(/images/slider_background.jpg)"
+                    backgroundImage: `url(${slider_background})`
                   }}
                 />
                 <div className="hero_slide_container d-flex flex-column align-items-center justify-content-center">
@@ -153,7 +158,7 @@ export default class AppContainer extends Component {
                 <div
                   className="hero_slide_background"
                   style={{
-                    backgroundImage: "url(/images/slider_background.jpg)"
+                    backgroundImage: `url(${slider_background})`
                   }}
                 />
                 <div className="hero_slide_container d-flex flex-column align-items-center justify-content-center">
@@ -172,8 +177,7 @@ export default class AppContainer extends Component {
                 <div
                   className="hero_slide_background"
                   style={{
-                    backgroundImage: "url(/images/slider_background.jpg)"
-                  }}
+                    backgroundImage: `url(${slider_background})` }}
                 />
                 <div className="hero_slide_container d-flex flex-column align-items-center justify-content-center">
                   <div className="hero_slide_content text-center">
@@ -202,7 +206,7 @@ export default class AppContainer extends Component {
               <div className="row">
                 <div className="col-lg-4 hero_box_col">
                   <div className="hero_box d-flex flex-row align-items-center justify-content-start">
-                    <img src="images/earth-globe.svg" className="svg" alt="" />
+                    <img src={earth_globe} className="svg" alt="" />
                     <div className="hero_box_content">
                       <h2 className="hero_box_title">Online Courses</h2>
                       <a href="/Courses" className="hero_box_link">
@@ -213,7 +217,7 @@ export default class AppContainer extends Component {
                 </div>
                 <div className="col-lg-4 hero_box_col">
                   <div className="hero_box d-flex flex-row align-items-center justify-content-start">
-                    <img src="/images/books.svg" className="svg" alt="" />
+                    <img src={books} className="svg" alt="" />
                     <div className="hero_box_content">
                       <h2 className="hero_box_title">Our Library</h2>
                       <a href="/Courses" className="hero_box_link">
@@ -224,7 +228,7 @@ export default class AppContainer extends Component {
                 </div>
                 <div className="col-lg-4 hero_box_col">
                   <div className="hero_box d-flex flex-row align-items-center justify-content-start">
-                    <img src="/images/professor.svg" className="svg" alt="" />
+                    <img src={professor} className="svg" alt="" />
                     <div className="hero_box_content">
                       <h2 className="hero_box_title">Our Teachers</h2>
                       <a href="/Teachers" className="hero_box_link">
@@ -253,7 +257,7 @@ export default class AppContainer extends Component {
                 <div className="card">
                   <img
                     className="card-img-top"
-                    src="images/course_1.jpg"
+                    src={course_1}
                     alt="https://unsplash.com/@kellybrito"
                   />
                   <div className="card-body text-center">
@@ -267,7 +271,7 @@ export default class AppContainer extends Component {
                   <div className="price_box d-flex flex-row align-items-center">
                     <div className="course_author_image">
                       <img
-                        src="images/author.jpg"
+                        src={author}
                         alt="https://unsplash.com/@mehdizadeh"
                       />
                     </div>
@@ -285,7 +289,7 @@ export default class AppContainer extends Component {
                 <div className="card">
                   <img
                     className="card-img-top"
-                    src="images/course_2.jpg"
+                    src={course_2}
                     alt="https://unsplash.com/@cikstefan"
                   />
                   <div className="card-body text-center">
@@ -299,7 +303,7 @@ export default class AppContainer extends Component {
                   <div className="price_box d-flex flex-row align-items-center">
                     <div className="course_author_image">
                       <img
-                        src="images/author.jpg"
+                        src={author}
                         alt="https://unsplash.com/@mehdizadeh"
                       />
                     </div>
@@ -317,7 +321,7 @@ export default class AppContainer extends Component {
                 <div className="card">
                   <img
                     className="card-img-top"
-                    src="images/course_3.jpg"
+                    src={course_3}
                     alt="https://unsplash.com/@dsmacinnes"
                   />
                   <div className="card-body text-center">
@@ -331,7 +335,7 @@ export default class AppContainer extends Component {
                   <div className="price_box d-flex flex-row align-items-center">
                     <div className="course_author_image">
                       <img
-                        src="images/author.jpg"
+                        src={author}
                         alt="https://unsplash.com/@mehdizadeh"
                       />
                     </div>

@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom'
 import {withHistory} from 'react-router-dom'
 import {withTracker} from 'meteor/react-meteor-data'
 import { Link } from 'react-router-dom'
-import Header from './header'
-import Footer from './footer'
+import Header from '../new/header'
+import Footer from '../new/footer'
 
 import image from '../../../../client/assets/images/react.png'
 import author from '../../../../client/assets/images/author.jpg'
@@ -14,7 +14,7 @@ import {Courses} from '../../../api/courses.jsx'
 import Course from '../../containers/Course.jsx'
 import Cour from './course_details'
 
-//import backgroun from '../../../../client/assets/images/courses_background.jpg'
+import backgroun from '../../../../client/assets/images/courses_background.jpg'
 
 
 class Cours extends Component { 
@@ -106,7 +106,7 @@ class Cours extends Component {
       <div className="super_container">
       
 
-       {/* <Header/>   */}
+       {/* <Header/> */}
 
 
         <div className="">
@@ -147,7 +147,7 @@ class Cours extends Component {
           <div className="home_background_container prlx_parent">
             <div
               className="home_background prlx"
-              style={{ backgroundImage: "url(images/courses_background.jpg)" }}
+              style={{ backgroundImage: `url(${backgroun})` }}
             />
           </div>
 

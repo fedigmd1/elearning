@@ -7,7 +7,6 @@ import author from '../../../../client/assets/images/author.jpg'
 import {Link } from 'react-router-dom'
 
 
-
 class cours extends Component {
 
  constructor(props) {
