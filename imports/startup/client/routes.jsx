@@ -19,7 +19,7 @@ import My_Courses from '../../ui/pages/Course/my_courses.jsx';
 import AddCourse from '../../ui/pages/Course/add_course.jsx';
 
 
-// import profil from '../../ui/pages/profil/profil';
+import profil from '../../ui/pages/profil/profil';
 
 
 import Contact from '../../ui/pages/new/contact.jsx';
@@ -42,7 +42,8 @@ export const renderRoutes = () => (
       <Route path="/AddCourse" component={AddCourse}/>
 
 
-      {/* <Route path="/profil" component={profil}/> */}
+      <Route exact={true} path="/profil" component={profil}/>
+      <Route path="/profil/:id" component={profil}/>
 
       
       <Route path="/Contact" component={Contact}/>

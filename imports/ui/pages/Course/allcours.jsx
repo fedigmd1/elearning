@@ -177,7 +177,7 @@ class Cours extends Component {
 
                       <div className="card-body text-center">
                         <div className="card-title">
-                          <Link to={`/Course_details/${course._id}`}>{course.text}</Link>   
+                          <Link to={`/Course_details/${course._id}`}><span>{course.text}</span></Link>   
                         </div>
                         <div className="card-text">
                           {course._id}
@@ -191,7 +191,8 @@ class Cours extends Component {
                           />
                         </div>
                         <div className="course_author_name">
-                           <span> {course.username}</span>
+                        <Link to={`/profil/${course.owner}`}><span> {course.username}</span></Link>
+                           
                         </div>
                         
                       </div>
