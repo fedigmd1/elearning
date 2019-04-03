@@ -2,8 +2,8 @@
 import React, { Component } from 'react';
 import { withHistory } from 'react-router-dom';
 import MainContainer from './MainContainer.jsx';
-import Header from '../../ui/pages/new/header';
-import Footer from '../../ui/pages/new/footer';
+import Header from '../../ui/pages/header/header';
+import Footer from '../../ui/pages/footer/footer';
 
 // images
 import slider_background from '../../../client/assets/images/slider_background.jpg'

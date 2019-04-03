@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { withHistory, Link } from 'react-router-dom'
 import { createContainer } from 'meteor/react-meteor-data'
-import Header from './header';
-import Footer from './footer';
+import Header from '../header/header';
+import Footer from '../footer/footer';
 
 export default class New_Post extends Component {
 

@@ -29,7 +29,7 @@ export default class Header extends Component {
                     <a href="/">home</a>
                   </li>
                   <li className="main_nav_item">
-                    <a href="#">about us</a>
+                    <a href="/AddCourse">about us</a>
                   </li>
                   <li className="main_nav_item">
                     <a href="/Courses">courses</a>
