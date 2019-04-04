@@ -40,9 +40,8 @@ class cours extends Component {
 }
 export default withTracker((props) => {
   Meteor.subscribe('courses');
-  return {
-    
-    course: Courses.findOne({"_id": props.match.params.id })
 
+  return {
+    course: Courses.findOne({"_id": props.match.params.id })
   };
 }) (cours); 
