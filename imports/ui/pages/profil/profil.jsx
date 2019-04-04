@@ -2,6 +2,8 @@ import React, {Component} from 'react'
 import ReactDOM from 'react-dom'
 import { Meteor } from 'meteor/meteor';
 import {withTracker} from 'meteor/react-meteor-data'
+import {Link } from 'react-router-dom'
+
 
 class profil extends Component {
  
@@ -9,26 +11,31 @@ class profil extends Component {
     console.log(this.props.match.params.id);
     return (
       <div>
-        {this.props.match.params.id ? this.props.user ? (
+        <center>
+          {this.props.match.params.id ? (this.props.currentUser) && (this.props.currentUser._id==this.props.match.params.id)?
             <div>
-            <h1>user</h1>
-            {this.props.user.username}
-            {this.props.user.emails.address}
-            
-            {console.log(this.props.user.emails)}
-            
+              <h1>currentUser</h1>
+              {this.props.currentUser.username}
+              {this.props.currentUser._id}
             </div>
-          ): <div>
-              <h1>Sorry! This User does not exist !</h1>
-            </div>
-          : this.props.currentUser ? (
-            <div>
-            <h1>currentUser</h1>
-            {this.props.currentUser.username}
-            {this.props.currentUser._id}
-            </div>
-          ) : null 
-          }
+              : this.props.user ? (
+              <div>
+              <h1>user</h1>
+              {this.props.user.username}              
+              {console.log(this.props.user.emails)}             
+              </div>
+            ):
+                <h1>Sorry! This User does not exist !</h1>
+            : this.props.currentUser ? (
+              <div>
+              <h1>currentUser</h1>
+              {this.props.currentUser.username}
+              {this.props.currentUser._id}
+              </div>
+            ) : null 
+            }
+            <Link to='/Courses'>Courses</Link>
+        </center>
       </div>
     )
   }

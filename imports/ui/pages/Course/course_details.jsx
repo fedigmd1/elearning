@@ -17,7 +17,7 @@ class cours extends Component {
     
     return (
       <div>
-        <center><h1>Test</h1></center>
+        <center><h1>Test</h1>
         {this.props.course ? (
           <div className="card-body text-center">
             <div className="card-title">
@@ -34,6 +34,7 @@ class cours extends Component {
           </div>
         ) :null }
           <Link to='/Courses'>Courses</Link>
+        </center>
       </div>
     );
   }
