@@ -7,9 +7,19 @@ export default class SignupPage extends Component {
   constructor(props){
     super(props);
     this.state = {
-      error: ''
+      error: '',
+      category: 'student',
     };
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.getcategory = this.getcategory.bind(this);
+
+  }
+
+  getcategory(){
+    let x=event.target.value;
+    //console.log(x); 
+    this.setState({category: x })
+    console.log(x);
   }
 
   handleSubmit(e){
@@ -17,8 +27,11 @@ export default class SignupPage extends Component {
     let name = document.getElementById("signup-name").value;
     let email = document.getElementById("signup-email").value;
     let password = document.getElementById("signup-password").value;
+
+    console.log(this.state.category);
+    
     this.setState({error: "test"});
-    Accounts.createUser({email: email, username: name, password: password}, (err) => {
+    Accounts.createUser({email: email, username: name, password: password, category: this.state.category }, (err) => {
       if(err){
         this.setState({
           error: err.reason
@@ -58,6 +71,17 @@ export default class SignupPage extends Component {
                         className="form-control input-lg"
                         placeholder="password"/>
                 </div>
+
+                <div className="category">
+                  <center>
+                    <select onChange={e=> {this.getcategory(e)}}>
+                    <option value="student">Student</option>
+                    <option value="teacher">Teacher</option>
+                    </select>
+                  </center>
+                  <br/>
+                </div>
+
                 <div className="form-group">
                   <input type="submit" id="login-button"
                         className="btn btn-lg btn-primary btn-block"
