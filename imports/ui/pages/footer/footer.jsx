@@ -66,9 +66,9 @@ export default class Footer extends Component {
                     </div>
                   </div>
                   <p className="footer_about_text">
-                    In aliquam, augue a gravida rutrum, ante nisl fermentum
-                    nulla, vitae tempor nisl ligula vel nunc. Proin quis mi
-                    malesuada, finibus tortor fermentum, tempor lacus.
+                    Astrolab-agency est une entreprise informatique
+                    spécialiste dans le domaine du développement
+                    web et mobile.
                   </p>
                 </div>
                 {/* Footer Column - Menu */}

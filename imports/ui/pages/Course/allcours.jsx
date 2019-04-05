@@ -108,6 +108,8 @@ class Cours extends Component {
                         </div>
                         <div className="card-text">
                           {course._id}
+                          <br/>
+                          {course.description}
                         </div>
                       </div>
                       <div className="price_box d-flex flex-row align-items-center">

@@ -12,23 +12,11 @@ class AddCourse extends Component {
   constructor(props) {
     super(props);
   
-    // this.details = this.details.bind(this);
-
     this.state = {
       text: "",
+      nom: "",
+      description: ""
     };
-
-  }
-
-  handleSubmit(event) {
-    event.preventDefault();
- 
-    // Find the text field via the React ref
-    const text = ReactDOM.findDOMNode(this.refs.textInput).value.trim();
-      console.log(text);
-      Meteor.call('courses.insert', text); 
-    // Clear form
-    ReactDOM.findDOMNode(this.refs.textInput).value = '';
   }
 
   toggleHideCompleted() {
@@ -80,17 +68,17 @@ class AddCourse extends Component {
   }
 
   handleSubmit(event) {
+  
     event.preventDefault();
  
     // Find the text field via the React ref
-    const text = ReactDOM.findDOMNode(this.refs.textInput).value.trim();
-      console.log(text);
-      Meteor.call('courses.insert', text); 
+        console.log(this.state.nom);
+        console.log(this.state.description);
+       Meteor.call('courses.insert', this.state.nom, this.state.description );
+
     // Clear form
-    ReactDOM.findDOMNode(this.refs.textInput).value = '';
+      this.setState({ nom: "" ,description: "" })
   }
-
-
 
   render () {
     return (
@@ -115,19 +103,31 @@ class AddCourse extends Component {
 
 
             { this.props.currentUser ?
-              <form className="new-course" onSubmit={this.handleSubmit.bind(this)} >
+              <form className="new-course" >
                 <input
                   type="text"
-                  ref="textInput"
-                  placeholder="Type to add new courses"
+                  value={this.state.nom}
+                  onChange={(e) => this.setState({ nom: e.target.value })}
+                  placeholder="Name"
                 />
-              </form> : ''
+                <br/>
+                <input
+                  type="text"
+                  value={this.state.description}
+                  onChange={(e) => this.setState({ description: e.target.value })}
+                  placeholder="Description"
+                />
+                <button onClick={this.handleSubmit.bind(this)}>Add Course</button>
+              </form>
+              
+              : ''
             }          
         </div>
 
         <div className="" >
             {this.renderCourses()}
-        </div>   
+        </div>
+
       </div>
     )    
   }

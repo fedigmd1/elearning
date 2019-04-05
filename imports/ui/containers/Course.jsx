@@ -53,7 +53,7 @@ export default class Course extends TrackerReact(Component) {
         ) : ''}
 
         <span className="text">
-          <strong>{this.props.course.username}</strong>: {this.props.course.text}
+          <strong>{this.props.course.username}</strong>: {this.props.course.text} : {this.props.course.description}
         </span>
       </div>
     );

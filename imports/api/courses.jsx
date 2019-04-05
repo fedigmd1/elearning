@@ -18,9 +18,10 @@ if (Meteor.isServer) {
 }
  
 Meteor.methods({
-  'courses.insert'(text) {
+  'courses.insert'(text, description) {
     check(text, String);
- 
+    check(description, String);
+
     // Make sure the user is logged in before inserting a course
     if (! this.userId) {
       throw new Meteor.Error('not-authorized');
@@ -28,6 +29,7 @@ Meteor.methods({
  
     Courses.insert({
       text,
+      description,
       createdAt: new Date(),
       owner: this.userId,
       username: Meteor.users.findOne(this.userId).username,
