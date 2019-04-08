@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
-import {withHistory} from 'react-router-dom'
 import {withTracker} from 'meteor/react-meteor-data'
 import { Link } from 'react-router-dom'
 import Header from '../header/header'

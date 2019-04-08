@@ -18,9 +18,11 @@ if (Meteor.isServer) {
 }
  
 Meteor.methods({
-  'courses.insert'(text, description) {
+  'courses.insert'(text, description, contenu ) {
     check(text, String);
     check(description, String);
+    check(contenu, Object);
+
 
     // Make sure the user is logged in before inserting a course
     if (! this.userId) {
@@ -30,6 +32,7 @@ Meteor.methods({
     Courses.insert({
       text,
       description,
+      contenu,
       createdAt: new Date(),
       owner: this.userId,
       username: Meteor.users.findOne(this.userId).username,

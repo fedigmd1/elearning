@@ -18,8 +18,10 @@ import Course_details from '../../ui/pages/Course/course_details.jsx';
 import My_Courses from '../../ui/pages/Course/my_courses.jsx';
 import AddCourse from '../../ui/pages/Course/add_course.jsx';
 
-
 import profil from '../../ui/pages/profil/profil';
+
+
+import donner_cours from '../../ui/pages/new/donner_cours'
 
 
 import Contact from '../../ui/pages/new/contact.jsx';
@@ -43,6 +45,10 @@ export const renderRoutes = () => (
 
       <Route exact={true} path="/profil" component={profil}/>
       <Route path="/profil/:id" component={profil}/>
+
+      <Route path="/DonnerCours" component={donner_cours}/>
+
+
 
       
       

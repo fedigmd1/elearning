@@ -15,7 +15,8 @@ class AddCourse extends Component {
     this.state = {
       text: "",
       nom: "",
-      description: ""
+      description: "",
+      contenu: {},
     };
   }
 
@@ -74,7 +75,7 @@ class AddCourse extends Component {
     // Find the text field via the React ref
         console.log(this.state.nom);
         console.log(this.state.description);
-       Meteor.call('courses.insert', this.state.nom, this.state.description );
+       Meteor.call('courses.insert', this.state.nom, this.state.description, this.state.contenu );
 
     // Clear form
       this.setState({ nom: "" ,description: "" })
