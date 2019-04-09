@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { withHistory, Link } from 'react-router-dom'
 import { createContainer } from 'meteor/react-meteor-data'
+import { Icon } from 'antd';
+
 
 import logo from '../../../../client/assets/images/astrolab.png'
 import placeholder from '../../../../client/assets/images/placeholder.svg'
@@ -158,28 +160,23 @@ export default class Footer extends Component {
               <div className="footer_social ml-sm-auto">
                 <ul className="menu_social">
                   <li className="menu_social_item">
-                    <a href="#">
-                      <i className="fab fa-pinterest" />
+                    <a href="https://linkedin.com/">
+                      <Icon type="linkedin" />
                     </a>
                   </li>
                   <li className="menu_social_item">
-                    <a href="#">
-                      <i className="fab fa-linkedin-in" />
+                    <a href="https://instagram.com/">
+                      <Icon type="instagram" />
                     </a>
                   </li>
                   <li className="menu_social_item">
-                    <a href="#">
-                      <i className="fab fa-instagram" />
+                    <a href="https://facebook.com/">
+                      <Icon type="facebook" />
                     </a>
                   </li>
                   <li className="menu_social_item">
-                    <a href="#">
-                      <i className="fab fa-facebook-f" />
-                    </a>
-                  </li>
-                  <li className="menu_social_item">
-                    <a href="#">
-                      <i className='fab fa-twitter' />
+                    <a href="https://twitter.com/">
+                      <Icon type="twitter" />
                     </a>
                   </li>
                 </ul>

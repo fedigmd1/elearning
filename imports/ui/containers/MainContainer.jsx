@@ -1,8 +1,8 @@
 // a container to
-import { createContainer } from 'meteor/react-meteor-data';
+import { withTracker } from 'meteor/react-meteor-data';
 import MainPage from '../pages/main/MainPage'
 
-export default MainContainer = createContainer(({params}) => {
+export default withTracker(() => {
   const currentUser = Meteor.user();
   return {
     currentUser,
