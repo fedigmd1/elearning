@@ -23,12 +23,14 @@ import profil from '../../ui/pages/profil/profil';
 
 import donner_cours from '../../ui/pages/new/donner_cours'
 
+import Test from '../../ui/pages/new/test.jsx'
 
 import Contact from '../../ui/pages/new/contact.jsx';
 import Elements from '../../ui/pages/new/elements.jsx';
 import New_Post from '../../ui/pages/new/new_post.jsx';
 import New from '../../ui/pages/new/new.jsx';
 import Teachers from '../../ui/pages/new/teachers.jsx';
+
 
 
 export const renderRoutes = () => (
@@ -47,6 +49,9 @@ export const renderRoutes = () => (
       <Route path="/profil/:id" component={profil}/>
 
       <Route path="/DonnerCours" component={donner_cours}/>
+
+      <Route path="/test" component={Test}/>
+
 
 
 
