@@ -2,13 +2,13 @@ import { Meteor } from 'meteor/meteor';
 import { Mongo } from 'meteor/mongo';
 import { check } from 'meteor/check';
  
-export const Courses = new Mongo.Collection('courses');
+export const Elements = new Mongo.Collection('elements');
 
 if (Meteor.isServer) {
   // This code only runs on the server
    // Only publish courses that are public or belong to the current user
-  Meteor.publish('courses', function coursesPublication() {
-    return Courses.find({
+  Meteor.publish('elements', function elementsPublication() {
+    return Elements.find({
       $or: [
         { private: { $ne: true } },
         { owner: this.userId },
@@ -18,10 +18,10 @@ if (Meteor.isServer) {
 }
  
 Meteor.methods({
-  'courses.insert'(text, description, elements ) {
+  'elements.insert'(text, description, idCourse ) {
     check(text, String);
     check(description, String);
-    check(elements, Object);
+    check(idCourse, String);
 
 
     // Make sure the user is logged in before inserting a course
@@ -29,16 +29,14 @@ Meteor.methods({
       throw new Meteor.Error('not-authorized');
     }
  
-    Courses.insert({
-      text,
+    Elements.insert({
+      name,
       description,
-      elements,
+      idCourse: this.userId,
       createdAt: new Date(),
-      owner: this.userId,
-      username: Meteor.users.findOne(this.userId).username,
     });
   },
-  'courses.remove'(courseId) {
+  'elements.remove'(courseId) {
     check(courseId, String);
 
     const course = Courses.findOne(courseId);
@@ -49,7 +47,7 @@ Meteor.methods({
  
     Courses.remove(courseId);
   },
-  'courses.setChecked'(courseId, setChecked) {
+  'elements.setChecked'(courseId, setChecked) {
     check(courseId, String);
     check(setChecked, Boolean);
 
@@ -62,7 +60,7 @@ Meteor.methods({
     Courses.update(courseId, { $set: { checked: setChecked } });
   },
 
-  'courses.setPrivate'(courseId, setToPrivate) {
+  'elements.setPrivate'(courseId, setToPrivate) {
     check(courseId, String);
     check(setToPrivate, Boolean);
  
@@ -77,7 +75,7 @@ Meteor.methods({
   },
 
 
-  'courses.setElements'(courseId, setElement) {
+  'elements.setElements'(courseId, setElement) {
     check(courseId, String);
     check(setElement, Object);
 

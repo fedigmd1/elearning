@@ -31,8 +31,7 @@ export default class Course extends TrackerReact(Component) {
       private: this.props.course.private,
     }); 
     
-
-
+    
     return (
       <div className={courseClassName}>
         <button className="delete" onClick={this.deleteThisCourse.bind(this)}>
