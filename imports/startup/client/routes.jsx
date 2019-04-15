@@ -21,7 +21,7 @@ import AddCourse from '../../ui/pages/Course/add_course.jsx';
 import profil from '../../ui/pages/profil/profil';
 
 
-import donner_cours from '../../ui/pages/new/donner_cours'
+import donner_cours from '../../ui/pages/Course/donner_cours'
 
 import Test from '../../ui/pages/new/test.jsx'
 

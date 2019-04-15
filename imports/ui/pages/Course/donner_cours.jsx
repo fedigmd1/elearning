@@ -74,10 +74,10 @@ class donnerCours extends Component {
                 <br/>
                 {this.props.course ? (
                   <div>
-                    {this.props.course.elements ? this.props.course.elements.map(e => {
+                    {this.props.course.elements ? this.props.course.elements.map((e,i)=> {
                       return (
-                        <div>
-                        <span>{e.course}</span><br/>
+                        <div key={i}>
+                          <span>{e.course}</span><button>&iquest;</button><br/>
                         </div>
                       )
                     }) :
