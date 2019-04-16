@@ -1,6 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import { Mongo } from 'meteor/mongo';
 import { check } from 'meteor/check';
+import { Courses } from './courses';
  
 export const Elements = new Mongo.Collection('elements');
 
@@ -18,11 +19,9 @@ if (Meteor.isServer) {
  
 Meteor.methods({
 
-  'elements.insert'(name, contents, postion, length, width, courseId) {
-    check(name, String);
-    //check(description, String);
-    //check(courseId, String);
-    const course = Courses.findOne(courseId);
+  'elements.insert'(obj) {
+    
+    const course = Courses.findOne(obj.courseId);
 
 
     // Make sure the user is logged in before inserting a element
@@ -30,24 +29,14 @@ Meteor.methods({
       throw new Meteor.Error('not-authorized');
     }
  
-    Elements.insert({
-      name,
-      contents,
-      postion,
-      length,
-      width,
-      courseId,
-      createdAt: new Date(),
-    });
+    Elements.insert(obj);
   },
 
-  'elements.remove'(elementId,courseId) {
-    
+  'elements.remove'(elementId) {
     check(elementId, String);
-    check(courseId, String);
     
-    //const element = Elements.findOne(elementId);
-    const course = Courses.findOne(courseId);
+    const element = Elements.findOne(elementId);
+    const course = Courses.findOne(element.courseId);
 
     if (course.owner !== this.userId) {
       // If the element is private, make sure only the owner can delete it
@@ -56,11 +45,11 @@ Meteor.methods({
  
     Elements.remove(elementId);
   },
-  'elements.position'(elementId,courseId, x,y,z) {
+  'elements.position'(elementId, x,y,z) {
     check(elementId, String);
-    check(courseId, String);
 
-    const course = Courses.findOne(courseId);
+    const element = Elements.findOne(elementId);
+    const course = Courses.findOne(element.courseId);
 
     if (course.owner !== this.userId) {
       // If the element is private, make sure only the owner can check it off
@@ -70,12 +59,11 @@ Meteor.methods({
     Elements.update(elementId, { $set: { position1: x, position2: y, position3: z } });
   },
 
-  'elements.contents'(elementId, courseId, contents) {
+  'elements.contents'(elementId, contents) {
     check(elementId, String);
-    check(courseId, String);
-    check(contents, String);
-
-    const course = Courses.findOne(courseId);
+    
+    const element = Elements.findOne(elementId);
+    const course = Courses.findOne(element.courseId);
 
     if (course.owner !== this.userId) {
       // If the element is private, make sure only the owner can check it off
@@ -86,12 +74,11 @@ Meteor.methods({
   },
 
 
-  'elements.coordonnees'(elementId, courseId, length, width) {
+  'elements.coordonnees'(elementId, length, width) {
     check(elementId, String);
-    check(courseId, String);
-    //check(setToPrivate, Boolean);
- 
-    const course = Courses.findOne(courseId);
+    
+    const element = Elements.findOne(elementId);    
+    const course = Courses.findOne(element.courseId);
  
     // Make sure only the element owner can make a element private
     if (course.owner !== this.userId) {

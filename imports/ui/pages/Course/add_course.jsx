@@ -16,7 +16,7 @@ class AddCourse extends Component {
       text: "",
       nom: "",
       description: "",
-      elements: {},
+      elements: [],
     };
   }
 

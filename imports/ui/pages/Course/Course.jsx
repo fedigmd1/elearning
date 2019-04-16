@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
-import {withTracker} from 'meteor/react-meteor-data'
-import {Courses} from '../../../api/courses'
+import { withTracker } from 'meteor/react-meteor-data'
+import { Courses } from '../../../api/courses'
+import { Elements } from '../../../api/elements'
 import { Link } from 'react-router-dom'
 import { Draggable, Droppable } from 'react-drag-and-drop'
 import { Alert, Badge, Button, Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
@@ -12,6 +13,8 @@ class donnerCours extends Component {
 
   constructor(props) {
     super(props);
+    //this.deleteThisElement = this.deleteThisElement.bind(this);
+
     this.state = {
       current: '1',
       visible: false
@@ -36,10 +39,75 @@ class donnerCours extends Component {
   };
   
   onDrop(data) {
-    console.log(data)
-    let x = "ak2oxH9Bf6NwXzjho" ;
-    Meteor.call('courses.setElements', x , data );
-      
+    let courseId = this.props.match.params.id
+    console.log(data.course)
+    let obj;
+    switch (data.course) {
+      case "Text":
+        obj = {
+          kind: "text",
+          text: "Replace me !",
+          x: 1,
+          y: 1,
+          courseId,
+        };
+        break;
+      case "Draw":
+        obj = {
+          kind: "draw",
+          path: [],
+          x: 1,
+          y: 1,
+          courseId,
+        };
+        break;
+      case "Image":
+        obj = {
+          kind: "image",
+          url: "http://aaaa.com",
+          x: 1,
+          y: 1,
+          courseId,
+        };
+        break;
+      case "File":
+        obj = {
+          kind: "file",
+          text: "Replace me !",
+          x: 1,
+          y: 1,
+          courseId,
+        };
+        break;
+      case "Video":
+        obj = {
+          kind: "video",
+          url: "http://aaaa.com",
+          x: 1,
+          y: 1,
+          courseId,
+        };
+        break;
+      case "Message":
+        obj = {
+          kind: "message",
+          text: "Replace me !",
+          x: 1,
+          y: 1,
+          courseId,
+        };
+        break;
+
+    }
+    console.log(obj);
+    
+    if (this.props.match.params.id !== undefined){
+      Meteor.call('elements.insert', obj);
+    }
+  }
+
+  deleteThisElement = (id) => {
+    Meteor.call('elements.remove', id);
   }
 
   handleClick = (e) => {
@@ -49,14 +117,23 @@ class donnerCours extends Component {
     });
   }
   render() {
-    return (
-      <div>
-          <center><h1>Nom Course</h1></center>
-          <br/>
 
+    return (
+      
+      <div>
+        
+        <center>
+          {this.props.course ?
+            <h1>
+              {this.props.course.text}
+            </h1>
+            : ( <div><h1>Sorry, this course does not exist!</h1></div> )
+          }
+        </center>
+        <br/>
         <Row>
           <Col xs="1" >
-            <Draggable type="course" style={{ fontSize: '40px', color: '#555' }} data="Text"><Icon type="edit" /></Draggable>
+            <Draggable type="course" style={{ fontSize: '40px', color: '#555' }} data="Text" ><Icon type="edit" /></Draggable>
             <Draggable type="course" style={{ fontSize: '40px', color: '#555' }} data="Draw"><Icon type="highlight" /></Draggable>
             <Draggable type="course" style={{ fontSize: '40px', color: '#555' }} data="Image"><Icon type="area-chart" /></Draggable>
             <Draggable type="course" style={{ fontSize: '40px', color: '#555' }} data="File"><Icon type="file-add" /></Draggable>
@@ -72,12 +149,16 @@ class donnerCours extends Component {
               <div>
                 <h1>---------------------------------------------------------------------------------------------------</h1>
                 <br/>
-                {this.props.course ? (
+                {this.props.elements ? (
                   <div>
-                    {this.props.course.elements ? this.props.course.elements.map((e,i)=> {
+                    {this.props.elements ? this.props.elements.map((e,i)=> {
                       return (
                         <div key={i}>
-                          <span>{e.course}</span><button>&iquest;</button><br/>
+                          <span>{e.kind}</span>
+                          <button className="delete" onClick={ () => this.deleteThisElement(e._id)}>
+                            &times;
+                          </button>
+                         {/* <button>&iquest;</button><br/> */}
                         </div>
                       )
                     }) :
@@ -106,11 +187,13 @@ class donnerCours extends Component {
 
 export default withTracker((props) => {
   Meteor.subscribe('courses');
+  Meteor.subscribe('elements');
+
   return {
 
     currentUser: Meteor.user(),
-    course: Courses.findOne({ "_id": "ak2oxH9Bf6NwXzjho" }),
+    elements: Elements.find({ courseId: props.match.params.id }).fetch(),
+    course: Courses.findOne({ "_id": props.match.params.id }),
 
   };
-}) (donnerCours); 
-
+}) (donnerCours);

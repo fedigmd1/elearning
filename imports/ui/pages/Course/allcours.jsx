@@ -55,7 +55,8 @@ class Cours extends Component {
       <div className="super_container">
       
 
-       {/* <Header/> */}
+        <Header/>
+
         <div className="home">
           <div className="home_background_container prlx_parent">
             
@@ -71,8 +72,11 @@ class Cours extends Component {
         </div>
           
         <div className="popular page_section">
-          <div className="">
+          <div className="page_content">
             <center>
+            <Link to={'/MyCourses'}><h3>My Courses</h3></Link>
+            <Link to={'/AddCourse'}><h3>Add Courses</h3></Link>              
+
               <h3>Sort by</h3>
               <select onChange={e=> {this.sortCourses(e)}}>
                 <option value="text">Nom</option>

@@ -33,16 +33,25 @@ class cours extends Component {
             </div>
           </div>
         ) :null }
-          <Link to='/Courses'>Courses</Link>
+          <Link to='/Courses'>All Courses</Link><br/>
+          { (this.props.currentUser && this.props.course ) ? 
+            this.props.currentUser._id == this.props.course.owner ?
+              ( <Link to={`/Course/${this.props.course._id}`}>Animate Course</Link> ) 
+              : <Link to={`/Course/${this.props.course._id}`}>Assist Course</Link>
+            : null
+          }
         </center>
       </div>
     );
   }
 }
+
 export default withTracker((props) => {
   Meteor.subscribe('courses');
+  let currentUser = Meteor.user();
 
   return {
+    currentUser,
     course: Courses.findOne({"_id": props.match.params.id })
   };
 }) (cours); 

@@ -1,6 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import { Mongo } from 'meteor/mongo';
 import { check } from 'meteor/check';
+import { Elements } from './elements'
  
 export const Courses = new Mongo.Collection('courses');
 
@@ -18,10 +19,9 @@ if (Meteor.isServer) {
 }
  
 Meteor.methods({
-  'courses.insert'(text, description, elements ) {
+  'courses.insert'(text, description) {
     check(text, String);
     check(description, String);
-    check(elements, Object);
 
 
     // Make sure the user is logged in before inserting a course
@@ -32,7 +32,6 @@ Meteor.methods({
     Courses.insert({
       text,
       description,
-      elements,
       createdAt: new Date(),
       owner: this.userId,
       username: Meteor.users.findOne(this.userId).username,
@@ -42,12 +41,18 @@ Meteor.methods({
     check(courseId, String);
 
     const course = Courses.findOne(courseId);
+    
     if (course.private && course.owner !== this.userId) {
       // If the course is private, make sure only the owner can delete it
       throw new Meteor.Error('not-authorized');
     }
- 
-    Courses.remove(courseId);
+    
+    Courses.remove({
+      _id: courseId
+    });
+    Elements.remove({
+      courseId: courseId
+    });
   },
   'courses.setChecked'(courseId, setChecked) {
     check(courseId, String);
@@ -79,7 +84,7 @@ Meteor.methods({
 
   'courses.setElements'(courseId, setElement) {
     check(courseId, String);
-    check(setElement, Object);
+    //check(setElement, Object);
 
     const course = Courses.findOne(courseId);
     if (course.owner !== this.userId) {
