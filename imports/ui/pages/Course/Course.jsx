@@ -41,9 +41,7 @@ class donnerCours extends Component {
   onDrop(data) {
     let courseId = this.props.match.params.id
     let createdAt = new Date()
-
-    console.log(data.course)
-    let obj;
+    let obj
     switch (data.course) {
       case "Text":
         obj = {
@@ -108,7 +106,6 @@ class donnerCours extends Component {
 
     }
     console.log(obj);
-    
     if (this.props.match.params.id !== undefined){
       Meteor.call('elements.insert', obj);
     }
@@ -118,12 +115,6 @@ class donnerCours extends Component {
     Meteor.call('elements.remove', id);
   }
 
-  handleClick = (e) => {
-    console.log('click ', e);
-    this.setState({
-      current: e.key,
-    });
-  }
   render() {
 
     return (
