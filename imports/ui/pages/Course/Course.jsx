@@ -13,12 +13,6 @@ class donnerCours extends Component {
 
   constructor(props) {
     super(props);
-    //this.deleteThisElement = this.deleteThisElement.bind(this);
-
-    this.state = {
-      current: '1',
-      visible: false
-    }
   }
 
   Drawer = () => {
@@ -116,11 +110,8 @@ class donnerCours extends Component {
   }
 
   render() {
-
-    return (
-      
-      <div>
-        
+    return (   
+      <div>   
         <center>
           {this.props.course ?
             <h1>
@@ -138,9 +129,7 @@ class donnerCours extends Component {
             <Draggable type="course" style={{ fontSize: '40px', color: '#555' }} data="File"><Icon type="file-add" /></Draggable>
             <Draggable type="course" style={{ fontSize: '40px', color: '#555' }} data="Video"><Icon type="youtube"/></Draggable>
             <Draggable type="course" style={{ fontSize: '40px', color: '#555' }} data="Message"><Icon type="mail"/></Draggable>
-
-          </Col>
-          
+          </Col> 
           <Col>
             <Droppable
               types={['course']}
@@ -182,17 +171,13 @@ class donnerCours extends Component {
     )
   }   
 }
-
-
 export default withTracker((props) => {
   Meteor.subscribe('courses');
   Meteor.subscribe('elements');
 
   return {
-
     currentUser: Meteor.user(),
     elements: Elements.find({ courseId: props.match.params.id }).fetch(),
     course: Courses.findOne({ "_id": props.match.params.id }),
-
   };
 }) (donnerCours);
