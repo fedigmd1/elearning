@@ -40,6 +40,8 @@ class donnerCours extends Component {
   
   onDrop(data) {
     let courseId = this.props.match.params.id
+    let createdAt = new Date()
+
     console.log(data.course)
     let obj;
     switch (data.course) {
@@ -50,6 +52,7 @@ class donnerCours extends Component {
           x: 1,
           y: 1,
           courseId,
+          createdAt,
         };
         break;
       case "Draw":
@@ -59,6 +62,7 @@ class donnerCours extends Component {
           x: 1,
           y: 1,
           courseId,
+          createdAt,
         };
         break;
       case "Image":
@@ -68,6 +72,7 @@ class donnerCours extends Component {
           x: 1,
           y: 1,
           courseId,
+          createdAt,
         };
         break;
       case "File":
@@ -77,6 +82,7 @@ class donnerCours extends Component {
           x: 1,
           y: 1,
           courseId,
+          createdAt,
         };
         break;
       case "Video":
@@ -86,6 +92,7 @@ class donnerCours extends Component {
           x: 1,
           y: 1,
           courseId,
+          createdAt,
         };
         break;
       case "Message":
@@ -95,6 +102,7 @@ class donnerCours extends Component {
           x: 1,
           y: 1,
           courseId,
+          createdAt,
         };
         break;
 
