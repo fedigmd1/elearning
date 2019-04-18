@@ -16,18 +16,21 @@ if (Meteor.isServer) {
  
 Meteor.methods({
 
-  'explications.insert'(elementId,senderId,question) {
+  'explications.insert'(elementId, elementkind, senderId, senderName, question) {
 
+    
     // Make sure the user is logged in before inserting a explication
-    if (! this.userId) {
+    if (!this.userId) {
       throw new Meteor.Error('not-authorized');
     }
 
     Explications.insert({
       elementId,
+      elementkind,
       senderId,
+      senderName,
       question,
-      reponse: ""
+      response: ""
     });
   },
 

@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import { Link } from 'react-router-dom'
-import { Row, Col } from 'reactstrap';
+import { Row, Col } from 'reactstrap'
+import Questionform from '../../explication/question/allquestions';
+
 
 export default class Assist extends Component { 
 
@@ -12,8 +14,8 @@ export default class Assist extends Component {
     };
   }
 
-  question = () => {
-    this.setState({text: true})
+  question = (id) => {
+    this.setState({text: id})
   }
 
   render(){
@@ -30,11 +32,12 @@ export default class Assist extends Component {
                 {this.props.elements ? (
                   <div>
                     {this.props.elements ? this.props.elements.map((e,i)=> {
-                      return (
+                      return (                
                         <div className="content" key={i}>
                           <span>{e.kind}</span>
-                         <button className="question" onClick={() => this.question()}>&iquest;</button><br/>
-                        </div>
+                         <button className="question" onClick={() => this.question(e._id)}>&iquest;</button><br/>
+                         {this.state.text === e._id && <Questionform currentUser={this.props.currentUser} element={e}/> }
+                        </div>                                
                       )
                     }) :
                       <div>

@@ -5,11 +5,15 @@ import { Draggable, Droppable } from 'react-drag-and-drop'
 import { Row, Col } from 'reactstrap';
 import { Menu, Icon, Switch, Drawer } from 'antd';
 import { Alert, Badge, Button, Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
+import Responseform from '../../explication/response';
 
 export default class Animate extends Component { 
 
   constructor(props) {
     super(props);
+    this.state = {
+      text: null
+    };
   }
   onDrop(data) {
     let courseId = this.props.id
@@ -88,6 +92,10 @@ export default class Animate extends Component {
     Meteor.call('elements.remove', id);
   }
 
+  response (id) {
+    this.setState({text: id})
+  }
+
   render(){
     
     return (
@@ -117,7 +125,8 @@ export default class Animate extends Component {
                           <button className="delete" onClick={ () => this.deleteThisElement(e._id)}>
                             &times;
                           </button>
-                         {/* <button>&iquest;</button><br/> */}
+                          <button onClick={() => this.response(e._id)}>&iquest;</button><br/>
+                          {this.state.text === e._id && <Responseform currentUser={this.props.currentUser} element={e}/> }
                         </div>
                       )
                     }) :

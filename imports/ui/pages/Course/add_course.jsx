@@ -72,7 +72,6 @@ class AddCourse extends Component {
   
     event.preventDefault();
  
-    // Find the text field via the React ref
         console.log(this.state.nom);
         console.log(this.state.description);
        Meteor.call('courses.insert', this.state.nom, this.state.description, this.state.elements );
