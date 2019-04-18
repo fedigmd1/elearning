@@ -16,7 +16,7 @@ if (Meteor.isServer) {
  
 Meteor.methods({
 
-  'explications.insert'(elementId,senderId,question,reponse) {
+  'explications.insert'(elementId,senderId,question) {
 
     // Make sure the user is logged in before inserting a explication
     if (! this.userId) {
@@ -27,12 +27,12 @@ Meteor.methods({
       elementId,
       senderId,
       question,
-      reponse,
+      reponse: ""
     });
   },
 
   'explications.response'(explicationId, response) {
-    check(courseId, String);
+    check(explicationId, String);
     check(response, String);
 
     const explication = Explications.findOne(explicationId)
