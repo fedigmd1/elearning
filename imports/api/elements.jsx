@@ -2,6 +2,7 @@ import { Meteor } from 'meteor/meteor';
 import { Mongo } from 'meteor/mongo';
 import { check } from 'meteor/check';
 import { Courses } from './courses';
+import { Explications } from './explications';
  
 export const Elements = new Mongo.Collection('elements');
 
@@ -44,6 +45,9 @@ Meteor.methods({
     }
  
     Elements.remove(elementId);
+    Explications.remove({
+      elementId: elementId
+    });
   },
   'elements.position'(elementId, x,y,z) {
     check(elementId, String);

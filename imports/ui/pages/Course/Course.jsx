@@ -5,15 +5,14 @@ import { Courses } from '../../../api/courses'
 import { Elements } from '../../../api/elements'
 
 import Animate from './course_animation/animate'
+import Assist from './course_animation/assist';
 
 class donnerCours extends Component {
 
   constructor(props) {
     super(props);
   }
-  
-  
-
+    
   render() {
     return (   
       <div>   
@@ -28,7 +27,7 @@ class donnerCours extends Component {
         <br/>
         {this.props.course && this.props.currentUser ? this.props.course.owner == this.props.currentUser._id ?
         (<Animate id={this.props.match.params.id} elements={this.props.elements} />)
-        :<Attend elements={this.props.elements} />
+        :<Assist id={this.props.match.params.id} elements={this.props.elements} currentUser= {this.props.currentUser}/>
         :null } 
       </div>
     )

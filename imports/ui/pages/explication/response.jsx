@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 
-export default class Attend extends Component { 
+export default class Response extends Component { 
 
   constructor(props) {
     super(props);

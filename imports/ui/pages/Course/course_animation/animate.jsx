@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
-import { Row, Col } from 'reactstrap';
-import { Menu, Icon, Switch, Drawer } from 'antd';
 import { Link } from 'react-router-dom'
 import { Draggable, Droppable } from 'react-drag-and-drop'
+import { Row, Col } from 'reactstrap';
+import { Menu, Icon, Switch, Drawer } from 'antd';
 import { Alert, Badge, Button, Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
 
 export default class Animate extends Component { 
