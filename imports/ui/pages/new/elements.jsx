@@ -412,13 +412,7 @@ export default class Elements extends Component {
 
         <Footer/>
        
-
       </div>
-
-
-
-
-
 
     );
   }

@@ -10,12 +10,18 @@ export default class Assist extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      text: null
+      text: null,
+      visible: false,
     };
   }
 
   question = (id) => {
     this.setState({text: id})
+
+    if (this.state.visible == false)
+    {this.setState({visible: true })}
+    else if (this.state.visible= true )
+    {this.setState({visible: false })}
   }
 
   render(){
@@ -35,8 +41,10 @@ export default class Assist extends Component {
                       return (                
                         <div className="content" key={i}>
                           <span>{e.kind}</span>
-                         <button className="question" onClick={() => this.question(e._id)}>&iquest;</button><br/>
-                         {this.state.text === e._id && <Questionform currentUser={this.props.currentUser} element={e}/> }
+                          <button className="question" onClick={() => this.question(e._id)}>&iquest;</button><br/>
+                          {this.state.text === e._id ?
+                            this.state.visible == true && <Questionform currentUser={this.props.currentUser} element={e}/>
+                            :null}
                         </div>                                
                       )
                     }) :

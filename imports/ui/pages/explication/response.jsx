@@ -6,17 +6,29 @@ import { Explications } from '../../../api/explications';
 class Responseform extends Component {
    constructor(props) {
     super(props)
+    this.explication = this.explication.bind(this)
     this.state = {
-      response: ""
+      response: "",
+      clicked: false,
+      id: "",
     }
   }
 
-  explication = (id) => {
+  explication = (event, id) => {
+    event.preventDefault();
     console.log(id)
     console.log(this.state.question)
     Meteor.call('explications.response', id, this.state.response )
-
     this.setState({ response: "" })
+  }
+
+  click = (id) => {
+    if (this.state.clicked == false)
+    {this.setState({clicked: true })}
+    else if (this.state.clicked= true )
+    {this.setState({clicked: false })}
+
+    this.setState({ id: id })
   }
 
   render(){
@@ -27,15 +39,20 @@ class Responseform extends Component {
           return (
           <div key={i}>
             <form>
-              <strong>{e.senderName}:</strong>{e.question}
+              <div onClick={() => this.click(e._id)}><strong>{e.senderName}:</strong>{e.question}</div>
               <br/>
-              <input
-                type="text"
-                onChange={(e) => this.setState({ response: e.target.value })}
-                value={this.state.response}
-                placeholder={e.response}
-              />
-              <button onClick={() => this.explication(e._id)}>Response</button>
+              {this.state.id == e._id && this.state.clicked== true ?
+                <div>
+                  <input
+                  type="text"
+                  onChange={(e) => this.setState({ response: e.target.value })}
+                  value={this.state.response}
+                  placeholder={e.response}
+                  />
+                  <button onClick={(event) => this.explication(event, e._id)}>Response</button>
+                </div>
+              :null}
+
             </form>
           </div>
           )

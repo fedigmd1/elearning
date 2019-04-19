@@ -12,7 +12,8 @@ export default class Animate extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      text: null
+      text: null,
+      visible: false,
     };
   }
   onDrop(data) {
@@ -94,6 +95,11 @@ export default class Animate extends Component {
 
   response (id) {
     this.setState({text: id})
+
+    if (this.state.visible == false)
+    {this.setState({visible: true })}
+    else if (this.state.visible= true )
+    {this.setState({visible: false })}
   }
 
   render(){
@@ -126,7 +132,10 @@ export default class Animate extends Component {
                             &times;
                           </button>
                           <button onClick={() => this.response(e._id)}>&iquest;</button><br/>
-                          {this.state.text === e._id && <Responseform currentUser={this.props.currentUser} element={e}/> }
+                          {this.state.text === e._id?
+                            this.state.visible== true && <Responseform currentUser={this.props.currentUser} element={e}/>
+                            :null
+                          }
                         </div>
                       )
                     }) :

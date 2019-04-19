@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import {withTracker} from 'meteor/react-meteor-data'
+import { Icon } from 'antd'
 
-export default class Question extends Component {
+export default class NewQuestion extends Component {
    constructor(props) {
     super(props)
     this.state = {
@@ -23,8 +24,7 @@ export default class Question extends Component {
     return (
       <div className="form-group">
         <center>
-          <form >
-
+          <form>
             <input
               type="text"
               value={this.state.question}
@@ -32,12 +32,7 @@ export default class Question extends Component {
               placeholder="Question"
             />
             <br/>
-            <input
-              type="text"
-              value=""
-              placeholder="Response"
-            />
-            <button onClick={this.explication.bind(this)}>Send</button>
+            <Icon type="check-circle" onClick={this.explication.bind(this)} style={{ fontSize: '30px', color: '#222' }}/>
           </form>
         </center>
       </div>
