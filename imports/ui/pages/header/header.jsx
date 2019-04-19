@@ -29,16 +29,16 @@ export default class Header extends Component {
                     <a href="/">home</a>
                   </li>
                   <li className="main_nav_item">
-                    <a href="/AddCourse">about us</a>
+                    <a href="/AddCourse">Add Course</a>
                   </li>
                   <li className="main_nav_item">
                     <a href="/Courses">courses</a>
                   </li>
                   <li className="main_nav_item">
-                    <a href="Elements">elements</a>
+                    <a href="/profil">Profil</a>
                   </li>
                   <li className="main_nav_item">
-                    <a href="/New">news</a>
+                    <a href="/MyCourses">My Courses</a>
                   </li>
                   <li className="main_nav_item">
                     <a href="/Contact">contact</a>

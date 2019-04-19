@@ -8,3 +8,18 @@ if (Meteor.isServer) {
     return Meteor.users.find({}, {fields: {username: 1, _id: 1, "emails.address": 1, category: 1} });  
   });    
 }
+
+
+Meteor.methods({
+
+  'users.insert'(senderId, message) {
+
+    Users.insert({
+      senderId,
+      message,
+      reponse: ""
+      
+    });
+  },
+
+});
