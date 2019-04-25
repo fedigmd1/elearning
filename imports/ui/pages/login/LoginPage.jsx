@@ -7,16 +7,17 @@ export default class LoginPage extends Component {
   constructor(props){
     super(props);
     this.state = {
-      error: ''
+      error: '',
+      email: '' ,
+      password: '',
+
     };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleSubmit(e){
     e.preventDefault();
-    let email = document.getElementById('login-email').value;
-    let password = document.getElementById('login-password').value;
-    Meteor.loginWithPassword(email, password, (err) => {
+    Meteor.loginWithPassword(this.state.email, this.state.password, (err) => {
       if(err){
         this.setState({
           error: err.reason
@@ -30,8 +31,8 @@ export default class LoginPage extends Component {
   render(){
     const error = this.state.error;
     return (
-      <div className="modal show">
-        <div className="modal-dialog">
+      <div className="modal-dialog">
+        <div className="modal-content">
           <div className="modal-content">
             <div className="modal-header">
               <h1 className="text-center">Login</h1>
@@ -45,15 +46,20 @@ export default class LoginPage extends Component {
                     onSubmit={this.handleSubmit}>
                 <div className="form-group">
                   <input type="email"
-                        id="login-email"
-                        className="form-control input-lg"
-                        placeholder="email"/>
+                    className="form-control input-lg"
+                    placeholder="email"
+                    value={this.state.email}
+                    onChange={(e) => this.setState({ email: e.target.value })}
+                  />
+
                 </div>
                 <div className="form-group">
-                  <input type="password"
-                        id="login-password"
-                        className="form-control input-lg"
-                        placeholder="password"/>
+                   <input type="password"
+                    className="form-control input-lg"
+                    placeholder="password"
+                    value={this.state.password}
+                    onChange={(e) => this.setState({ password: e.target.value })}
+                  />
                 </div>
                 <div className="form-group text-center">
                   <input type="submit"

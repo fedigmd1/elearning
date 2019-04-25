@@ -149,9 +149,8 @@ class Cours extends Component {
 export default withTracker(() => {
   Meteor.subscribe('courses');
   return {
-    
     courses: Courses.find({}).fetch(),
-    incompleteCount: Courses.find({ checked: { $ne: true } }).count(),
+    users: Meteor.users.find({}).fetch(),
     currentUser: Meteor.user(),
 
   };

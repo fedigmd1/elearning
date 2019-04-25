@@ -2,6 +2,9 @@
 import React, { Component } from 'react';
 import { withHistory, Link } from 'react-router-dom';
 import { Accounts } from 'meteor/accounts-base';
+import { Files } from '../../../api/files'
+import fs from 'fs'
+
 
 export default class SignupPage extends Component {
   constructor(props){
@@ -9,6 +12,13 @@ export default class SignupPage extends Component {
     this.state = {
       error: '',
       category: 'student',
+      name: '',
+      firstname: '',
+      lastname: '',
+      email: '',
+      password: '',
+      avatar: [],
+
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.getcategory = this.getcategory.bind(this);
@@ -24,22 +34,36 @@ export default class SignupPage extends Component {
 
   handleSubmit(e){
     e.preventDefault();
-    let name = document.getElementById("signup-name").value;
-    let email = document.getElementById("signup-email").value;
-    let password = document.getElementById("signup-password").value;
+    let name = this.state.name
+    let firstname = this.state.firstname
+    let lastname = this.state.lastname
+    let email = this.state.email
+    let password = this.state.password
+    let avatar = this.state.avatar
+    let user = {email: email, username: name, profile:{ firstname: firstname, lastname: lastname, avatar: avatar }, password: password}
 
-    console.log(this.state.category);
+    console.log(avatar);
+    console.log(user);
+
+    let reader = new FileReader();
+      reader.onload = (fileLoadEvent) => {
+      console.log("received file " + avatar.name + " data: " + reader.result);
+      fs.writeFile(avatar.name, reader.result);
+    };
+    reader.readAsBinaryString(avatar);
+
+    // Accounts.createUser(user, (err) => {
+    //   if(err){
+    //     this.setState({
+    //       error: err.reason
+    //     });
+    //   } else {
+    //     this.props.history.push('/login');
+    //   }
+    // });
     
     this.setState({error: "test"});
-    Accounts.createUser({email: email, username: name, password: password, category: this.state.category }, (err) => {
-      if(err){
-        this.setState({
-          error: err.reason
-        });
-      } else {
-        this.props.history.push('/login');
-      }
-    });
+    
   }
 
   render(){
@@ -53,26 +77,57 @@ export default class SignupPage extends Component {
             </div>
             <div className="modal-body">
               { error.length > 0 ?
+                
                 <div className="alert alert-danger fade in">{error}</div>
                 :''}
               <form  id="login-form"
                     className="form col-md-12 center-block"
                     onSubmit={this.handleSubmit}>
                 <div className="form-group">
-                  <input type="text" id="signup-name"
-                        className="form-control input-lg" placeholder="name"/>
+                  <input type="text" id="signup-pseudoname"
+                    className="form-control input-lg"
+                    value={this.state.name}
+                    onChange={(e) => this.setState({ name: e.target.value })}
+                    placeholder="pseudo"/>
                 </div>
                 <div className="form-group">
-                  <input type="email" id="signup-email"
-                        className="form-control input-lg" placeholder="email"/>
+                  <input type="text" id="signup-firstname"
+                    className="form-control input-lg" 
+                    value={this.state.firstname}
+                    onChange={(e) => this.setState({ firstname: e.target.value })}
+                    placeholder="first name"/>
+                </div>
+                <div className="form-group">
+                  <input type="text" id="signup-lastname"
+                    className="form-control input-lg" 
+                    value={this.state.lastname}
+                    onChange={(e) => this.setState({ lastname: e.target.value })}
+                    placeholder="last name"/>
+                </div>
+                <div className="form-group">
+                  <input type="email" 
+                    id="signup-email"
+                    className="form-control input-lg"
+                    value={this.state.email}
+                    onChange={(e) => this.setState({ email: e.target.value })}
+                    placeholder="email"/>
                 </div>
                 <div className="form-group">
                   <input type="password" id="signup-password"
-                        className="form-control input-lg"
-                        placeholder="password"/>
+                    className="form-control input-lg"
+                    value={this.state.password}
+                    onChange={(e) => this.setState({ password: e.target.value })}
+                    placeholder="password"/>
                 </div>
 
-                <div className="category">
+                <div className="form-group">
+                  <input type="file"
+                    className="form-control input-lg"
+                    onChange={(e) => this.setState({ avatar: e.target.files[0] })}
+                    placeholder="avatar"/>
+                </div>
+
+                {/*<div className="category">
                   <center>
                     <select onChange={e=> {this.getcategory(e)}}>
                     <option value="student">Student</option>
@@ -80,7 +135,7 @@ export default class SignupPage extends Component {
                     </select>
                   </center>
                   <br/>
-                </div>
+                </div>*/}
 
                 <div className="form-group">
                   <input type="submit" id="login-button"
