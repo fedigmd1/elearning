@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 
-export default class draw extends Component { 
+export default class Draw extends Component { 
 
   constructor(props) {
     super(props);
@@ -11,6 +11,7 @@ export default class draw extends Component {
     
     return (
       <div className="">
+        <input type="text"/>
       </div>
 
     );

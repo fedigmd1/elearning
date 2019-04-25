@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 
-export default class image extends Component { 
+export default class Image extends Component { 
 
   constructor(props) {
     super(props);
@@ -11,8 +11,10 @@ export default class image extends Component {
     
     return (
       <div className="">
+        <input type="file"/>
       </div>
 
     );
   }
 }
+

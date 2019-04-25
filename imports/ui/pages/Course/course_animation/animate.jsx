@@ -4,8 +4,13 @@ import { Link } from 'react-router-dom'
 import { Draggable, Droppable } from 'react-drag-and-drop'
 import { Row, Col } from 'reactstrap';
 import { Menu, Icon, Switch, Drawer } from 'antd';
-import { Alert, Badge, Button, Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
 import Responseform from '../../explication/response';
+import Text from '../course_elements/text';
+import Draw from '../course_elements/draw';
+import Image from '../course_elements/image';
+import File from '../course_elements/file';
+import Video from '../course_elements/video';
+import Message from '../course_elements/message';
 
 export default class Animate extends Component { 
 
@@ -127,7 +132,12 @@ export default class Animate extends Component {
                     {this.props.elements ? this.props.elements.map((e,i)=> {
                       return (
                         <div key={i}>
-                          <span>{e.kind}</span>
+                          {e.kind=="text" && <Text />}
+                          {e.kind=="draw" && <Draw/>}
+                          {e.kind=="image" && <Image/>}
+                          {e.kind=="file" && <File/>}
+                          {e.kind=="video" && <Video/>}
+                          {e.kind=="message" && <Message/>}
                           <button className="delete" onClick={ () => this.deleteThisElement(e._id)}>
                             &times;
                           </button>

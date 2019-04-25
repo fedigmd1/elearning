@@ -22,7 +22,7 @@ export default class Header extends Component {
               </div>
             </div>
             {/* Main Navigation */}
-            <nav className="main_nav_container">
+            <nav className="nav">
               <div className="main_nav">
                 <ul className="main_nav_list">
                   <li className="main_nav_item">

@@ -34,11 +34,11 @@ class profil extends Component {
                 </div>
                 <div className="course_author_image">
                   <img
-                    src={this.props.currentUser.profile.avatar}
+                    src={this.props.currentUser.profile.firstname}
                     alt=""
                   />
                 </div>
-                  {this.props.currentUser.profile.avatar}
+                  {this.props.currentUser.profile.firstname}
                 </div>
                 : this.props.user ? (
                 <div>
@@ -47,7 +47,7 @@ class profil extends Component {
                 {console.log(this.props.user.emails)}    
                 {this.props.currentUser._id}
                 <img
-                    src={this.props.user.profile.avatar}
+                    src={this.props.user.profile.firstname}
                     alt=""
                 />         
                 </div>
@@ -67,11 +67,11 @@ class profil extends Component {
                 </div>
                 <div className="course_author_image">
                   <img
-                    src={this.props.currentUser.profile.avatar}
+                    src={this.props.currentUser.profile.firstname}
                     alt=""
                   />
                 </div>
-                  {this.props.currentUser.profile.avatar}
+                  {this.props.currentUser.profile.firstname}
                 </div>
               ) : null 
             }

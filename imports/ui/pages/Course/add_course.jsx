@@ -82,8 +82,8 @@ class AddCourse extends Component {
 
   render () {
     return (
-      <div className="">
-        <div className="modal-dialog">
+      <div className="form-group text-center">
+        <div className="">
             <h1>Courses </h1>
             <label className="hide-completed">
               <input
@@ -104,7 +104,7 @@ class AddCourse extends Component {
 
             { this.props.currentUser ?
               <form className="new-course" >
-              <div className="form-group">
+              <div className="form-group text-center">
                 <input
                   type="text"
                   value={this.state.nom}
@@ -113,7 +113,7 @@ class AddCourse extends Component {
                 />
                 </div>
                 <br/>
-                <div className="form-group">
+                <div className="form-group text-center">
                 <input
                   type="text"
                   value={this.state.description}

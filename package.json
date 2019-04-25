@@ -19,7 +19,7 @@
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-addons-pure-render-mixin": "^15.6.2",
-    "react-bootstrap": "^1.0.0-beta.6",
+    "react-bootstrap": "^1.0.0-beta.8",
     "react-dom": "^16.8.6",
     "react-drag-and-drop": "^3.0.0",
     "react-mounter": "^1.2.0",
