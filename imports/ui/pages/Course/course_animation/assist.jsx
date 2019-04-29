@@ -46,12 +46,12 @@ export default class Assist extends Component {
                     {this.props.elements ? this.props.elements.map((e,i)=> {
                       return (                
                         <div className="content" key={i}>
-                          {e.kind=="text" && <Text />}
-                          {e.kind=="draw" && <Draw/>}
-                          {e.kind=="image" && <Image/>}
-                          {e.kind=="file" && <File/>}
-                          {e.kind=="video" && <Video/>}
-                          {e.kind=="message" && <Message/>}
+                          {e.kind=="text" && <Text element={e} />}
+                          {e.kind=="draw" && <Draw element={e} />}
+                          {e.kind=="image" && <Image />}
+                          {e.kind=="file" && <File />}
+                          {e.kind=="video" && <Video />}
+                          {e.kind=="message" && <Message />}
                           <button className="question" onClick={() => this.question(e._id)}>&iquest;</button><br/>
                           {this.state.text === e._id ?
                             this.state.visible == true && <Questionform currentUser={this.props.currentUser} element={e}/>

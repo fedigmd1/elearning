@@ -74,7 +74,7 @@ Meteor.methods({
       throw new Meteor.Error('not-authorized');
     }
     
-    Elements.update(elementId, { $set: { contents: contents } });
+    Elements.update(elementId, { $set: { text: contents } });
   },
 
 

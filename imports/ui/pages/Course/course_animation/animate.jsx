@@ -29,7 +29,7 @@ export default class Animate extends Component {
       case "Text":
         obj = {
           kind: "text",
-          text: "Replace me !",
+          text: "",
           x: 1,
           y: 1,
           courseId,
@@ -132,12 +132,12 @@ export default class Animate extends Component {
                     {this.props.elements ? this.props.elements.map((e,i)=> {
                       return (
                         <div key={i}>
-                          {e.kind=="text" && <Text />}
-                          {e.kind=="draw" && <Draw/>}
-                          {e.kind=="image" && <Image/>}
-                          {e.kind=="file" && <File/>}
-                          {e.kind=="video" && <Video/>}
-                          {e.kind=="message" && <Message/>}
+                          {e.kind=="text" && <Text element={e} />}
+                          {e.kind=="draw" && <Draw element={e} />}
+                          {e.kind=="image" && <Image />}
+                          {e.kind=="file" && <File />}
+                          {e.kind=="video" && <Video />}
+                          {e.kind=="message" && <Message />}
                           <button className="delete" onClick={ () => this.deleteThisElement(e._id)}>
                             &times;
                           </button>
