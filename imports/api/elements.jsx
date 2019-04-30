@@ -78,7 +78,7 @@ Meteor.methods({
   },
 
 
-'elements.message'(elementId, contents) {
+  'elements.video'(elementId, contents) {
     check(elementId, String);
     
     const element = Elements.findOne(elementId);
@@ -89,7 +89,7 @@ Meteor.methods({
       throw new Meteor.Error('not-authorized');
     }
     
-    Elements.update(elementId, { $set: { text: contents } });
+    Elements.update(elementId, { $set: { url: contents } });
   },
 
 

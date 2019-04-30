@@ -69,7 +69,7 @@ export default class Animate extends Component {
       case "Video":
         obj = {
           kind: "video",
-          url: "http://aaaa.com",
+          url: "",
           x: 1,
           y: 1,
           courseId,
@@ -132,16 +132,14 @@ export default class Animate extends Component {
                     {this.props.elements ? this.props.elements.map((e,i)=> {
                       return (
                         <div key={i}>
+                          <button className="delete" onClick={ () => this.deleteThisElement(e._id)}>&times;</button>
+                          <button onClick={() => this.response(e._id)}>&iquest;</button>
                           {e.kind=="text" && <Text element={e} />}
-                          {e.kind=="draw" && <Draw />}
-                          {e.kind=="image" && <Image />}
-                          {e.kind=="file" && <File />}
-                          {e.kind=="video" && <Video />}
+                          {e.kind=="draw" && <Draw element={e} />}
+                          {e.kind=="image" && <Image element={e}/>}
+                          {e.kind=="file" && <File element={e}/>}
+                          {e.kind=="video" && <Video element={e}/>}
                           {e.kind=="message" && <Message element={e} />}
-                          <button className="delete" onClick={ () => this.deleteThisElement(e._id)}>
-                            &times;
-                          </button>
-                          <button onClick={() => this.response(e._id)}>&iquest;</button><br/>
                           {this.state.text === e._id?
                             this.state.visible== true && <Responseform currentUser={this.props.currentUser} element={e}/>
                             :null

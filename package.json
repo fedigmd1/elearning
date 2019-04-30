@@ -23,6 +23,7 @@
     "react-dom": "^16.8.6",
     "react-drag-and-drop": "^3.0.0",
     "react-mounter": "^1.2.0",
+    "react-player": "^1.11.0",
     "react-router": "^5.0.0",
     "react-router-dom": "^5.0.0",
     "reactstrap": "^8.0.0"
