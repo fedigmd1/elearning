@@ -63,7 +63,22 @@ Meteor.methods({
     Elements.update(elementId, { $set: { position1: x, position2: y, position3: z } });
   },
 
-  'elements.contents'(elementId, contents) {
+  'elements.text'(elementId, contents) {
+    check(elementId, String);
+    
+    const element = Elements.findOne(elementId);
+    const course = Courses.findOne(element.courseId);
+
+    if (course.owner !== this.userId) {
+      // If the element is private, make sure only the owner can check it off
+      throw new Meteor.Error('not-authorized');
+    }
+    
+    Elements.update(elementId, { $set: { text: contents } });
+  },
+
+
+'elements.message'(elementId, contents) {
     check(elementId, String);
     
     const element = Elements.findOne(elementId);

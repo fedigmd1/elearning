@@ -23,7 +23,7 @@ export default class Text extends Component {
     event.preventDefault()
     console.log(this.state.text) 
     console.log(element);
-    Meteor.call('elements.contents', element._id, this.state.text)
+    Meteor.call('elements.text', element._id, this.state.text)
     this.setState({text: ''})
   }
   render() {

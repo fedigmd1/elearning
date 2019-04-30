@@ -79,7 +79,7 @@ export default class Animate extends Component {
       case "Message":
         obj = {
           kind: "message",
-          text: "Replace me !",
+          text: "",
           x: 1,
           y: 1,
           courseId,
@@ -133,11 +133,11 @@ export default class Animate extends Component {
                       return (
                         <div key={i}>
                           {e.kind=="text" && <Text element={e} />}
-                          {e.kind=="draw" && <Draw element={e} />}
+                          {e.kind=="draw" && <Draw />}
                           {e.kind=="image" && <Image />}
                           {e.kind=="file" && <File />}
                           {e.kind=="video" && <Video />}
-                          {e.kind=="message" && <Message />}
+                          {e.kind=="message" && <Message element={e} />}
                           <button className="delete" onClick={ () => this.deleteThisElement(e._id)}>
                             &times;
                           </button>
