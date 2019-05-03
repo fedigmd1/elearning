@@ -119,7 +119,7 @@ class Cours extends Component {
                         <div className="course_author_image">
                           <img
                             src={author}
-                            alt="https://unsplash.com/@mehdizadeh"
+                            alt=""
                           />
                         </div>
                         <div className="course_author_name">

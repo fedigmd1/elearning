@@ -49,7 +49,7 @@ export default class Animate extends Component {
       case "Image":
         obj = {
           kind: "image",
-          url: "http://aaaa.com",
+          src: "",
           x: 1,
           y: 1,
           courseId,
@@ -126,12 +126,12 @@ export default class Animate extends Component {
               onDrop={this.onDrop.bind(this)}>
               <div>
                 <h1>---------------------------------------------------------------------------------------------------</h1>
-                <br/>
                 {this.props.elements ? (
                   <div>
                     {this.props.elements ? this.props.elements.map((e,i)=> {
                       return (
                         <div key={i}>
+                          <br/>
                           <button className="delete" onClick={ () => this.deleteThisElement(e._id)}>&times;</button>
                           <button onClick={() => this.response(e._id)}>&iquest;</button>
                           {e.kind=="text" && <Text element={e} />}

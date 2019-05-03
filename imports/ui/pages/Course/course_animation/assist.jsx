@@ -40,12 +40,12 @@ export default class Assist extends Component {
           <Col>    
               <div>
                 <h1>---------------------------------------------------------------------------------------------------</h1>
-                <br/>
                 {this.props.elements ? (
                   <div>
                     {this.props.elements ? this.props.elements.map((e,i)=> {
                       return (                
                         <div className="content" key={i}>
+                        <br/>
                           <button className="question" onClick={() => this.question(e._id)}>&iquest;</button>
                           {e.kind=="text" && <Text element={e} />}
                           {e.kind=="draw" && <Draw element={e}/>}
