@@ -2,7 +2,6 @@ import { Meteor } from 'meteor/meteor';
 import '../imports/api/courses.jsx';
 import '../imports/api/users.jsx';
 import '../imports/api/elements.jsx';
-import '../imports/api/files';
 
 
 

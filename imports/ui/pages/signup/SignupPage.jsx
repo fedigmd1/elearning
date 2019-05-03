@@ -2,8 +2,7 @@
 import React, { Component } from 'react';
 import { withHistory, Link } from 'react-router-dom';
 import { Accounts } from 'meteor/accounts-base';
-import { Files } from '../../../api/files'
-import fs from 'fs'
+
 
 
 export default class SignupPage extends Component {
@@ -17,7 +16,8 @@ export default class SignupPage extends Component {
       lastname: '',
       email: '',
       password: '',
-      avatar: [],
+      avatar: '',
+      image:'',
 
     };
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -33,37 +33,37 @@ export default class SignupPage extends Component {
   }
 
   handleSubmit(e){
+    let self = this ;
     e.preventDefault();
     let name = this.state.name
     let firstname = this.state.firstname
     let lastname = this.state.lastname
     let email = this.state.email
     let password = this.state.password
-    let avatar = this.state.avatar
-    let user = {email: email, username: name, profile:{ firstname: firstname, lastname: lastname, avatar: avatar }, password: password}
 
-    console.log(avatar);
-    console.log(user);
 
     let reader = new FileReader();
-      reader.onload = (fileLoadEvent) => {
-      console.log("received file " + avatar.name + " data: " + reader.result);
-      fs.writeFile(avatar.name, reader.result);
-    };
-    reader.readAsBinaryString(avatar);
+    reader.readAsDataURL(this.state.avatar);
+    reader.onload = function () {  
 
-    // Accounts.createUser(user, (err) => {
-    //   if(err){
-    //     this.setState({
-    //       error: err.reason
-    //     });
-    //   } else {
-    //     this.props.history.push('/login');
-    //   }
-    // });
-    
-    this.setState({error: "test"});
-    
+    let user = {email: email, username: name, 
+      profile:{ firstname: firstname, lastname: lastname, avatar: reader.result },
+      password: password}
+
+    Accounts.createUser(user, (err) => {
+        if(err){
+          self.setState({
+            error: err.reason
+          });
+        }
+        else 
+        {self.props.history.push('/login'); }
+      });   
+    }
+    reader.onerror = function (error) {
+      console.log('Error: ', error);
+    };
+    this.setState({error: 'Success'})
   }
 
   render(){
@@ -77,7 +77,9 @@ export default class SignupPage extends Component {
             </div>
             <div className="modal-body">
               { error.length > 0 ?
-                
+                error == "Success" ?
+                <div className="alert alert-success fade in">{error}</div>
+                :
                 <div className="alert alert-danger fade in">{error}</div>
                 :''}
               <form  id="login-form"
