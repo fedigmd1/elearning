@@ -16,7 +16,7 @@ class AddCourse extends Component {
       text: "",
       nom: "",
       description: "",
-      elements: [],
+      image: ''
     };
   }
 
@@ -68,17 +68,28 @@ class AddCourse extends Component {
     )
   }
 
-  handleSubmit(event) {
-  
+  handleSubmit(event) { 
     event.preventDefault();
  
-        console.log(this.state.nom);
-        console.log(this.state.description);
-       Meteor.call('courses.insert', this.state.nom, this.state.description, this.state.elements );
+    console.log(this.state.nom);
+    console.log(this.state.description);
 
+    let reader = new FileReader();
+    let nom = this.state.nom
+    let description =this.state.description
+    reader.readAsDataURL(this.state.image);
+    reader.onload = function () {  
+       Meteor.call('courses.insert', nom, description, reader.result );
+    }
+    reader.onerror = function (error) {
+      console.log('Error: ', error);
+    };
     // Clear form
-      this.setState({ nom: "" ,description: "" })
+      this.setState({ nom: "" ,description: "" , image: ""})
   }
+
+
+
 
   render () {
     return (
@@ -121,6 +132,13 @@ class AddCourse extends Component {
                   placeholder="Description"
                 />
                 </div>
+                <div className="form-group text-center ">
+                  <input type="file"
+                    className="form-control input-lg"
+                    onChange={(e) => this.setState({ image: e.target.files[0] })}
+                    placeholder="image"/>
+                </div>
+
                 <div className="form-group text-center">
                   <button onClick={this.handleSubmit.bind(this)}>Add Course</button>
                 </div>

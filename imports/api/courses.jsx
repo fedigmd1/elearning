@@ -19,7 +19,7 @@ if (Meteor.isServer) {
 }
  
 Meteor.methods({
-  'courses.insert'(text, description) {
+  'courses.insert'(text, description, image) {
     check(text, String);
     check(description, String);
 
@@ -32,6 +32,7 @@ Meteor.methods({
     Courses.insert({
       text,
       description,
+      image,
       createdAt: new Date(),
       owner: this.userId,
       username: Meteor.users.findOne(this.userId).username,
@@ -66,6 +67,22 @@ Meteor.methods({
     
     Courses.update(courseId, { $set: { checked: setChecked } });
   },
+
+'courses.image'(courseId, image) {
+    check(courseId, String);
+    check(setChecked, Boolean);
+
+    const course = Courses.findOne(courseId);
+    if (course.owner !== this.userId) {
+      // If the course is private, make sure only the owner can check it off
+      throw new Meteor.Error('not-authorized');
+    }
+    
+    Courses.update(courseId, { $set: { image: image } });
+  },
+
+
+
 
   'courses.setPrivate'(courseId, setToPrivate) {
     check(courseId, String);

@@ -14,6 +14,7 @@ import Course from '../../containers/Course.jsx'
 import Cour from './course_details'
 
 import backgroun from '../../../../client/assets/images/courses_background.jpg'
+import Photo from './course_elements/xphotocourse';
 
 
 class Cours extends Component { 
@@ -98,13 +99,11 @@ class Cours extends Component {
                   <div key={i} className="col-lg-4 course_box">
                     <div className="card">
                       <img
-                        className="card-img-top"
-                        src={image}
-                        alt="https://unsplash.com/@kimberlyfarmer"
+                        className=""
+                        style={{ width: 200, height: 200 }}
+                        src={course.image}
+                        alt="photo du cours"
                       />  
-                      
-                          
-
                       <div className="card-body text-center">
                         <div className="card-title">
                           <Link to={`/Courses/${course._id}`}><span>{course.text}</span></Link>   
@@ -116,17 +115,10 @@ class Cours extends Component {
                         </div>
                       </div>
                       <div className="price_box d-flex flex-row align-items-center">
-                        <div className="course_author_image">
-                          <img
-                            src={author}
-                            alt=""
-                          />
-                        </div>
+                        <Photo course ={course}/>
                         <div className="course_author_name">
-                        <Link to={`/profil/${course.owner}`}><span> {course.username}</span></Link>
-                           
+                          <Link to={`/profil/${course.owner}`}><span> {course.username}</span></Link>
                         </div>
-                        
                       </div>
                     </div>
                   </div>
