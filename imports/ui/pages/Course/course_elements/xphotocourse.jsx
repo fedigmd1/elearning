@@ -16,7 +16,7 @@ class Photo extends Component {
       <div className="course_author_image">
       {this.props.user ?
         <img
-          style={{ width: 100, height: 100 }}
+          style={{ width: 50, height: 50 }}
           src={this.props.user.profile.avatar}
           alt=""
         />

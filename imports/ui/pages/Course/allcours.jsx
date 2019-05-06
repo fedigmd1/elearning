@@ -98,12 +98,14 @@ class Cours extends Component {
                 return (
                   <div key={i} className="col-lg-4 course_box">
                     <div className="card">
-                      <img
-                        className=""
-                        style={{ width: 200, height: 200 }}
-                        src={course.image}
-                        alt="photo du cours"
-                      />  
+                      <center>
+                        <img
+                          className="card-img-top"
+                          style={{ width: 250, height: 250 }}
+                          src={course.image}
+                          alt="photo du cours"
+                        />  
+                      </center>
                       <div className="card-body text-center">
                         <div className="card-title">
                           <Link to={`/Courses/${course._id}`}><span>{course.text}</span></Link>   

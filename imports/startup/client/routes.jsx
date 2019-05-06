@@ -34,6 +34,9 @@ import Teachers from '../../ui/pages/new/teachers.jsx';
 import containersCourse from '../../ui/containers/Course';
 
 
+import Search from '../../ui/pages/search/formulaire';
+
+
 
 export const renderRoutes = () => (
   <Router>
@@ -62,6 +65,9 @@ export const renderRoutes = () => (
       <Route path="/New_Post" component={New_Post}/>
       <Route path="/New" component={New}/>
       <Route path="/Teachers" component={Teachers}/>
+      
+      
+      <Route path="/search" component={Search}/>
        
     </div>
   </Router>
