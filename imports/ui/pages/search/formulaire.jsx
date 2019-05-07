@@ -2,10 +2,7 @@ import React, {Component} from 'react'
 import ReactDOM from 'react-dom'
 import { Meteor } from 'meteor/meteor';
 import Search from './search.jsx'
-import { Rate } from 'antd';
-
-
-const desc = ['terrible', 'bad', 'normal', 'good', 'wonderful'];
+import StarRatingComponent from 'react-star-rating-component';
 
 export default class Formulaire extends Component {
 
@@ -14,8 +11,8 @@ export default class Formulaire extends Component {
     this.state = {
       text: '',
       search: '',
-      value: 3,
     };
+
     this.handleSubmit = this.handleSubmit.bind(this);
 
   }
@@ -23,12 +20,8 @@ export default class Formulaire extends Component {
     e.preventDefault();
     this.setState({ search: this.state.text })
     this.setState({ text: '' })
-  }
 
-  handleChange = (val) => {
-    this.setState({ value: val });
   }
-
 
   render () {
     return (
@@ -45,12 +38,6 @@ export default class Formulaire extends Component {
           </div>
         </form>
         <br/><br/><br/>
-        <span>
-          <Rate tooltips={desc} onChange={this.handleChange} value={this.state.value} />
-          {this.state.value ? <span className="ant-rate-text">{desc[this.state.value - 1]}</span> : ''}
-        </span>
-        <br/><br/><br/>
-
         <div>
           {this.state.search !=='' && <Search search ={this.state.search} />}
         </div>

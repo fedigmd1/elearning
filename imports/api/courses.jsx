@@ -36,6 +36,8 @@ Meteor.methods({
       createdAt: new Date(),
       owner: this.userId,
       username: Meteor.users.findOne(this.userId).username,
+      tabrate: [],
+      rating: 5,
     });
   },
   'courses.remove'(courseId) {
@@ -83,6 +85,23 @@ Meteor.methods({
 
 
 
+  'courses.rating'(courseId, vote) {
+    check(courseId, String);
+
+    Courses.update(courseId, { $push: { tabrate: vote } })
+
+    let average=0
+    let tab = 0
+    const course = Courses.findOne(courseId);
+
+    for (let i = 0; i<course.tabrate.length ; i++){
+      tab = tab + course.tabrate[i]
+    }
+
+    average = tab/course.tabrate.length
+    Courses.update(courseId, { $set: { rating: average } })
+
+  },
 
   'courses.setPrivate'(courseId, setToPrivate) {
     check(courseId, String);
