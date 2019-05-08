@@ -16,7 +16,7 @@ class Questionform extends Component {
   addquestion = () => {
     if (this.state.question == "")
     {this.setState({question: "exist" })}
-    else if (this.state.question= "exist")
+    else if (this.state.question == "exist")
     {this.setState({question: "" })}
   }
 

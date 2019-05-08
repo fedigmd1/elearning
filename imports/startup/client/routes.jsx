@@ -17,12 +17,11 @@ import Courses from '../../ui/pages/Course/allcours.jsx';
 import Course_details from '../../ui/pages/Course/course_details.jsx';
 import My_Courses from '../../ui/pages/Course/my_courses.jsx';
 import AddCourse from '../../ui/pages/Course/add_course.jsx';
-
-import profil from '../../ui/pages/profil/profil';
-
-
+import profil from '../../ui/pages/profil/profil'
 import Course from '../../ui/pages/Course/Course'
+import Search from '../../ui/pages/search/formulaire';
 
+import Forum from '../../ui/pages/forums/forums'
 
 import Test from '../../ui/pages/new/test.jsx'
 
@@ -34,7 +33,6 @@ import Teachers from '../../ui/pages/new/teachers.jsx';
 import containersCourse from '../../ui/containers/Course';
 
 
-import Search from '../../ui/pages/search/formulaire';
 
 
 
@@ -54,6 +52,8 @@ export const renderRoutes = () => (
       <Route path="/profil/:id" component={profil}/>
 
       <Route path="/Course/:id" component={Course}/>
+      <Route path="/search" component={Search}/>
+      <Route path="/Forum" component={Forum}/>
 
 
 
@@ -67,7 +67,6 @@ export const renderRoutes = () => (
       <Route path="/Teachers" component={Teachers}/>
       
       
-      <Route path="/search" component={Search}/>
        
     </div>
   </Router>
