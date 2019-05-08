@@ -14,40 +14,41 @@ if (Meteor.isServer) {
  
 Meteor.methods({
 
-  'reclamations.insert'(senderId, message) {
+  'reclamation.insert'(senderId, message) {
 
-    // Make sure the user is logged in before inserting a explication
+    // Make sure the user is logged in before inserting a reclamation
     if (! this.userId) {
       throw new Meteor.Error('not-authorized');
     }
 
     Reclamations.insert({
       senderId,
+      sendername: Meteor.users.findOne(senderId).username,
       message,
-      reponse: ""
+      response: "",
     });
   },
 
-  'reclamations.response'(reclamationId, response) {
+  'reclamation.response'(reclamationId, response) {
     check(reclamationId, String);
     check(response, String);
 
     if (! this.userId) {
-    // Make sure the user is logged in before inserting a explication
+    // Make sure the user is logged in before inserting a reclamation
       throw new Meteor.Error('not-authorized');
     }
     
     Reclamations.update(reclamationId, { $set: { response: response } });
   },
 
-  'reclamations.remove'(explicationId) {
-    check(explicationId, String);
+  'reclamation.remove'(reclamationId) {
+    check(reclamationId, String);
     
     if (! this.userId) {
-    // Make sure the user is logged in before inserting a explication
+    // Make sure the user is logged in before inserting a reclamation
       throw new Meteor.Error('not-authorized');
     }
-    Reclamations.remove(explicationId);
+    Reclamations.remove(reclamationId);
   },
 
 });

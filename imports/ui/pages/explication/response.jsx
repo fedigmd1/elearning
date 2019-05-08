@@ -17,7 +17,6 @@ class Responseform extends Component {
   explication = (event, id) => {
     event.preventDefault();
     console.log(id)
-    console.log(this.state.question)
     Meteor.call('explications.response', id, this.state.response )
     this.setState({ response: "" })
   }
