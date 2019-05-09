@@ -17,7 +17,7 @@ export default class Header extends Component {
             {/* Logo */}
             <div className="logo_container">
               <div className="logo">
-                <img src={logo} alt="" />
+                <img src={logo} alt="" style={{ width: 160, height: 110 }}/>
                 {/* <span>Astrolab</span> */}
               </div>
             </div>
