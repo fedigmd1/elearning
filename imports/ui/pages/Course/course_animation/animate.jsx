@@ -59,7 +59,7 @@ export default class Animate extends Component {
       case "File":
         obj = {
           kind: "file",
-          text: "Replace me !",
+          text: "",
           x: 1,
           y: 1,
           courseId,

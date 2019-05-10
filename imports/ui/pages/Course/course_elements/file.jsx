@@ -1,43 +1,49 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
+import { Link } from 'react-router-dom'
 
 export default class File extends Component { 
 
   constructor(props) {
     super(props);
+
     this.state = {
-      image: [],
+      text: '',
     }
-    this.handleSubmit = this.handleSubmit.bind(this);
+
+    this.handleChange = this.handleChange.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
+
   }
 
-  handleSubmit(e){
-    e.preventDefault();
-    console.log(this.state.image);
+  handleChange(event) {
+    this.setState({text: event.target.value})
   }
 
-
-  render(){
-    
+  handleSubmit = (event,element) => {
+    event.preventDefault()
+    console.log(this.state.text) 
+    console.log(element);
+    Meteor.call('elements.text', element._id, this.state.text)
+    this.setState({text: ''})
+  }
+  render() {
     return (
-      <div className="">
-      <form
-        className="form col-md-12 center-block"
-        onSubmit={this.handleSubmit}>
-        <input type="file"
-          className="form-control input-lg"
-          onChange={(e) => this.setState({ image: e.target.files[0] })}
-          placeholder="image"/>
+      <div>
+        {this.props.element ?
+          this.props.element.text=="" ?
+          <form onSubmit={(event)=> this.handleSubmit(event, this.props.element)}>
+            <input type="text" value={this.state.text} onChange={this.handleChange} />
+            <input type="submit" value="Add" />
+          </form>
+          :
+          <a href={this.props.element.text}>
+          {this.props.element.text}
+          </a>
 
-        <div className="">
-          <input type="submit"
-            className="btn btn-lg btn-primary"
-            value="Add" />
-        </div>
-
-      </form>
+          :null
+        }
       </div>
-
     );
   }
 }
