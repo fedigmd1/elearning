@@ -99,7 +99,9 @@ Meteor.methods({
     }
 
     average = tab/course.tabrate.length
-    Courses.update(courseId, { $set: { rating: average } })
+    let round= Math.round(average)
+  
+    Courses.update(courseId, { $set: { rating: round } })
 
   },
 
