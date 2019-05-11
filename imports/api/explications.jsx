@@ -3,6 +3,7 @@ import { Mongo } from 'meteor/mongo';
 import { check } from 'meteor/check';
 import { Elements } from './elements'
 import { Courses } from './courses';
+import { Notifications } from './notification';
  
 export const Explications = new Mongo.Collection('explications');
 
@@ -32,6 +33,10 @@ Meteor.methods({
       question,
       response: ""
     });
+
+    let notification = "Added a new question "
+    let type = explications
+    Meteor.call('notifications.insert', senderName, notification, type)
   },
 
   'explications.response'(explicationId, response) {
@@ -48,6 +53,10 @@ Meteor.methods({
     }
     
     Explications.update(explicationId, { $set: { response: response } });
+
+    let notification =  " answered your question"
+    let type = "explications"
+    Meteor.call('notifications.insert', course.username, notification, type)
   },
 
   'explications.remove'(explicationId) {
@@ -61,6 +70,10 @@ Meteor.methods({
       // make sure only the sender or the course owner can delete it
       throw new Meteor.Error('not-authorized');
     }
+    let notification =  " removed explanation of " + explication.senderName
+    let type = "explications"
+    Meteor.call('notifications.insert', course.username, notification, type)
+
     explications.remove(explicationId);
   },
 

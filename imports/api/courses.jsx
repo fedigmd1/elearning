@@ -2,6 +2,8 @@ import { Meteor } from 'meteor/meteor';
 import { Mongo } from 'meteor/mongo';
 import { check } from 'meteor/check';
 import { Elements } from './elements'
+import { Notifications } from './notification';
+
  
 export const Courses = new Mongo.Collection('courses');
 
@@ -39,16 +41,24 @@ Meteor.methods({
       tabrate: [],
       rating: 5,
     });
+
+    let notification = ("Added a new course : " + text )
+    let type = "courses"
+    Meteor.call('notifications.insert', Meteor.users.findOne(this.userId).username, notification, type)
+
   },
   'courses.remove'(courseId) {
     check(courseId, String);
 
     const course = Courses.findOne(courseId);
     
-    if (course.private && course.owner !== this.userId) {
+    if (course.owner !== this.userId) {
       // If the course is private, make sure only the owner can delete it
       throw new Meteor.Error('not-authorized');
     }
+    let notification = "removed a course : " + course.text
+    let type = "courses"
+    Meteor.call('notifications.insert', course.username, text, type)
     
     Courses.remove({
       _id: courseId
@@ -56,21 +66,10 @@ Meteor.methods({
     Elements.remove({
       courseId: courseId
     });
-  },
-  'courses.setChecked'(courseId, setChecked) {
-    check(courseId, String);
-    check(setChecked, Boolean);
 
-    const course = Courses.findOne(courseId);
-    if (course.private && course.owner !== this.userId) {
-      // If the course is private, make sure only the owner can check it off
-      throw new Meteor.Error('not-authorized');
-    }
-    
-    Courses.update(courseId, { $set: { checked: setChecked } });
   },
 
-'courses.image'(courseId, image) {
+  'courses.image'(courseId, image) {
     check(courseId, String);
     check(setChecked, Boolean);
 
@@ -82,8 +81,6 @@ Meteor.methods({
     
     Courses.update(courseId, { $set: { image: image } });
   },
-
-
 
   'courses.rating'(courseId, vote) {
     check(courseId, String);
@@ -103,6 +100,19 @@ Meteor.methods({
   
     Courses.update(courseId, { $set: { rating: round } })
 
+  },
+
+  'courses.setChecked'(courseId, setChecked) {
+    check(courseId, String);
+    check(setChecked, Boolean);
+
+    const course = Courses.findOne(courseId);
+    if (course.private && course.owner !== this.userId) {
+      // If the course is private, make sure only the owner can check it off
+      throw new Meteor.Error('not-authorized');
+    }
+    
+    Courses.update(courseId, { $set: { checked: setChecked } });
   },
 
   'courses.setPrivate'(courseId, setToPrivate) {

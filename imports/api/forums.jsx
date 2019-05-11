@@ -1,6 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import { Mongo } from 'meteor/mongo';
 import { check } from 'meteor/check';
+import { Notifications } from './notification';
 
 export const Forums = new Mongo.Collection('forums');
 
@@ -27,6 +28,10 @@ Meteor.methods({
       username: Meteor.users.findOne(this.userId).username,
     });
 
+    let notification =  " added a new question in the Forums"
+    let type = "forums"
+    Meteor.call('notifications.insert', Meteor.users.findOne(this.userId).username, notification, type)
+
   },
   
   'forums.remove'(forumsId) {
@@ -38,7 +43,13 @@ Meteor.methods({
       // make sure only the owner can delete it
       throw new Meteor.Error('not-authorized');
     }
+
+    let notification =  " added a new question in the Forums"
+    let type = "forums"
+    Meteor.call('notifications.insert', Meteor.users.findOne(this.userId).username, notification, type)
+    
     Forums.remove(forumsId);
   },
+  
 
 });

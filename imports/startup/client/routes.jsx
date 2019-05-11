@@ -23,6 +23,7 @@ import Search from '../../ui/pages/search/formulaire';
 import Forum from '../../ui/pages/forums/forums'
 import reclamation from '../../ui/pages/reclamation/reclamations'
 import addreclamation from '../../ui/pages/reclamation/addreclamation'
+import notifications from '../../ui/pages/notification/notifications'
 
 import Test from '../../ui/pages/new/test.jsx'
 
@@ -57,6 +58,7 @@ export const renderRoutes = () => (
       <Route path="/Forum" component={Forum}/>
       <Route path="/reclamations" component={reclamation}/>
       <Route path="/addreclamation" component={addreclamation}/>
+      <Route path="/notifications" component={notifications}/>
 
 
       <Route path="/test" component={Test}/>

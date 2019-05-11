@@ -1,6 +1,8 @@
 import { Meteor } from 'meteor/meteor';
 import { Mongo } from 'meteor/mongo';
 import { check } from 'meteor/check';
+import { Notifications } from './notification';
+
  
 export const Reclamations = new Mongo.Collection('reclamations');
 
@@ -27,6 +29,11 @@ Meteor.methods({
       message,
       response: "",
     });
+
+    let notification =  " Added a new reclamation"
+    let type = "reclamations"
+    Meteor.call('notifications.insert', Meteor.users.findOne(senderId).username, notification, type)
+
   },
 
   'reclamation.response'(reclamationId, response) {
@@ -37,8 +44,15 @@ Meteor.methods({
     // Make sure the user is logged in before inserting a reclamation
       throw new Meteor.Error('not-authorized');
     }
-    
+
     Reclamations.update(reclamationId, { $set: { response: response } });
+    const reclamation = Reclamations.findOne(reclamationId)
+    
+    let notification =  " We answered your reclamation"
+    let type = "reclamations"
+    Meteor.call('notifications.insert', reclamation.sendername, notification, type)
+
+
   },
 
   'reclamation.remove'(reclamationId) {
