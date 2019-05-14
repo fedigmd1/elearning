@@ -16,6 +16,7 @@ class profil extends Component {
       console.log(this.props.currentUser.emails);
     }
     return (
+
       <div>
         <center>
           <React.Fragment/>
@@ -71,6 +72,7 @@ class profil extends Component {
           <React.Fragment/>
           <Link to='/Courses'>Courses</Link>
         </center>
+        
       </div>
     )
   }
