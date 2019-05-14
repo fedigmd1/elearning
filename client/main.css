@@ -296,7 +296,7 @@ section
 }
 .header.scrolled .header_content::before
 {
-	box-shadow: 0px 20px 49px rgba(0,0,0,0.17);
+	box-shadow: 0px 0px 0px 0px rgba(255, 255, 255, 0.397);
 }
 .header_content
 {
@@ -312,7 +312,7 @@ section
 	width: 100%;
 	height: 100%;
 	content: '';
-	box-shadow: 0px 20px 49px rgba(0,0,0,0.67);
+	box-shadow: -3px 2px 8px rgba(232, 232, 232, 0.67);
 	z-index: -1;
 }
 
@@ -323,14 +323,14 @@ section
 .logo_container
 {
 	display: inline-block;
-	padding-left: 76px;
+	padding-left: 10px;
 }
 .logo span
 {
 	font-family: 'Open Sans', sans-serif;
 	font-size: 30px;
-	font-weight: 900;
-	color: #3a3a3a;
+	font-weight: 90;
+	color: rgba(255, 0, 212, 0.877);
 	vertical-align: middle;
 	text-transform: uppercase;
 	margin-left: 3px;
@@ -365,7 +365,7 @@ section
 	font-size: 14px;
 	text-transform: uppercase;
 	font-weight: 700;
-	color: #3a3a3a;
+	color: #1e5385d0;
 	-webkit-transition: all 200ms ease;
 	-moz-transition: all 200ms ease;
 	-ms-transition: all 200ms ease;
@@ -385,7 +385,7 @@ section
 {
 	width: 279px;
 	height: 100%;
-	background: #ffb606;
+	background: #347ce7f1;
 }
 .header_side img
 {
@@ -423,11 +423,11 @@ section
 {
 	font-size: 24px;
 	padding: 10px;
-	color: #3a3a3a;
+	color: #ffffff;
 }
 .hamburger_container:hover i
 {
-	color: #ffb606;
+	color: #2e85f7;
 }
 
 /*********************************
@@ -505,7 +505,7 @@ section
 }
 .menu_item a:hover
 {
-	color: #ffb606;
+	color: #347ce7f1;
 }
 .menu_close_container
 {
@@ -659,7 +659,6 @@ section
 	left: 0;
 	width: 100%;
 	height: 100%;
-	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: center center;
 }
@@ -785,7 +784,7 @@ section
 }
 .hero_box:hover
 {
-	background: #ffb606;
+	background: #347ce7f1 ;
 }
 .hero_box img
 {
@@ -795,7 +794,7 @@ section
 }
 .svg path
 {
-	fill: #ffb606;
+	fill: #347ce7f1;
 }
 .hero_box svg
 {
@@ -889,6 +888,10 @@ section
 {
 	width: 202px;
 	height: 48px;
+	
+	box-shadow: 20px 10px 20px  #347ce7f1 ;
+
+	
 }
 
 /*********************************
@@ -993,7 +996,7 @@ section
 .register_section
 {
 	width: 100%;
-	background: #ffb606;
+	background: #347ce7f1;
 	padding-top: 156px;
 	padding-bottom: 161px;
 }
@@ -1090,13 +1093,13 @@ input:last-of-type
 .input_field:focus
 {
 	outline: none !important;
-	border: solid 2px #ffb606;
+	border: solid 2px #347ce7f1;
 }
 .search_submit_button
 {
 	width: 100%;
 	height: 48px;
-	background: #ffb606;
+	background: #347ce7f1;
 	color: #FFFFFF;
 	font-size: 14px;
 	text-transform: uppercase;

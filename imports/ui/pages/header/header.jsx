@@ -3,9 +3,11 @@ import { withHistory, Link } from 'react-router-dom'
 import { createContainer } from 'meteor/react-meteor-data'
 import logo from '../../../../client/assets/images/astrolab.png'
 import phone_call from '../../../../client/assets/images/phone-call.svg'
-
+import AppContainer from '../../containers/AppContainer' 
 export default class Header extends Component {
-
+  constructor(props){
+    super(props);
+  }
 
   render(){
     return (
@@ -43,6 +45,13 @@ export default class Header extends Component {
                   <li className="main_nav_item">
                     <a href="/Contact">contact</a>
                   </li>
+                  <li className="main_nav_item">
+                    <a href="/Contact">contact</a>
+                  </li>
+                  <li className="main_nav_item">
+                    <a href="/login">Logout</a>
+                  </li>
+
                 </ul>
               </div>
             </nav>
