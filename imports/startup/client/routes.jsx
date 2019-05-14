@@ -32,6 +32,7 @@ import Elements from '../../ui/pages/new/elements.jsx';
 import New_Post from '../../ui/pages/new/new_post.jsx';
 import New from '../../ui/pages/new/new.jsx';
 import Teachers from '../../ui/pages/new/teachers.jsx';
+import test1 from '../../ui/pages/new/test1.jsx';
 import containersCourse from '../../ui/containers/Course';
 
 
@@ -68,6 +69,7 @@ export const renderRoutes = () => (
       <Route path="/New_Post" component={New_Post}/>
       <Route path="/New" component={New}/>
       <Route path="/Teachers" component={Teachers}/>
+      <Route path="/test1" component={test1}/>
       
     </div>
   </Router>

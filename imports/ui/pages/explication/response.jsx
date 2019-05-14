@@ -2,15 +2,17 @@ import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import {withTracker} from 'meteor/react-meteor-data'
 import { Explications } from '../../../api/explications';
+import { Modal, Button } from 'antd';
 
 class Responseform extends Component {
    constructor(props) {
     super(props)
     this.explication = this.explication.bind(this)
     this.state = {
-      response: "",
+      response: '',
       clicked: false,
       id: "",
+      visible: true,
     }
   }
 
@@ -30,16 +32,31 @@ class Responseform extends Component {
     this.setState({ id: id })
   }
 
+  handleCancel = () => {
+    this.setState({ visible: false });
+  };
+
   render(){
     return (
       <div className="form-group">
+      <Modal
+          visible={this.state.visible}
+          title="Add question"
+          onCancel={this.handleCancel}
+          footer={[
+            <center>
+              <Button key="back" onClick={this.handleCancel}>
+                Return
+              </Button>
+            </center>
+          ]}
+        >
         <center>
         {this.props.explications? this.props.explications.map((e,i) => {
           return (
           <div key={i}>
             <form>
               <div onClick={() => this.click(e._id)}><strong>{e.senderName}:</strong>{e.question}</div>
-              <br/>
               {this.state.id == e._id && this.state.clicked== true ?
                 <div>
                   <input
@@ -59,6 +76,7 @@ class Responseform extends Component {
           :null 
         }
         </center>
+        </Modal>
       </div>
     )
   }

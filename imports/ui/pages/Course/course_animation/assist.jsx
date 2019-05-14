@@ -55,7 +55,8 @@ export default class Assist extends Component {
                           {e.kind=="message" && <Message element={e} />}
                           {this.state.text === e._id ?
                             this.state.visible == true && <Questionform currentUser={this.props.currentUser} element={e}/>
-                            :null}
+                            :null
+                          }
                         </div>                                
                       )
                     }) :
