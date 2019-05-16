@@ -856,7 +856,7 @@ section
 	width: 55px;
 	height: 4px;
 	content: '';
-	background: #ffb606;
+	background: #347ce7f1;
 }
 
 /*********************************
@@ -1369,14 +1369,14 @@ input:last-of-type
 }
 .newsletter_email:focus
 {
-	outline: solid 2px #ffb606;
+	outline: solid 2px #347ce7f1;
 }
 .newsletter_submit_btn
 {
 	width: 164px;
 	height: 42px;
 	border: none;
-	background: #ffb606;
+	background: #347ce7f1;
 	color: #FFFFFF;
 	font-size: 14px;
 	font-weight: 500;
@@ -1438,7 +1438,7 @@ input:last-of-type
 }
 .footer_list_item a:hover
 {
-	color: #ffb606;
+	color: #347ce7f1;
 }
 .footer_contact_item
 {
@@ -1479,7 +1479,7 @@ input:last-of-type
 }
 .footer_social .menu_social_item a i:hover
 {
-	color: #ffb606;
+	color: #347ce7f1;
 }
 .footer_social .menu_social_item:last-child
 {
