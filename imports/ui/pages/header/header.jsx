@@ -37,19 +37,13 @@ export default class Header extends Component {
                     <a href="/Courses">courses</a>
                   </li>
                   <li className="main_nav_item">
-                    <a href="/profil">Profil</a>
+                    <a href="/profil">Profile</a>
                   </li>
                   <li className="main_nav_item">
-                    <a href="/MyCourses">My Courses</a>
-                  </li>
-                  <li className="main_nav_item">
-                    <a href="/Contact">contact</a>
+                    <a href="/suggestions">suggestions</a>
                   </li>
                   <li className="main_nav_item">
                     <a href="/Contact">contact</a>
-                  </li>
-                  <li className="main_nav_item">
-                    <a href="/login">Logout</a>
                   </li>
 
                 </ul>
@@ -59,10 +53,6 @@ export default class Header extends Component {
           <div className="header_side d-flex flex-row justify-content-center align-items-center">
             <img src={phone_call} alt="" />
             <span>+216 53 897 129</span>
-          </div>
-          {/* Hamburger */}
-          <div className="hamburger_container">
-            <i className="fas fa-bars trans_200" />
           </div>
         </header>
 

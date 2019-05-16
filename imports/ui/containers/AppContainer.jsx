@@ -15,6 +15,7 @@ import course_1 from '../../../client/assets/images/course_1.jpg'
 import author from '../../../client/assets/images/author.jpg'
 import course_2 from '../../../client/assets/images/course_2.jpg'
 import course_3 from '../../../client/assets/images/course_3.jpg'
+import search_background1 from '../../../client/assets/images/news_background.jpg'
 import search_background from '../../../client/assets/images/search_background.jpg'
 // images 
 
@@ -82,25 +83,15 @@ export default class AppContainer extends Component {
         <MainContainer />
         
         <Header/>
-
         <div className="home">
-          <div className="hero_slider_container">
-            <div className="hero_slider owl-carousel">
-              
-              <div className="hero_slide">
-                <div
-                  className="hero_slide_background"
-                  style={{ backgroundImage: `url(${background})` }}
-                />
-                
-                  <div className="hero_slide_content text-center">
-                    <h1>
-                      Get your <span>Education</span> today!
-                    </h1>
-                  </div>
-                
-              </div>
-            </div>
+          <div className="home_background_container prlx_parent">
+            <div
+              className="home_background prlx"
+              style={{ backgroundImage: `url(${search_background1})` }}
+            />
+          </div>
+          <div className="text_content">
+            <h1>Get your Education today</h1>
           </div>
         </div>
 
