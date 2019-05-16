@@ -48,7 +48,7 @@ export const renderRoutes = () => (
 
       <Route exact={true} path="/Courses" component={Courses}/>
       <Route path="/Courses/:id" component={Course_details}/>
-      <Route path="/MyCourses" component={My_Courses}/>
+      <Route path="/MyCourses/:id" component={My_Courses}/>
       <Route path="/AddCourse" component={AddCourse}/>
 
       <Route exact={true} path="/profil" component={profil}/>

@@ -78,7 +78,6 @@ export default class AppContainer extends Component {
       <div className="super_container" >
 
         
-        <button href="#" onClick={this.logout}>Logout</button>
         
         <MainContainer />
         

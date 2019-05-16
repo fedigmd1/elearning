@@ -12,10 +12,10 @@ class Cours extends Component {
   render() {
     return (
       <div>
-        { this.props.currentUser ? (
+        { this.props.user ? (
           <div>
             <center>
-              <h1>Welcome <strong>{this.props.currentUser.username}</strong></h1>
+              <h1>Welcome <strong>{this.props.user.username}</strong></h1>
             </center>
           </div>
           ):null
@@ -25,11 +25,14 @@ class Cours extends Component {
             return (
               <div key={i} className="col-lg-4 course_box">
                 <div className="card">
-                  <img
-                    className="card-img-top"
-                    src=""
-                    alt=""
-                  />  
+                  <center>
+                    <img
+                      className="card-img-top"
+                      style={{ width: 150, height: 150 }}
+                      src={course.image}
+                      alt=""
+                    /> 
+                  </center>
                 <div className="card-body text-center" key={i} >
                   <div className="card-title">
                     <Link to={`/Courses/${course._id}`}><span>{course.text}</span></Link>   
@@ -48,15 +51,18 @@ class Cours extends Component {
     );
   }
 }
-export default withTracker(() => {
-  Meteor.subscribe('courses');  
-  let currentUser= Meteor.user();
+export default withTracker((props) => {
+  Meteor.subscribe('courses'); 
+  Meteor.subscribe('Users');
+  let currentUser= Meteor.user()
+  let user= Meteor.users.findOne({"_id": props.match.params.id })
   let a;
-  if ((currentUser !== undefined) && (currentUser !== null ) ) {
-    a = currentUser.username
+  if ((user !== undefined) && (user !== null ) ) {
+    a = user.username
     }
     return {
       currentUser,
-      courses: Courses.find({"username": a }).fetch()
+      user,
+      courses: Courses.find({"username": a }).fetch(),
     };
 }) (Cours);

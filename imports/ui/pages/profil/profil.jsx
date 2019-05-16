@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom'
 import { Meteor } from 'meteor/meteor';
 import {withTracker} from 'meteor/react-meteor-data'
 import {Link } from 'react-router-dom'
+import Header from '../header/header';
 
 
 
@@ -16,8 +17,9 @@ class profil extends Component {
       console.log(this.props.currentUser.emails);
     }
     return (
-
       <div>
+        <Header/>
+        <br/><br/><br/><br/><br/><br/>
         <center>
           <React.Fragment/>
             {this.props.match.params.id ? (this.props.currentUser) && (this.props.currentUser._id==this.props.match.params.id)?
@@ -34,6 +36,7 @@ class profil extends Component {
                   />
                 </div>
                   {this.props.currentUser.profile.firstname}
+                  <button><Link to={`/MyCourses/${this.props.currentUser._id}`}><h3>Courses</h3></Link></button>
                 </div>
                 : this.props.user ? (
                 <div>
@@ -49,6 +52,7 @@ class profil extends Component {
                 />
                 </div>
                   {this.props.user.profile.firstname}      
+                  <button><Link to={`/MyCourses/${this.props.user._id}`}><h3>Courses</h3></Link></button>
                 </div>
               ):
                   <h1>Sorry! This User does not exist !</h1>
@@ -58,7 +62,7 @@ class profil extends Component {
                 {this.props.currentUser.username}
                 {this.props.currentUser.emails.address}
                 {this.props.currentUser._id}
-                <div >
+                <div>
                   <img
                     style={{ width: 300, height: 300 }}
                     src={this.props.currentUser.profile.avatar}
@@ -66,11 +70,12 @@ class profil extends Component {
                   />
                 </div>
                   {this.props.currentUser.profile.firstname}
+                <button><Link to={`/MyCourses/${this.props.currentUser._id}`}><h3>Courses</h3></Link></button>
                 </div>
               ) : null 
             }
           <React.Fragment/>
-          <Link to='/Courses'>Courses</Link>
+          {/* <button><Link to='/AddCourse'><h3>Add Courses</h3></Link></button> */}
         </center>
         
       </div>
@@ -79,7 +84,7 @@ class profil extends Component {
 }
 
 export default withTracker((props) => {
-    Meteor.subscribe('Users');
+  Meteor.subscribe('Users');
   let user= Meteor.users.findOne({"_id": props.match.params.id })
   let currentUser= Meteor.user()
   
