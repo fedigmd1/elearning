@@ -21,9 +21,7 @@ class Cours extends Component {
 
   constructor(props) {
     super(props);
-    // this.details = this.details.bind(this);
 
- 
     this.state = {
       text: "",
     };
@@ -51,34 +49,25 @@ class Cours extends Component {
   }
 
   render(){
-    let e ;
+
     return (
       <div className="super_container">
-      
-
         <Header/>
-
         <div className="home">
           <div className="home_background_container prlx_parent">
-            
             <div
               className="home_background prlx"
               style={{ backgroundImage: `url(${backgroun})` }}
             />
           </div>
-
-          <div className="home_content">
-              <h1>Courses</h1>
+          <div className="home_content text_content">
+            <h1>Courses</h1>
           </div>
         </div>
-          
         <div className="popular page_section">
           <div className="page_content">
-            <center>
-            <Link to={'/MyCourses'}><h3>My Courses</h3></Link>
-            <Link to={'/AddCourse'}><h3>Add Courses</h3></Link>              
-
-              <h3>Sort by</h3>
+            <center>  
+              <h1>Sort by</h1>
               <select onChange={e=> {this.sortCourses(e)}}>
                 <option value="text">Nom</option>
                 <option value="createdAt">Date de creation</option>
@@ -111,8 +100,6 @@ class Cours extends Component {
                           <Link to={`/Courses/${course._id}`}><span>{course.text}</span></Link>   
                         </div>
                         <div className="card-text">
-                          {course._id}
-                          <br/>
                           {course.description}
                         </div>
                       </div>
