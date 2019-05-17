@@ -7,21 +7,28 @@ export default class Current extends Component {
 
   render() {
     return (
-      <div>
-        <br/>
-        {this.props.currentUser.username}
-        {this.props.currentUser._id}
-        <div>
-          <img
-            className="img-circle"
-            style={{ width: 300, height: 300 }}
-            src={this.props.currentUser.profile.avatar}
-            alt="photo de profil"
-          />
-        </div>
-          {this.props.currentUser.profile.firstname}
-          <button><Link to={`/MyCourses/${this.props.currentUser._id}`}><h3>Courses</h3></Link></button>
-      </div>      
+      <Container>
+        <Row>
+          <div className="contour">
+            <div className="margin">
+              <Col sm={{ size: 2, order: 2, offset: 0 }}>
+                <img
+                className="img-circle image"
+                style={{ width: 250, height: 250 }}
+                src={this.props.currentUser.profile.avatar}
+                alt="photo de profil"
+                />
+              </Col>
+              <Col sm={{ size: 4, order: 6, offset: 4 }}>
+                <br/><br/><br/>
+                <h1>{this.props.currentUser.profile.firstname} {this.props.currentUser.profile.lastname}</h1>
+              </Col>
+            </div>
+          </div>
+          <br/>
+          <Link to={`/MyCourses/${this.props.currentUser._id}`}><h3>Courses</h3></Link>
+        </Row>
+      </Container>     
     ); 
 
   }
