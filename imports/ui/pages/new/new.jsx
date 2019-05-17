@@ -9,390 +9,321 @@ export default class New extends Component {
 
   render(){
     return (
-
-      <div className="super_container">
-      
-       <Header/>
-
-        <div className="menu_container menu_mm">
-          {/* Menu Close Button */}
-          <div className="menu_close_container">
-            <div className="menu_close" />
-          </div>
-          {/* Menu Items */}
-          <div className="menu_inner menu_mm">
-            <div className="menu menu_mm">
-              <ul className="menu_list menu_mm">
-                <li className="menu_item menu_mm">
-                  <a href="index.html">Home</a>
-                </li>
-                <li className="menu_item menu_mm">
-                  <a href="#">About us</a>
-                </li>
-                <li className="menu_item menu_mm">
-                  <a href="courses.html">Courses</a>
-                </li>
-                <li className="menu_item menu_mm">
-                  <a href="elements.html">Elements</a>
-                </li>
-                <li className="menu_item menu_mm">
-                  <a href="#">News</a>
-                </li>
-                <li className="menu_item menu_mm">
-                  <a href="contact.html">Contact</a>
-                </li>
-              </ul>
-              {/* Menu Social */}
-              <div className="menu_social_container menu_mm">
-                <ul className="menu_social menu_mm">
-                  <li className="menu_social_item menu_mm">
-                    <a href="#">
-                      <i className="fab fa-pinterest" />
-                    </a>
-                  </li>
-                  <li className="menu_social_item menu_mm">
-                    <a href="#">
-                      <i className="fab fa-linkedin-in" />
-                    </a>
-                  </li>
-                  <li className="menu_social_item menu_mm">
-                    <a href="#">
-                      <i className="fab fa-instagram" />
-                    </a>
-                  </li>
-                  <li className="menu_social_item menu_mm">
-                    <a href="#">
-                      <i className="fab fa-facebook-f" />
-                    </a>
-                  </li>
-                  <li className="menu_social_item menu_mm">
-                    <a href="#">
-                      <i className="fab fa-twitter" />
-                    </a>
-                  </li>
-                </ul>
-              </div>
-              <div className="menu_copyright menu_mm">
-                {/* Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. */}
-                Copyright © All rights reserved | This template is made with{" "}
-                <i className="fa fa-heart" aria-hidden="true" /> by{" "}
-                <a href="https://colorlib.com" target="_blank">
-                  Colorlib
-                </a>
-                {/* Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. */}
+      <section className="product_description_area">
+        <div className="container">
+          <ul className="nav nav-tabs" id="myTab" role="tablist">
+            <li className="nav-item">
+              <a className="nav-link" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Description</a>
+            </li>
+            <li className="nav-item">
+              <a className="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Specification</a>
+            </li>
+            <li className="nav-item">
+              <a className="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Comments</a>
+            </li>
+            <li className="nav-item">
+              <a className="nav-link active" id="review-tab" data-toggle="tab" href="#review" role="tab" aria-controls="review" aria-selected="false">Reviews</a>
+            </li>
+          </ul>
+          <div className="tab-content" id="myTabContent">
+            <div className="tab-pane fade" id="home" role="tabpanel" aria-labelledby="home-tab">
+              <p>Beryl Cook is one of Britain’s most talented and amusing artists .Beryl’s pictures feature women of all shapes
+                and sizes enjoying themselves .Born between the two world wars, Beryl Cook eventually left Kendrick School in
+                Reading at the age of 15, where she went to secretarial school and then into an insurance office. After moving to
+                London and then Hampton, she eventually married her next door neighbour from Reading, John Cook. He was an
+                officer in the Merchant Navy and after he left the sea in 1956, they bought a pub for a year before John took a
+                job in Southern Rhodesia with a motor company. Beryl bought their young son a box of watercolours, and when
+                showing him how to use it, she decided that she herself quite enjoyed painting. John subsequently bought her a
+                child’s painting set for her birthday and it was with this that she produced her first significant work, a
+                half-length portrait of a dark-skinned lady with a vacant expression and large drooping breasts. It was aptly
+                named ‘Hangover’ by Beryl’s husband and</p>
+              <p>It is often frustrating to attempt to plan meals that are designed for one. Despite this fact, we are seeing
+                more and more recipe books and Internet websites that are dedicated to the act of cooking for one. Divorce and
+                the death of spouses or grown children leaving for college are all reasons that someone accustomed to cooking for
+                more than one would suddenly need to learn how to adjust all the cooking practices utilized before into a
+                streamlined plan of cooking that is more efficient for one person creating less</p>
+            </div>
+            <div className="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+              <div className="table-responsive">
+                <table className="table">
+                  <tbody>
+                    <tr>
+                      <td>
+                        <h5>Width</h5>
+                      </td>
+                      <td>
+                        <h5>128mm</h5>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <h5>Height</h5>
+                      </td>
+                      <td>
+                        <h5>508mm</h5>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <h5>Depth</h5>
+                      </td>
+                      <td>
+                        <h5>85mm</h5>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <h5>Weight</h5>
+                      </td>
+                      <td>
+                        <h5>52gm</h5>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <h5>Quality checking</h5>
+                      </td>
+                      <td>
+                        <h5>yes</h5>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <h5>Freshness Duration</h5>
+                      </td>
+                      <td>
+                        <h5>03days</h5>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <h5>When packeting</h5>
+                      </td>
+                      <td>
+                        <h5>Without touch of hand</h5>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <h5>Each Box contains</h5>
+                      </td>
+                      <td>
+                        <h5>60pcs</h5>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
             </div>
-          </div>
-        </div>
-
-        <div className="home">
-          <div className="home_background_container prlx_parent">
-            <div
-              className="home_background prlx"
-              style={{ backgroundImage: "url(images/news_background.jpg)" }}
-            />
-          </div>
-          <div className="home_content">
-            <h1>The News</h1>
-          </div>
-        </div>
-
-        <div className="news">
-          <div className="container">
-            <div className="row">
-              {/* News Column */}
-              <div className="col-lg-8">
-                <div className="news_posts">
-                  {/* News Post */}
-                  <div className="news_post">
-                    <div className="news_post_image">
-                      <img
-                        src="images/news_1.jpg"
-                        alt="https://unsplash.com/@dsmacinnes"
-                      />
-                    </div>
-                    <div className="news_post_top d-flex flex-column flex-sm-row">
-                      <div className="news_post_date_container">
-                        <div className="news_post_date d-flex flex-column align-items-center justify-content-center">
-                          <div>18</div>
-                          <div>dec</div>
+            <div className="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+              <div className="row">
+                <div className="col-lg-6">
+                  <div className="comment_list">
+                    <div className="review_item">
+                      <div className="media">
+                        <div className="d-flex">
+                          <img src="img/product/review-1.png" alt />
+                        </div>
+                        <div className="media-body">
+                          <h4>Blake Ruiz</h4>
+                          <h5>12th Feb, 2018 at 05:56 pm</h5>
+                          <a className="reply_btn" href="#">Reply</a>
                         </div>
                       </div>
-                      <div className="news_post_title_container">
-                        <div className="news_post_title">
-                          <a href="news_post.html">
-                            Why do you need a qualification?
-                          </a>
+                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+                        dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+                        commodo</p>
+                    </div>
+                    <div className="review_item reply">
+                      <div className="media">
+                        <div className="d-flex">
+                          <img src="img/product/review-2.png" alt />
                         </div>
-                        <div className="news_post_meta">
-                          <span className="news_post_author">
-                            <a href="#">By Christian Smith</a>
-                          </span>
-                          <span>|</span>
-                          <span className="news_post_comments">
-                            <a href="#">3 Comments</a>
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="news_post_text">
-                      <p>
-                        In aliquam, augue a gravida rutrum, ante nisl
-                        fermentum nulla, vitae tempor nisl ligula vel nunc.
-                        Proin quis mi malesuada, finibus tortor fermentum.
-                        Etiam eu purus nec eros varius luctus. Praesent
-                        finibus risus facilisis ultricies.
-                      </p>
-                    </div>
-                    <div className="news_post_button text-center trans_200">
-                      <a href="news_post.html">Read More</a>
-                    </div>
-                  </div>
-                  {/* News Post */}
-                  <div className="news_post">
-                    <div className="news_post_image">
-                      <img
-                        src="images/news_2.jpg"
-                        alt="https://unsplash.com/@dsmacinnes"
-                      />
-                    </div>
-                    <div className="news_post_top d-flex flex-column flex-sm-row">
-                      <div className="news_post_date_container">
-                        <div className="news_post_date d-flex flex-column align-items-center justify-content-center">
-                          <div>18</div>
-                          <div>dec</div>
+                        <div className="media-body">
+                          <h4>Blake Ruiz</h4>
+                          <h5>12th Feb, 2018 at 05:56 pm</h5>
+                          <a className="reply_btn" href="#">Reply</a>
                         </div>
                       </div>
-                      <div className="news_post_title_container">
-                        <div className="news_post_title">
-                          <a href="news_post.html">
-                            Our new courses just for you?
-                          </a>
+                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+                        dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+                        commodo</p>
+                    </div>
+                    <div className="review_item">
+                      <div className="media">
+                        <div className="d-flex">
+                          <img src="img/product/review-3.png" alt />
                         </div>
-                        <div className="news_post_meta">
-                          <span className="news_post_author">
-                            <a href="#">By Christian Smith</a>
-                          </span>
-                          <span>|</span>
-                          <span className="news_post_comments">
-                            <a href="#">3 Comments</a>
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="news_post_text">
-                      <p>
-                        In aliquam, augue a gravida rutrum, ante nisl
-                        fermentum nulla, vitae tempor nisl ligula vel nunc.
-                        Proin quis mi malesuada, finibus tortor fermentum.
-                        Etiam eu purus nec eros varius luctus. Praesent
-                        finibus risus facilisis ultricies.
-                      </p>
-                    </div>
-                    <div className="news_post_button text-center trans_200">
-                      <a href="news_post.html">Read More</a>
-                    </div>
-                  </div>
-                  {/* News Post */}
-                  <div className="news_post">
-                    <div className="news_post_image">
-                      <img
-                        src="images/news_3.jpg"
-                        alt="https://unsplash.com/@dsmacinnes"
-                      />
-                    </div>
-                    <div className="news_post_top d-flex flex-column flex-sm-row">
-                      <div className="news_post_date_container">
-                        <div className="news_post_date d-flex flex-column align-items-center justify-content-center">
-                          <div>18</div>
-                          <div>dec</div>
+                        <div className="media-body">
+                          <h4>Blake Ruiz</h4>
+                          <h5>12th Feb, 2018 at 05:56 pm</h5>
+                          <a className="reply_btn" href="#">Reply</a>
                         </div>
                       </div>
-                      <div className="news_post_title_container">
-                        <div className="news_post_title">
-                          <a href="news_post.html">
-                            Why take our graduate program??
-                          </a>
-                        </div>
-                        <div className="news_post_meta">
-                          <span className="news_post_author">
-                            <a href="#">By Christian Smith</a>
-                          </span>
-                          <span>|</span>
-                          <span className="news_post_comments">
-                            <a href="#">3 Comments</a>
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="news_post_text">
-                      <p>
-                        In aliquam, augue a gravida rutrum, ante nisl
-                        fermentum nulla, vitae tempor nisl ligula vel nunc.
-                        Proin quis mi malesuada, finibus tortor fermentum.
-                        Etiam eu purus nec eros varius luctus. Praesent
-                        finibus risus facilisis ultricies.
-                      </p>
-                    </div>
-                    <div className="news_post_button text-center trans_200">
-                      <a href="news_post.html">Read More</a>
+                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+                        dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+                        commodo</p>
                     </div>
                   </div>
                 </div>
-                {/* Page Nav */}
-                <div className="news_page_nav">
-                  <ul>
-                    <li className="active text-center trans_200">
-                      <a href="#">01</a>
-                    </li>
-                    <li className="text-center trans_200">
-                      <a href="#">02</a>
-                    </li>
-                    <li className="text-center trans_200">
-                      <a href="#">03</a>
-                    </li>
-                  </ul>
+                <div className="col-lg-6">
+                  <div className="review_box">
+                    <h4>Post a comment</h4>
+                    <form className="row contact_form" action="contact_process.php" method="post" id="contactForm" noValidate="novalidate">
+                      <div className="col-md-12">
+                        <div className="form-group">
+                          <input type="text" className="form-control" id="name" name="name" placeholder="Your Full name" />
+                        </div>
+                      </div>
+                      <div className="col-md-12">
+                        <div className="form-group">
+                          <input type="email" className="form-control" id="email" name="email" placeholder="Email Address" />
+                        </div>
+                      </div>
+                      <div className="col-md-12">
+                        <div className="form-group">
+                          <input type="text" className="form-control" id="number" name="number" placeholder="Phone Number" />
+                        </div>
+                      </div>
+                      <div className="col-md-12">
+                        <div className="form-group">
+                          <textarea className="form-control" name="message" id="message" rows={1} placeholder="Message" defaultValue={""} />
+                        </div>
+                      </div>
+                      <div className="col-md-12 text-right">
+                        <button type="submit" value="submit" className="btn primary-btn">Submit Now</button>
+                      </div>
+                    </form>
+                  </div>
                 </div>
               </div>
-              {/* Sidebar Column */}
-              <div className="col-lg-4">
-                <div className="sidebar">
-                  {/* Archives */}
-                  <div className="sidebar_section">
-                    <div className="sidebar_section_title">
-                      <h3>Archives</h3>
+            </div>
+            <div className="tab-pane fade show active" id="review" role="tabpanel" aria-labelledby="review-tab">
+              <div className="row">
+                <div className="col-lg-6">
+                  <div className="row total_rate">
+                    <div className="col-6">
+                      <div className="box_total">
+                        <h5>Overall</h5>
+                        <h4>4.0</h4>
+                        <h6>(03 Reviews)</h6>
+                      </div>
                     </div>
-                    <ul className="sidebar_list">
-                      <li className="sidebar_list_item">
-                        <a href="#">Design Courses</a>
-                      </li>
-                      <li className="sidebar_list_item">
-                        <a href="#">All you need to know</a>
-                      </li>
-                      <li className="sidebar_list_item">
-                        <a href="#">Uncategorized</a>
-                      </li>
-                      <li className="sidebar_list_item">
-                        <a href="#">About Our Departments</a>
-                      </li>
-                      <li className="sidebar_list_item">
-                        <a href="#">Choose the right course</a>
-                      </li>
+                    <div className="col-6">
+                      <div className="rating_list">
+                        <h3>Based on 3 Reviews</h3>
+                        <ul className="list">
+                          <li><a href="#">5 Star <i className="fa fa-star" /><i className="fa fa-star" /><i className="fa fa-star" /><i className="fa fa-star" /><i className="fa fa-star" /> 01</a></li>
+                          <li><a href="#">4 Star <i className="fa fa-star" /><i className="fa fa-star" /><i className="fa fa-star" /><i className="fa fa-star" /><i className="fa fa-star" /> 01</a></li>
+                          <li><a href="#">3 Star <i className="fa fa-star" /><i className="fa fa-star" /><i className="fa fa-star" /><i className="fa fa-star" /><i className="fa fa-star" /> 01</a></li>
+                          <li><a href="#">2 Star <i className="fa fa-star" /><i className="fa fa-star" /><i className="fa fa-star" /><i className="fa fa-star" /><i className="fa fa-star" /> 01</a></li>
+                          <li><a href="#">1 Star <i className="fa fa-star" /><i className="fa fa-star" /><i className="fa fa-star" /><i className="fa fa-star" /><i className="fa fa-star" /> 01</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="review_list">
+                    <div className="review_item">
+                      <div className="media">
+                        <div className="d-flex">
+                          <img src="img/product/review-1.png" alt />
+                        </div>
+                        <div className="media-body">
+                          <h4>Blake Ruiz</h4>
+                          <i className="fa fa-star" />
+                          <i className="fa fa-star" />
+                          <i className="fa fa-star" />
+                          <i className="fa fa-star" />
+                          <i className="fa fa-star" />
+                        </div>
+                      </div>
+                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+                        dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+                        commodo</p>
+                    </div>
+                    <div className="review_item">
+                      <div className="media">
+                        <div className="d-flex">
+                          <img src="img/product/review-2.png" alt />
+                        </div>
+                        <div className="media-body">
+                          <h4>Blake Ruiz</h4>
+                          <i className="fa fa-star" />
+                          <i className="fa fa-star" />
+                          <i className="fa fa-star" />
+                          <i className="fa fa-star" />
+                          <i className="fa fa-star" />
+                        </div>
+                      </div>
+                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+                        dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+                        commodo</p>
+                    </div>
+                    <div className="review_item">
+                      <div className="media">
+                        <div className="d-flex">
+                          <img src="img/product/review-3.png" alt />
+                        </div>
+                        <div className="media-body">
+                          <h4>Blake Ruiz</h4>
+                          <i className="fa fa-star" />
+                          <i className="fa fa-star" />
+                          <i className="fa fa-star" />
+                          <i className="fa fa-star" />
+                          <i className="fa fa-star" />
+                        </div>
+                      </div>
+                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+                        dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+                        commodo</p>
+                    </div>
+                  </div>
+                </div>
+                <div className="col-lg-6">
+                  <div className="review_box">
+                    <h4>Add a Review</h4>
+                    <p>Your Rating:</p>
+                    <ul className="list">
+                      <li><a href="#"><i className="fa fa-star" /></a></li>
+                      <li><a href="#"><i className="fa fa-star" /></a></li>
+                      <li><a href="#"><i className="fa fa-star" /></a></li>
+                      <li><a href="#"><i className="fa fa-star" /></a></li>
+                      <li><a href="#"><i className="fa fa-star" /></a></li>
                     </ul>
-                  </div>
-                  {/* Latest Posts */}
-                  <div className="sidebar_section">
-                    <div className="sidebar_section_title">
-                      <h3>Latest posts</h3>
-                    </div>
-                    <div className="latest_posts">
-                      {/* Latest Post */}
-                      <div className="latest_post">
-                        <div className="latest_post_image">
-                          <img
-                            src="images/latest_1.jpg"
-                            alt="https://unsplash.com/@dsmacinnes"
-                          />
-                        </div>
-                        <div className="latest_post_title">
-                          <a href="news_post.html">
-                            Why do you need a qualification?
-                          </a>
-                        </div>
-                        <div className="latest_post_meta">
-                          <span className="latest_post_author">
-                            <a href="#">By Christian Smith</a>
-                          </span>
-                          <span>|</span>
-                          <span className="latest_post_comments">
-                            <a href="#">3 Comments</a>
-                          </span>
+                    <p>Outstanding</p>
+                    <form className="row contact_form" action="contact_process.php" method="post" id="contactForm" noValidate="novalidate">
+                      <div className="col-md-12">
+                        <div className="form-group">
+                          <input type="text" className="form-control" id="name" name="name" placeholder="Your Full name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Your Full name'" />
                         </div>
                       </div>
-                      {/* Latest Post */}
-                      <div className="latest_post">
-                        <div className="latest_post_image">
-                          <img
-                            src="images/latest_2.jpg"
-                            alt="https://unsplash.com/@erothermel"
-                          />
-                        </div>
-                        <div className="latest_post_title">
-                          <a href="news_post.html">
-                            Why do you need a qualification?
-                          </a>
-                        </div>
-                        <div className="latest_post_meta">
-                          <span className="latest_post_author">
-                            <a href="#">By Christian Smith</a>
-                          </span>
-                          <span>|</span>
-                          <span className="latest_post_comments">
-                            <a href="#">3 Comments</a>
-                          </span>
+                      <div className="col-md-12">
+                        <div className="form-group">
+                          <input type="email" className="form-control" id="email" name="email" placeholder="Email Address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email Address'" />
                         </div>
                       </div>
-                      {/* Latest Post */}
-                      <div className="latest_post">
-                        <div className="latest_post_image">
-                          <img
-                            src="images/latest_3.jpg"
-                            alt="https://unsplash.com/@element5digital"
-                          />
-                        </div>
-                        <div className="latest_post_title">
-                          <a href="news_post.html">
-                            Why do you need a qualification?
-                          </a>
-                        </div>
-                        <div className="latest_post_meta">
-                          <span className="latest_post_author">
-                            <a href="#">By Christian Smith</a>
-                          </span>
-                          <span>|</span>
-                          <span className="latest_post_comments">
-                            <a href="#">3 Comments</a>
-                          </span>
+                      <div className="col-md-12">
+                        <div className="form-group">
+                          <input type="text" className="form-control" id="number" name="number" placeholder="Phone Number" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Phone Number'" />
                         </div>
                       </div>
-                    </div>
-                  </div>
-                  {/* Tags */}
-                  <div className="sidebar_section">
-                    <div className="sidebar_section_title">
-                      <h3>Tags</h3>
-                    </div>
-                    <div className="tags d-flex flex-row flex-wrap">
-                      <div className="tag">
-                        <a href="#">Course</a>
+                      <div className="col-md-12">
+                        <div className="form-group">
+                          <textarea className="form-control" name="message" id="message" rows={1} placeholder="Review" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Review'" defaultValue={""} />
+                        </div>
                       </div>
-                      <div className="tag">
-                        <a href="#">Design</a>
+                      <div className="col-md-12 text-right">
+                        <button type="submit" value="submit" className="primary-btn">Submit Now</button>
                       </div>
-                      <div className="tag">
-                        <a href="#">FAQ</a>
-                      </div>
-                      <div className="tag">
-                        <a href="#">Teachers</a>
-                      </div>
-                      <div className="tag">
-                        <a href="#">School</a>
-                      </div>
-                      <div className="tag">
-                        <a href="#">Graduate</a>
-                      </div>
-                    </div>
+                    </form>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
+      </section>
 
-        <Footer/>
-
-
-      </div>
     );
   }
 }
