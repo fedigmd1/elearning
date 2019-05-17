@@ -5,7 +5,7 @@ import {withTracker} from 'meteor/react-meteor-data'
 import Header from '../header/header';
 import Current from './currentprofile';
 import User from './userprofile';
-import search_background from '../../../../client/assets/images/teachers_background.jpg'
+import search_background from '../../../../client/assets/images/milestones_background.jpg'
 import Footer from '../footer/footer';
 
 
@@ -26,14 +26,13 @@ class profil extends Component {
           <br/><br/><br/><br/><br/><br/><br/>
           {this.props.match.params.id ? (this.props.currentUser)
           && (this.props.currentUser._id==this.props.match.params.id) ?
-          
-              <Current currentUser={this.props.currentUser}/>
-              : this.props.user ?  (
-              <User user={this.props.user} />
-            ): <h1>Sorry! This User does not exist !</h1>
-            : this.props.currentUser ? (
+            <Current currentUser={this.props.currentUser}/>
+            : this.props.user && (this.props.user._id==this.props.match.params.id) ?  (
+            <User user={this.props.user} />
+              ): <div className="titre"><br/><center><h1>Sorry! This User does not exist !</h1></center></div>
+              : this.props.currentUser ? (
               <Current currentUser={this.props.currentUser}/>                      
-            ) : null 
+                ) : null 
           }
         </div>
         <Footer/>

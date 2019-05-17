@@ -26,7 +26,7 @@ export default class Current extends Component {
             </div>
           </div>
           <br/>
-          <Link to={`/MyCourses/${this.props.currentUser._id}`}><h3>Courses</h3></Link>
+          <Link to={`/MyCourses/${this.props.currentUser._id}`}><h3>My Courses</h3></Link>
         </Row>
       </Container>     
     ); 
