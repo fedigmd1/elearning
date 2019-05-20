@@ -76,11 +76,7 @@ export default class AppContainer extends Component {
   render(){
     return (
       <div className="super_container" >
-
-        
-        
-        <MainContainer />
-        
+        <MainContainer />     
         <Header/>
         <div className="home">
           <div className="home_background_container prlx_parent">

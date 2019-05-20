@@ -15,8 +15,8 @@ export default class Course extends TrackerReact(Component) {
      Meteor.call('courses.setChecked', this.props.course._id, !this.props.course.checked);
   }
  
-  deleteThisCourse() {
-    Meteor.call('courses.remove', this.props.course._id);
+  deleteThisCourse(id) {
+    Meteor.call('courses.remove', id);
   }
 
   togglePrivate() {
@@ -34,7 +34,7 @@ export default class Course extends TrackerReact(Component) {
     
     return (
       <div className={courseClassName}>
-        <button className="delete" onClick={this.deleteThisCourse.bind(this)}>
+        <button className="delete" onClick={()=> this.deleteThisCourse(this.props.course._id)}>
           &times;
         </button>
  

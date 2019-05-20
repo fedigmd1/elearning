@@ -77,6 +77,10 @@ class AddCourse extends Component {
     let reader = new FileReader();
     let nom = this.state.nom
     let description =this.state.description
+    if ( nom == "" || description== ""){
+      alert("empty field")
+      return (null)
+    }
     reader.readAsDataURL(this.state.image);
     reader.onload = function () {  
        Meteor.call('courses.insert', nom, description, reader.result );

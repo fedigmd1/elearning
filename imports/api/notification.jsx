@@ -24,6 +24,7 @@ Meteor.methods({
       text,
       view: false ,
       type,
+      checked: false,
       createdAt: new Date(),
     });
   },

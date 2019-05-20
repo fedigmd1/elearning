@@ -56,12 +56,13 @@ Meteor.methods({
       // If the course is private, make sure only the owner can delete it
       throw new Meteor.Error('not-authorized');
     }
+    
     let notification = "removed a course : " + course.text
     let type = "courses"
-    Meteor.call('notifications.insert', course.username, text, type)
+    Meteor.call('notifications.insert', course.username, notification, type)
     
     Courses.remove({
-      _id: courseId
+      _id: course._id
     });
     Elements.remove({
       courseId: courseId

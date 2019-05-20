@@ -9,21 +9,31 @@ import {Courses} from '../../../api/courses.jsx'
 
 class Cours extends Component { 
 
+
+  deleteThisCourse(id) {
+
+    Meteor.call('courses.remove', id);
+  }
+
+
+
+
   render() {
     return (
       <div>
-        { this.props.user ? (
-          <div>
-            <center>
-              <h1>Welcome <strong>{this.props.user.username}</strong></h1>
-            </center>
-          </div>
-          ):null
-        }
+        <Header/>
+        <br/><br/><br/><br/><br/><br/><br/>
         <div className="row course_boxes">
           {this.props.courses ? this.props.courses.map((course, i) => {
             return (
               <div key={i} className="col-lg-4 course_box">
+              {this.props.currentUser ? this.props.currentUser._id == course.owner ?
+                <button className="delete btn btn-danger" onClick={()=> this.deleteThisCourse(course._id)}>
+                  &times;
+                </button>
+                :null
+                :null
+              }
                 <div className="card">
                   <center>
                     <img
@@ -37,16 +47,15 @@ class Cours extends Component {
                   <div className="card-title">
                     <Link to={`/Courses/${course._id}`}><span>{course.text}</span></Link>   
                   </div>
-                  <div className="card-text">
-                    <br/>
-                    {course.description}
-                  </div>
+                  <br/>
                 </div>
               </div>
             </div> 
             )
           }) :null}
         </div>
+        <br/><br/><br/>
+        <Footer/>
       </div>
     );
   }
