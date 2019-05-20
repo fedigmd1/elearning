@@ -32,12 +32,6 @@ Meteor.methods({
 
   'notifications.setview'(notificationId) {
     check(notificationId, String);
-
-    // Make sure only the course owner can make a course private
-    if (course.owner !== this.userId) {
-      throw new Meteor.Error('not-authorized');
-    }
- 
     Notifications.update(notificationId, { $set: { view: true } });
   },
 

@@ -3,17 +3,42 @@ import { withHistory, Link } from 'react-router-dom'
 import { createContainer } from 'meteor/react-meteor-data'
 import logo from '../../../../client/assets/images/astrolab.png'
 import phone_call from '../../../../client/assets/images/phone-call.svg'
-import AppContainer from '../../containers/AppContainer' 
-export default class Header extends Component {
+import AppContainer from '../../containers/AppContainer'
+import {withTracker} from 'meteor/react-meteor-data'
+import { Notifications } from '../../../api/notification';
+import { notification } from 'antd';
+
+
+class Header extends Component {
   constructor(props){
     super(props);
+  }
+
+  openNotificationWithIcon = (type, title, user, content, id) => {
+    console.log("hhhhhh");
+    notification[type]({
+      message: title,
+      description: user+' '+content,
+    });
+    setTimeout(() => {
+      Meteor.call('notifications.setview', id);
+    }, 5000);
+    
   }
 
   render(){
     return (
 
       <div className="super_container">
-
+        {this.props.notifications && this.props.notifications.map((notification, i) =>{
+            return (
+              <div key={i}>
+                {notification.view == false && 
+                this.openNotificationWithIcon('warning', notification.type, notification.username, notification.text, notification._id)}
+              </div>
+            )
+          })
+        }
         <header className="header d-flex flex-row">
           <div className="header_content d-flex flex-row align-items-center">
             {/* Logo */}
@@ -61,3 +86,11 @@ export default class Header extends Component {
   }
 
 }
+
+export default withTracker(() => {
+  Meteor.subscribe('notifications');
+
+  return {
+    notifications: Notifications.find({}, {sort: { createdAt: -1}}).fetch(),
+  };
+}) (Header);
