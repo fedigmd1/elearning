@@ -70,7 +70,6 @@ class profil extends Component {
                 <button className="btn btn-warning" onClick={this.logout}>Logout</button>
               </Col>
               <Current currentUser={this.props.currentUser}/>
-              <button onClick={this.logout}>Logout</button>
             </div>
             : this.props.user && (this.props.user._id==this.props.match.params.id) ?  (
             <div>
