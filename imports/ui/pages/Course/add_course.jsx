@@ -6,7 +6,7 @@ import {Courses} from '../../../api/courses'
 import Course from '../../containers/Course'
 import Header from '../header/header';
 import Footer from '../footer/footer';
-
+import backgroun from '../../../../client/assets/images/background.jpg'
 
 
 class AddCourse extends Component {
@@ -102,12 +102,15 @@ class AddCourse extends Component {
     reader.readAsDataURL(this.state.image);
     reader.onload = function () {  
        Meteor.call('courses.insert', nom, description, reader.result );
+       alert("congratulation! new course is added !")
     }
     reader.onerror = function (error) {
       console.log('Error: ', error);
     };
     // Clear form
       this.setState({ nom: "" ,description: "" , image: ""})
+      
+
   }
 
 
@@ -115,67 +118,61 @@ class AddCourse extends Component {
 
   render () {
     return (
-      <div className="form-group text-center">
+      <div className="">
         <Header/>
-        <br/><br/><br/><br/><br/><br/><br/><br/>
-        <div className="">
-            <h1>Courses </h1>
-            <label className="hide-completed">
-              <input
-                type="checkbox"
-                readOnly
-                checked={this.state.hideCompleted}
-                onClick={this.toggleHideCompleted.bind(this)}
+        <center>
+          <div className="home">
+            <div className="home_background_container prlx_parent">
+              <div
+                className="home_background prlx"
+                style={{ backgroundImage: `url(${backgroun})` }}
               />
-              Hide Completed Courses
-            </label>
-
-          
-            <select onChange={e=> {this.sortCourses(e)}}>
-              <option value="text">Nom</option>
-              <option value="createdAt">Date de creation</option>
-            </select>
+            </div>
+            <div className="home_content text_content">
+              <h1>Add a new course</h1>
+            </div>
+            <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
 
 
-            { this.props.currentUser ?
-              <form className="new-course" >
-              <div className="form-group text-center">
-                <input
-                  type="text"
-                  value={this.state.nom}
-                  onChange={(e) => this.setState({ nom: e.target.value })}
-                  placeholder="Name"
-                />
-                </div>
-                <br/>
-                <div className="form-group text-center">
-                <input
-                  type="text"
-                  value={this.state.description}
-                  onChange={(e) => this.setState({ description: e.target.value })}
-                  placeholder="Description"
-                />
-                </div>
-                <div className="form-group text-center ">
-                  <input type="file"
-                    className="form-control input-lg"
-                    onChange={(e) => this.setState({ image: e.target.files[0] })}
-                    placeholder="image"/>
-                </div>
-
-                <div className="form-group text-center">
-                  <button onClick={this.handleSubmit.bind(this)}>Add Course</button>
-                </div>
-              </form>
-              
-              : ''
-            }          
-        </div>
-
-        <div className="" >
-            {this.renderCourses()}
-        </div>
-        <br/><br/><br/>
+              { this.props.currentUser ?
+                <form className="new-course inputaddcours" >
+                  <div className="form-group text-center">
+                    <input
+                      type="text"
+                      className="form-control"
+                      value={this.state.nom}
+                      onChange={(e) => this.setState({ nom: e.target.value })}
+                      placeholder="Course name"
+                    />
+                  </div>
+                  <br/>
+                  <div className="form-group text-center">
+                    <input
+                      type="text"
+                      className="form-control"
+                      value={this.state.description}
+                      onChange={(e) => this.setState({ description: e.target.value })}
+                      placeholder="Description"
+                    />
+                  </div>
+                  <br/>
+                  <div className="form-group text-center">
+                    <input 
+                      type="file"
+                      className="form-control"
+                      onChange={(e) => this.setState({ image: e.target.files[0] })}
+                    />
+                  </div>
+                  <br/>
+                  <div className="form-group text-center btn btn-success">
+                    <button className="btn btn-success" onClick={this.handleSubmit.bind(this)}>Add Course</button>
+                  </div>
+                </form>
+                
+                : ''
+              }          
+          </div>
+        </center>
         <Footer/>
       </div>
     )    
@@ -193,3 +190,26 @@ export default withTracker(() => {
 
   };
 }) (AddCourse); 
+
+
+  {/* 
+    <label className="hide-completed">
+      <input
+        type="checkbox"
+        readOnly
+        checked={this.state.hideCompleted}
+        onClick={this.toggleHideCompleted.bind(this)}
+      />
+      Hide Completed Courses
+    </label>
+
+
+    <select onChange={e=> {this.sortCourses(e)}}>
+      <option value="text">Nom</option>
+      <option value="createdAt">Date de creation</option>
+    </select> 
+    
+    <div className="" >
+        {this.renderCourses()}
+    </div>
+  */}

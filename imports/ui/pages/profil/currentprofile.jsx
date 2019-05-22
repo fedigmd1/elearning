@@ -30,7 +30,7 @@ export default class Current extends Component {
           </Row>  
           <Row>  
             <Col sm="12" md={{ size: 6, offset: 5 }}>
-              <Link to={`/MyCourses/${this.props.currentUser._id}`}><h3 className="titre">Courses</h3></Link>
+              <Link to={`/MyCourses/${this.props.currentUser._id}`}><h3 className="titre">My courses</h3></Link>
             </Col>
           </Row>  
         </Container>
