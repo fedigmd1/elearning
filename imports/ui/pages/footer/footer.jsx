@@ -4,7 +4,7 @@ import { createContainer } from 'meteor/react-meteor-data'
 import { Icon } from 'antd';
 
 
-import logo from '../../../../client/assets/images/astrolab.png'
+import logo from '../../../../client/assets/images/Eduland.png'
 import placeholder from '../../../../client/assets/images/placeholder.svg'
 import smartphone from '../../../../client/assets/images/smartphone.svg'
 import envelope from '../../../../client/assets/images/envelope.svg'
@@ -64,7 +64,7 @@ export default class Footer extends Component {
                   <div className="logo_container">
                     <div className="logo">
                       <img src={logo} alt="" />
-                      <span>Astrolab</span>
+                      <span>Education_Land</span>
                     </div>
                   </div>
                   <p className="footer_about_text">

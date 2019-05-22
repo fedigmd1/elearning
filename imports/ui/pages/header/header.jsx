@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { withHistory, Link } from 'react-router-dom'
 import { createContainer } from 'meteor/react-meteor-data'
-import logo from '../../../../client/assets/images/astrolab.png'
+import logo from '../../../../client/assets/images/Eduland.png'
 import phone_call from '../../../../client/assets/images/phone-call.svg'
 import AppContainer from '../../containers/AppContainer'
 import {withTracker} from 'meteor/react-meteor-data'
