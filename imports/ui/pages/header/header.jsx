@@ -20,10 +20,7 @@ class Header extends Component {
       message: title,
       description: user+' '+content,
     });
-    setTimeout(() => {
       Meteor.call('notifications.setview', id);
-    }, 5000);
-    
   }
 
   render(){
@@ -56,16 +53,19 @@ class Header extends Component {
                     <a href="/">home</a>
                   </li>
                   <li className="main_nav_item">
-                    <a href="/AddCourse">Add Course</a>
-                  </li>
-                  <li className="main_nav_item">
                     <a href="/Courses">courses</a>
                   </li>
                   <li className="main_nav_item">
                     <a href="/profil">Profile</a>
                   </li>
                   <li className="main_nav_item">
+                    <a href="/AddCourse">Add Course</a>
+                  </li>
+                  <li className="main_nav_item">
                     <a href="/suggestions">suggestions</a>
+                  </li>
+                  <li className="main_nav_item">
+                    <a href="/forum">Forum</a>
                   </li>
                   <li className="main_nav_item">
                     <a href="/Contact">contact</a>

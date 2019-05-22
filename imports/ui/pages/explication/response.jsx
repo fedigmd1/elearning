@@ -41,7 +41,7 @@ class Responseform extends Component {
       <div className="form-group">
       <Modal
           visible={this.state.visible}
-          title="Add question"
+          title="Questions list"
           onCancel={this.handleCancel}
           footer={[
             <center>

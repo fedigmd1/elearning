@@ -50,7 +50,8 @@ class cours extends Component {
                 : <Link to={`/Course/${this.props.course._id}`}>Assist Course</Link>
               : null
             }
-          {this.props.course ? 
+          {this.props.currentUser ? 
+          this.props.course ? 
             <div>
               <br/><br/>
               <h2>Rating now: {this.props.course.rating}/5</h2>
@@ -62,6 +63,7 @@ class cours extends Component {
               />
               <br/>
             </div>
+            :null
             :null
           }
 

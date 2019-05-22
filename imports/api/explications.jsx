@@ -19,7 +19,6 @@ Meteor.methods({
 
   'explications.insert'(elementId, elementkind, senderId, senderName, question) {
 
-    
     // Make sure the user is logged in before inserting a explication
     if (!this.userId) {
       throw new Meteor.Error('not-authorized');
@@ -34,9 +33,10 @@ Meteor.methods({
       response: ""
     });
 
-    let notification = "Added a new question "
-    let type = explications
+    let notification = "Added a new question in"+ +" course"
+    let type = "explications"
     Meteor.call('notifications.insert', senderName, notification, type)
+
   },
 
   'explications.response'(explicationId, response) {

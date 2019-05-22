@@ -45,9 +45,10 @@ export default class SignupPage extends Component {
     let reader = new FileReader();
     reader.readAsDataURL(this.state.avatar);
     reader.onload = function () {  
-
+    
+    let type = "Membre"
     let user = {email: email, username: name, 
-      profile:{ firstname: firstname, lastname: lastname, avatar: reader.result },
+      profile:{ firstname: firstname, lastname: lastname, avatar: reader.result, type: type },
       password: password}
 
     Accounts.createUser(user, (err) => {

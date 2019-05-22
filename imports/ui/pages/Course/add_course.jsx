@@ -4,6 +4,8 @@ import {withTracker} from 'meteor/react-meteor-data'
 
 import {Courses} from '../../../api/courses'
 import Course from '../../containers/Course'
+import Header from '../header/header';
+import Footer from '../footer/footer';
 
 
 
@@ -11,13 +13,29 @@ class AddCourse extends Component {
 
   constructor(props) {
     super(props);
-  
     this.state = {
+      login: this.getMeteorData(),
       text: "",
       nom: "",
       description: "",
-      image: ''
+      image: '',
     };
+  }
+
+  getMeteorData(){
+    return { isAuthenticated: Meteor.userId() !== null };
+  }
+
+  componentWillMount(){
+    if (!this.state.login.isAuthenticated) {
+      this.props.history.push('/login');
+    }
+  }
+
+  componentDidUpdate(prevProps, prevState){
+    if (!this.state.login.isAuthenticated) {
+      this.props.history.push('/login');
+    }
   }
 
   toggleHideCompleted() {
@@ -98,6 +116,8 @@ class AddCourse extends Component {
   render () {
     return (
       <div className="form-group text-center">
+        <Header/>
+        <br/><br/><br/><br/><br/><br/><br/><br/>
         <div className="">
             <h1>Courses </h1>
             <label className="hide-completed">
@@ -155,7 +175,8 @@ class AddCourse extends Component {
         <div className="" >
             {this.renderCourses()}
         </div>
-
+        <br/><br/><br/>
+        <Footer/>
       </div>
     )    
   }
