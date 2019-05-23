@@ -8,7 +8,7 @@ import StarRatingComponent from 'react-star-rating-component';
 import Header from '../header/header';
 import Footer from '../footer/footer';
 import search_background from '../../../../client/assets/images/ratingbackground.jpg'
-
+import { Card, Col, Row } from 'antd';
 
 
 class cours extends Component {
@@ -30,22 +30,31 @@ class cours extends Component {
   render(){
     
     return (
-      <div>
+      <div >
       <Header/>
-        <br/><br/><br/><br/><br/>
+        <br/><br/><br/><br/><br/><br/><br/>
         <center>
-          {this.props.course ? 
-            <div className="card-body text-center">
-              <div className="card-title">
-                <h1>{this.props.course.text}</h1>
-              </div>
-              <br/>
-              <div className="card-text">
-                {this.props.course._id}
-              </div>
-              <div className="course_author_name">
-              <Link to={`/profil/${this.props.course.owner}`}><span>{this.props.course.username}</span></Link>
-              </div>
+          {this.props.course ?
+          <div>
+            <div >
+              <Row gutter={16}>
+                <Col span={8}>
+                </Col>
+                <Col span={8} style={{ background: '#ECECEC', padding: '30px' }}>
+                  <Card title={this.props.course.text} bordered={false}>
+                    {this.props.course.description}
+                    <div>
+                    <Link to={`/profil/${this.props.course.owner}`}>
+                      by
+                      <span className="course_author_name">{this.props.course.username}</span>
+                    </Link>
+                    </div>
+                  </Card>
+                </Col>
+                <Col span={8}>
+                </Col>
+              </Row>
+            </div>
             </div>
            :null 
           }
@@ -58,7 +67,8 @@ class cours extends Component {
             }
           <br/><br/><br/><br/>
           {this.props.currentUser ? 
-          this.props.course ? 
+          this.props.course ?
+          this.props.course.owner != this.props.currentUser._id ?
             <div className="search_section d-flex flex-column align-items-center justify-content-center">
               <div
                 className="search_background"
@@ -79,6 +89,7 @@ class cours extends Component {
                 <br/><br/><br/>
               </div>
               </div>
+              :null
               :null
               :null
             }

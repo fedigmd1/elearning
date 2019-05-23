@@ -21,7 +21,7 @@ if (Meteor.isServer) {
 }
  
 Meteor.methods({
-  'courses.insert'(text, description, image) {
+  'courses.insert'(text, description, image, time, duration) {
     check(text, String);
     check(description, String);
 
@@ -34,6 +34,8 @@ Meteor.methods({
     Courses.insert({
       text,
       description,
+      time,
+      duration,
       image,
       createdAt: new Date(),
       owner: this.userId,

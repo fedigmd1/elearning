@@ -18,6 +18,8 @@ class AddCourse extends Component {
       text: "",
       nom: "",
       description: "",
+      duration: "",
+      time: "",
       image: '',
     };
   }
@@ -95,25 +97,24 @@ class AddCourse extends Component {
     let reader = new FileReader();
     let nom = this.state.nom
     let description =this.state.description
-    if ( nom == "" || description== ""){
+    let duration =this.state.duration
+    let time =this.state.time
+    if ( nom == "" || description== "" || duration == "" || time == ""){
       alert("empty field")
       return (null)
     }
     reader.readAsDataURL(this.state.image);
     reader.onload = function () {  
-       Meteor.call('courses.insert', nom, description, reader.result );
+       Meteor.call('courses.insert', nom, description, time, duration, reader.result );
        alert("congratulation! new course is added !")
     }
     reader.onerror = function (error) {
       console.log('Error: ', error);
     };
     // Clear form
-      this.setState({ nom: "" ,description: "" , image: ""})
+      this.setState({ nom: "", description: "", time="", duration="", image: ""})
       
-
   }
-
-
 
 
   render () {
@@ -153,6 +154,24 @@ class AddCourse extends Component {
                       value={this.state.description}
                       onChange={(e) => this.setState({ description: e.target.value })}
                       placeholder="Description"
+                    />
+                  </div>
+                  <div className="form-group text-center">
+                    <input
+                      type="text"
+                      className="form-control"
+                      value={this.state.duration}
+                      onChange={(e) => this.setState({ duration: e.target.value })}
+                      placeholder="Duration"
+                    />
+                  </div>
+                  <div className="form-group text-center">
+                    <input
+                      type="text"
+                      className="form-control"
+                      value={this.state.time}
+                      onChange={(e) => this.setState({ time: e.target.value })}
+                      placeholder="Time"
                     />
                   </div>
                   <br/>
