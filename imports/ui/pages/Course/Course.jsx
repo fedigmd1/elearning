@@ -34,21 +34,24 @@ class donnerCours extends Component {
     
   render() {
     return (   
-      <div>
+      <div style={{ background: '#ECECEC'}}>
       <Header/>
-        <br/><br/><br/><br/><br/><br/><br/><br/>
+        <br/><br/><br/><br/><br/><br/><br/>
         <center>
           {this.props.course ?
             <h1>
               {this.props.course.text}
             </h1>
-            : ( <div><h1>Sorry, this course does not exist!</h1></div> )
+            : <div><h1>Sorry, this course does not exist!</h1></div>
           }
         </center>
-        {this.props.course && this.props.currentUser ? this.props.course.owner == this.props.currentUser._id ?
-        (<Animate id={this.props.match.params.id} elements={this.props.elements} />)
-        :<Assist id={this.props.match.params.id} elements={this.props.elements} currentUser= {this.props.currentUser}/>
-        :null }
+        {this.props.course && this.props.currentUser ?
+          this.props.course.owner == this.props.currentUser._id ?
+            <Animate id={this.props.match.params.id} elements={this.props.elements}/>
+            :<Assist id={this.props.match.params.id} elements={this.props.elements} currentUser={this.props.currentUser}/>
+          :null
+        }
+        <br/><br/>
         <Footer/>
       </div>
     )

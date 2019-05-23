@@ -110,7 +110,7 @@ export default class Animate extends Component {
   render(){
     
     return (
-      <div className="">
+      <div className="" >
         <Row>
           <Col xs="1" >
             <Draggable type="course" style={{ fontSize: '40px', color: '#555' }} data="Text" ><Icon type="edit" /></Draggable>
@@ -125,8 +125,8 @@ export default class Animate extends Component {
               types={['course']}
               onDrop={this.onDrop.bind(this)}>
               <div>
-                <h1>---------------------------------------------------------------------------------</h1>
-                {this.props.elements ? (
+                <hr className="hr"/>
+                {this.props.elements ? 
                   <div>
                     {this.props.elements ? this.props.elements.map((e,i)=> {
                       return (
@@ -152,17 +152,18 @@ export default class Animate extends Component {
                       </div> 
                     }
                   </div>
-                ) : 
+                  : 
                 <div>
                   <h1>Empty course</h1>
                 </div>
                   }
-                <br/>
-                <br/>
-                <h1>---------------------------------------------------------------------------------</h1>
+                <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+                <hr className="hr"/>
               </div>
             </Droppable> 
           </Col>
+          <Col xs="1" >
+          </Col> 
         </Row>          
       </div>
 

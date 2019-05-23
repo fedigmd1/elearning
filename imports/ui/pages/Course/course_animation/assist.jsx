@@ -33,48 +33,49 @@ export default class Assist extends Component {
   render(){
     
     return (
-      <div className="">
+      <div className="" style={{ background: '#ECECEC'}}>
         <Row>
           <Col xs="1" >
           </Col> 
           <Col>    
-              <div>
-                <h1>---------------------------------------------------------------------------------</h1>
-                {this.props.elements ? (
-                  <div>
-                    {this.props.elements ? this.props.elements.map((e,i)=> {
-                      return (                
-                        <div className="content" key={i}>
-                        <br/>
-                          <button className="question" onClick={() => this.question(e._id)}>&iquest;</button>
-                          {e.kind=="text" && <Text element={e} />}
-                          {e.kind=="draw" && <Draw element={e}/>}
-                          {e.kind=="image" && <Image element={e}/>}
-                          {e.kind=="file" && <File element={e}/>}
-                          {e.kind=="video" && <Video element={e} />}
-                          {e.kind=="message" && <Message element={e} />}
-                          {this.state.text === e._id ?
-                            this.state.visible == true && <Questionform currentUser={this.props.currentUser} element={e}/>
-                            :null
-                          }
-                        </div>                                
-                      )
-                    }) :
-                      <div>
-                        <h1>Empty course</h1>
-                      </div> 
-                    }
-                  </div>
-                ) : 
+            <div>
+              <hr className="hr"/>
+              {this.props.elements ? (
+                <div>
+                  {this.props.elements ? this.props.elements.map((e,i)=> {
+                    return (                
+                      <div className="content" key={i}>
+                      <br/>
+                        <button className="question" onClick={() => this.question(e._id)}>&iquest;</button>
+                        {e.kind=="text" && <Text element={e} />}
+                        {e.kind=="draw" && <Draw element={e}/>}
+                        {e.kind=="image" && <Image element={e}/>}
+                        {e.kind=="file" && <File element={e}/>}
+                        {e.kind=="video" && <Video element={e} />}
+                        {e.kind=="message" && <Message element={e} />}
+                        {this.state.text === e._id ?
+                          this.state.visible == true && <Questionform currentUser={this.props.currentUser} element={e}/>
+                          :null
+                        }
+                      </div>                                
+                    )
+                  }) :
+                    <div>
+                      <h1>Empty course</h1>
+                    </div> 
+                  }
+                </div>
+              ) : 
                 <div>
                   <h1>Empty course</h1>
                 </div>
-                  }
-                <br/>
-                <br/>
-                <h1>---------------------------------------------------------------------------------</h1>
-              </div> 
+                }
+              <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+              <hr className="hr"/>
+            </div> 
           </Col>
+          <Col xs="1" >
+          </Col> 
         </Row>          
       </div>
 

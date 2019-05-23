@@ -1543,3 +1543,7 @@ input:last-of-type
   border-radius: 4px;
   box-sizing: border-box;
 }
+
+hr.hr {
+  border: 1px solid black;
+}
