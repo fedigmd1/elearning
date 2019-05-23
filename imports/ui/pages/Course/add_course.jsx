@@ -19,7 +19,8 @@ class AddCourse extends Component {
       nom: "",
       description: "",
       duration: "",
-      time: "",
+      time: '',
+      date: '',
       image: '',
     };
   }
@@ -99,20 +100,21 @@ class AddCourse extends Component {
     let description =this.state.description
     let duration =this.state.duration
     let time =this.state.time
-    if ( nom == "" || description== "" || duration == "" || time == ""){
+    let date =this.state.date
+    if ( nom == "" || description== "" || duration == "" || time == "" || date == ""){
       alert("empty field")
       return (null)
     }
     reader.readAsDataURL(this.state.image);
     reader.onload = function () {  
-       Meteor.call('courses.insert', nom, description, time, duration, reader.result );
+       Meteor.call('courses.insert', nom, description, time, duration, date, reader.result );
        alert("congratulation! new course is added !")
     }
     reader.onerror = function (error) {
       console.log('Error: ', error);
     };
     // Clear form
-      this.setState({ nom: "", description: "", time="", duration="", image: ""})
+      this.setState({ nom: "", description: "", time:"", duration:"", date:"", image: '' })
       
   }
 
@@ -132,8 +134,7 @@ class AddCourse extends Component {
             <div className="home_content text_content">
               <h1>Add a new course</h1>
             </div>
-            <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-
+            <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
 
               { this.props.currentUser ?
                 <form className="new-course inputaddcours" >
@@ -146,7 +147,6 @@ class AddCourse extends Component {
                       placeholder="Course name"
                     />
                   </div>
-                  <br/>
                   <div className="form-group text-center">
                     <input
                       type="text"
@@ -167,14 +167,22 @@ class AddCourse extends Component {
                   </div>
                   <div className="form-group text-center">
                     <input
-                      type="text"
+                      type="time"
                       className="form-control"
                       value={this.state.time}
                       onChange={(e) => this.setState({ time: e.target.value })}
-                      placeholder="Time"
+                      
                     />
                   </div>
-                  <br/>
+                  <div className="form-group text-center">
+                    <input
+                      type="date"
+                      className="form-control"
+                      value={this.state.date}
+                      onChange={(e) => this.setState({ date: e.target.value })}
+                      
+                    />
+                  </div>
                   <div className="form-group text-center">
                     <input 
                       type="file"
@@ -182,13 +190,11 @@ class AddCourse extends Component {
                       onChange={(e) => this.setState({ image: e.target.files[0] })}
                     />
                   </div>
-                  <br/>
                   <div className="form-group text-center btn btn-success">
                     <button className="btn btn-success" onClick={this.handleSubmit.bind(this)}>Add Course</button>
                   </div>
                 </form>
-                
-                : ''
+                : null
               }          
           </div>
         </center>

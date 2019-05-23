@@ -43,6 +43,8 @@ class cours extends Component {
                 <Col span={8} style={{ background: '#ECECEC', padding: '30px' }}>
                   <Card title={this.props.course.text} bordered={false}>
                     {this.props.course.description}
+                    {this.props.course.time}
+                    {this.props.course.duration}
                     <div>
                     <Link to={`/profil/${this.props.course.owner}`}>
                       by
