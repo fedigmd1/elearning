@@ -1,7 +1,9 @@
 // password protected container
 import React, { Component } from 'react';
-import { withHistory } from 'react-router-dom';
+import { withHistory, Redirect } from 'react-router-dom';
 import MainContainer from './MainContainer.jsx';
+import Formulaire from '../pages/search/formulaire';
+
 import Header from '../../ui/pages/header/header';
 import Footer from '../../ui/pages/footer/footer';
 
@@ -25,10 +27,13 @@ import search_background from '../../../client/assets/images/search_background.j
 
 export default class AppContainer extends Component {
   constructor(props){
-    super(props);
-    this.state = this.getMeteorData();
-    this.logout = this.logout.bind(this);
-    this.logout1 = this.logout1.bind(this);
+    super(props)
+    
+    this.state = {
+      login: this.getMeteorData()
+      }
+    this.logout = this.logout.bind(this)
+    this.logout1 = this.logout1.bind(this)
   }
 
   getMeteorData(){
@@ -36,13 +41,13 @@ export default class AppContainer extends Component {
   }
 
   componentWillMount(){
-    if (!this.state.isAuthenticated) {
+    if (!this.state.login.isAuthenticated) {
       this.props.history.push('/login');
     }
   }
 
   componentDidUpdate(prevProps, prevState){
-    if (!this.state.isAuthenticated) {
+    if (!this.state.login.isAuthenticated) {
       this.props.history.push('/login');
     }
   }
@@ -71,6 +76,12 @@ export default class AppContainer extends Component {
             this.props.history.push('/signup');
         }
     });
+  }
+
+
+  handleSubmit(event) { 
+    event.preventDefault();
+    this.props.history.push('/search');   
   }
 
   render(){
@@ -170,23 +181,11 @@ export default class AppContainer extends Component {
                   <div className="search_content text-center">
                     <h1 className="search_title">Search for your course</h1>
                     <form
-                      id="search_form"
                       className="search_form"
-                      action="post"
                     >
-                      <input
-                        id="search_form_name"
-                        className="input_field search_form_name"
-                        type="text"
-                        placeholder="Course Name"
-                        required="required"
-                        data-error="Course name is required."
-                      />
                       <button
-                        id="search_submit_button"
-                        type="submit"
                         className="search_submit_button trans_200"
-                        value="Submit"
+                        onClick={this.handleSubmit.bind(this) }                      
                       >
                         search course
                       </button>

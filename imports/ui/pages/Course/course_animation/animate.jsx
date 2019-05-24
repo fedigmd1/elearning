@@ -110,7 +110,7 @@ export default class Animate extends Component {
   render(){
     
     return (
-      <div className="" >
+      <div className="" style={{ background: '#ECECEC'}} >
         <Row>
           <Col xs="1" >
             <Draggable type="course" style={{ fontSize: '40px', color: '#555' }} data="Text" ><Icon type="edit" /></Draggable>

@@ -1547,3 +1547,7 @@ input:last-of-type
 hr.hr {
   border: 1px solid black;
 }
+
+.center-block {
+	margin-left: 30%;
+}
