@@ -21,8 +21,7 @@ import profil from '../../ui/pages/profil/profil'
 import Course from '../../ui/pages/Course/Course'
 import Search from '../../ui/pages/search/formulaire';
 import Forum from '../../ui/pages/forums/forums'
-import reclamation from '../../ui/pages/reclamation/reclamations'
-import addreclamation from '../../ui/pages/reclamation/addreclamation'
+import reclamation from '../../ui/pages/reclamation/reclamation'
 import notifications from '../../ui/pages/notification/notifications'
 
 import Test from '../../ui/pages/new/test.jsx'
@@ -57,8 +56,7 @@ export const renderRoutes = () => (
       <Route path="/Course/:id" component={Course}/>
       <Route path="/search" component={Search}/>
       <Route path="/Forum" component={Forum}/>
-      <Route path="/reclamations" component={reclamation}/>
-      <Route path="/addreclamation" component={addreclamation}/>
+      <Route path="/reclamation" component={reclamation}/>
       <Route path="/notifications" component={notifications}/>
 
 

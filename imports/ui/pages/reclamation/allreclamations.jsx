@@ -3,7 +3,8 @@ import ReactDOM from 'react-dom'
 import {withTracker} from 'meteor/react-meteor-data'
 import { Reclamations } from '../../../api/reclamations';
 
-class Reclamation extends Component {
+
+export default class AllReclamations extends Component {
   constructor(props){
     super(props)
     this.state = {
@@ -39,7 +40,8 @@ class Reclamation extends Component {
   
     return (
       <div className="">
-      {this.props.reclamations ? this.props.reclamations.map((reclamation, i) =>{
+      {this.props.currentUser && this.props.currentUser.profile.type == "Admin" && 
+        this.props.reclamations ? this.props.reclamations.map((reclamation, i) =>{
         return (
           <div key={i}>
             <center>
@@ -72,13 +74,3 @@ class Reclamation extends Component {
     );
   }
 }
-export default withTracker(() => {
-  Meteor.subscribe('reclamations')
-  let currentUser = Meteor.user()
-  
-  return {
-    currentUser,
-    reclamations: Reclamations.find({}, {sort: { createdAt: -1}}).fetch()
-  };
-}) (Reclamation); 
-

@@ -1,10 +1,10 @@
 import React, {Component} from 'react'
 import ReactDOM from 'react-dom'
-import { Reclamations } from '../../../api/reclamations';
-import {withTracker} from 'meteor/react-meteor-data'
 import { Icon } from 'antd'
+import Header from '../header/header'
+import Footer from '../footer/footer';
 
-class Reclamation extends Component {
+export default class AddReclamation extends Component {
   constructor(props){
     super(props)
     this.state = {
@@ -20,28 +20,65 @@ class Reclamation extends Component {
   render(){
     return (
       <div className="form-group">
-      { this.props.currentUser ? 
-        <center>
-          <form onSubmit={(e) => this.reclamation(e, this.props.currentUser._id)}>
-            <input
-              type="text"
-              value={this.state.message}
-              onChange={(e) => this.setState({ message: e.target.value })}
-              placeholder="Add Reclamation"
-              />
-            <br/>
-            <Icon type="check-circle" onClick={(e) => this.reclamation(e, this.props.currentUser._id)} style={{ fontSize: '30px', color: '#222' }}/>
-          </form>
-        </center>
-        :null 
-      }
+        <Header/>
+        <br/><br/><br/><br/><br/><br/><br/><br/>
+        { this.props.currentUser && this.props.reclamations &&
+          this.props.reclamations.map((reclamation, i) => {
+            return (
+              <div key={i}>
+                {this.props.currentUser._id == reclamation.senderId ?
+                  <div class="container">
+                    <div class="row">
+                    <table className="table table-dark col">
+                      <thead>
+                        <tr>
+                          <th scope="col">#</th>
+                          <th scope="col">Name</th>
+                          <th scope="col">Message</th>
+                          <th scope="col">Response</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <th scope="row">*</th>
+                          <td>{reclamation.sendername}</td>
+                          <td>{reclamation.message}</td>
+                          <td>{reclamation.response}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    </div>
+                  </div>
+                  : <h1>hhhhhh</h1>
+                }
+              </div>
+            )
+          })
+        }
+        <br/><br/>
+        { this.props.currentUser && this.props.currentUser.profile.type == "Membre" ?
+          <center>
+            <form className="form-group text-center inputaddcours " onSubmit={(e) => this.reclamation(e, this.props.currentUser._id)}>
+              <input
+                type="text"
+                className="form-control"
+                value={this.state.message}
+                onChange={(e) => this.setState({ message: e.target.value })}
+                placeholder="Add Reclamation"
+                />
+              <br/>
+              <button 
+                type="button" 
+                class="btn btn-outline-success" 
+                onClick={(e) => this.reclamation(e, this.props.currentUser._id)}
+              >Add </button>
+            </form>
+          </center>
+          :null 
+        }
+        <br/><br/><br/><br/><br/><br/><br/><br/>
+        <Footer/>
       </div>
     )
   }
 }
-
-export default withTracker(() => {
-  return {
-    currentUser: Meteor.user(),
-  };
-}) (Reclamation); 

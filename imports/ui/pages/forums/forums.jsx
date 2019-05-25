@@ -42,13 +42,11 @@ class Forum extends Component {
             {this.props.forums ? this.props.forums.map((forum, i)=> {
               return (
                 <div key={i} className="form-control col-md-6 offset-md-3">
-                <div className="col-md-1">
-                  {this.props.currentUser && this.props.currentUser._id == forum.owner && 
+                  {/* {this.props.currentUser && this.props.currentUser._id == forum.owner && 
                     <button className="delete btn btn-danger" onClick={(event) => this.deleteThisForum(event, forum._id)}>
                       &times;
                     </button>
-                  }
-                  </div>
+                  } */}               
                   <div>
                   <table classeName="table">
                   <tbody>
