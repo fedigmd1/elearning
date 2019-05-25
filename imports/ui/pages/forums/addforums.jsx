@@ -23,12 +23,13 @@ export default class Addforums extends Component {
       this.setState({ question: "" })
     }
     else
-    alert("taper quelque chose")
+    alert("empty field")
   }
 
   render() {
     return (
       <div>
+        <br/><br/>
         <center>
           <div className="form-group">   
             <form onSubmit={this.addforum}>
@@ -43,6 +44,7 @@ export default class Addforums extends Component {
             </form>
           </div>
         </center>
+        <br/><br/>
       </div>
     ) 
   }

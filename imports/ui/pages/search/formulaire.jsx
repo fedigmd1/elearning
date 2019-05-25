@@ -35,7 +35,7 @@ export default class Formulaire extends Component {
         <Header/>
         <br/><br/><br/><br/><br/><br/><br/>
           <form
-            className="col-md-5 center-block"
+            className="col-md-5 class"
             onSubmit={this.handleSubmit}>
             <input type="text"
               className="form-control input-lg"

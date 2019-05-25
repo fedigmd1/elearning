@@ -1548,6 +1548,14 @@ hr.hr {
   border: 1px solid black;
 }
 
-.center-block {
-	margin-left: 30%;
+.class {
+	margin-left: 8%;
+}
+
+.text {
+	border: 1px solid ;
+	color: #525151;
+	border-radius: 10px;
+	margin-right: 30%;
+  margin-left: 10%;
 }
