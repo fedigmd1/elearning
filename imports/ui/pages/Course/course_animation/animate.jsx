@@ -132,8 +132,12 @@ export default class Animate extends Component {
                       return (
                         <div key={i}>
                           <br/>
-                          <button className="delete" onClick={ () => this.deleteThisElement(e._id)}>&times;</button>
-                          <button onClick={() => this.response(e._id)}>&iquest;</button>
+                          <button className="delete" onClick={ () => this.deleteThisElement(e._id)}>
+                            <Icon type="delete" theme="twoTone" />
+                          </button>
+                          <button onClick={() => this.response(e._id)}>
+                            <Icon type="question-circle" theme="twoTone" />
+                          </button>
                           {e.kind=="text" && <Text element={e} />}
                           {e.kind=="draw" && <Draw element={e} />}
                           {e.kind=="image" && <Image element={e}/>}

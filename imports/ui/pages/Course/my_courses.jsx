@@ -7,14 +7,25 @@ import Header from '../header/header'
 import Footer from '../footer/footer'
 import {Courses} from '../../../api/courses.jsx'
 
+import { Popconfirm, message } from 'antd';
+
+
 class Cours extends Component { 
 
 
   deleteThisCourse(id) {
-
-    Meteor.call('courses.remove', id);
+    this.setState({ id: id })
+    console.log(id);
+    
+    
   }
 
+confirm(e) {
+  if (this.state.id != ""){
+      Meteor.call('courses.remove', this.state.id)
+    }
+  message.success('Your course has been deleted');
+}
 
 
 
@@ -28,9 +39,18 @@ class Cours extends Component {
             return (
               <div key={i} className="col-lg-4 course_box">
               {this.props.currentUser ? this.props.currentUser._id == course.owner ?
+
+                <Popconfirm
+                  title="Are you sure to delete this course?"
+                  onConfirm={this.confirm.bind(this)}
+                  okText="Yes"
+                  cancelText="No"
+                >
+
                 <button className="delete btn btn-danger" onClick={()=> this.deleteThisCourse(course._id)}>
                   &times;
                 </button>
+                </Popconfirm>
                 :null
                 :null
               }

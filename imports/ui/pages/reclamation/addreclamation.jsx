@@ -13,13 +13,16 @@ export default class AddReclamation extends Component {
   }
   reclamation (event, id) {
     event.preventDefault();
-    console.log(this.state.message);
+    if ( this.state.message == "" ){
+      alert("empty field")
+      return null
+    }
     Meteor.call('reclamation.insert', id, this.state.message)
     this.setState({ message: "" })
   }
   render(){
     return (
-      <div className="form-group">
+      <div className="form-group" style={{ background: '#ECECEC'}}>
         <Header/>
         <br/><br/><br/><br/><br/><br/><br/><br/>
         { this.props.currentUser && this.props.reclamations &&

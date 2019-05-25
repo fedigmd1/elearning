@@ -13,7 +13,7 @@ class Reclamation extends Component {
 
   render () {
     return (
-      <div className="" style={{ background: '#ECECEC'}}>
+      <div className="" >
         {this.props.currentUser && this.props.currentUser.profile.type=="Admin" ?
           <AllReclamations currentUser={this.props.currentUser} reclamations={this.props.reclamations}/>
           :<AddReclamation currentUser={this.props.currentUser} reclamations={this.props.reclamations}/>

@@ -13,7 +13,7 @@ import {Courses} from '../../../api/courses.jsx'
 import Course from '../../containers/Course.jsx'
 import Cour from './course_details'
 
-import backgroun from '../../../../client/assets/images/courses_background.jpg'
+import backgroun from '../../../../client/assets/images/back.jpg'
 import Photo from './course_elements/xphotocourse';
 
 
@@ -51,7 +51,7 @@ class Cours extends Component {
   render(){
 
     return (
-      <div className="super_container">
+      <div className="super_container" style={{ background: '#1a1a1a'}}>
         <Header/>
         <div className="home">
           <div className="home_background_container prlx_parent">
@@ -60,6 +60,7 @@ class Cours extends Component {
               style={{ backgroundImage: `url(${backgroun})` }}
             />
           </div>
+          <br/><br/><br/>
           <div className="home_content text_content">
             <h1>Courses</h1>
           </div>
@@ -67,7 +68,7 @@ class Cours extends Component {
         <div className="popular page_section">
           <div className="page_content">
             <center>  
-              <h1>Sort by</h1>
+              <h1 className="text_content" >Sort by</h1>
               <select onChange={e=> {this.sortCourses(e)}}>
                 <option value="text">Nom</option>
                 <option value="createdAt">Date de creation</option>

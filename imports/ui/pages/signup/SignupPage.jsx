@@ -2,8 +2,8 @@
 import React, { Component } from 'react';
 import { withHistory, Link } from 'react-router-dom';
 import { Accounts } from 'meteor/accounts-base';
-
-
+import backgroun from '../../../../client/assets/images/back2.jpg'
+import logo from '../../../../client/assets/images/Eduland.png'
 
 export default class SignupPage extends Component {
   constructor(props){
@@ -70,10 +70,22 @@ export default class SignupPage extends Component {
   render(){
     const error = this.state.error;
     return (
+      <div>
+      <div className="home">
+        <div className="home_background_container prlx_parent">
+          <div
+            className="home_background prlx"
+            style={{ backgroundImage: `url(${backgroun})` }}
+          />
+        </div>
+        <br/><br/><br/><br/>
       <div className="modal show">
         <div className="modal-dialog">
           <div className="modal-content">
             <div className="modal-header">
+              <center>
+                <img className="" src={logo}/>
+              </center>
               <h1 className="text-center">Sign up</h1>
             </div>
             <div className="modal-body">
@@ -155,6 +167,8 @@ export default class SignupPage extends Component {
             <div className="modal-footer" style={{borderTop: 0}}></div>
           </div>
         </div>
+      </div>
+      </div>
       </div>
     );
   }

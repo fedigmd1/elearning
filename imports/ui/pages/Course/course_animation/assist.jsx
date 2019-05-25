@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import { Link } from 'react-router-dom'
 import { Row, Col } from 'reactstrap'
+import { Icon } from 'antd';
 import Questionform from '../../explication/question/allquestions';
 import Text from '../course_elements/text';
 import Draw from '../course_elements/draw';
@@ -46,7 +47,9 @@ export default class Assist extends Component {
                     return (                
                       <div className="content" key={i}>
                       <br/>
-                        <button className="question" onClick={() => this.question(e._id)}>&iquest;</button>
+                        <button className="question" onClick={() => this.question(e._id)}>
+                          <Icon type="question-circle" theme="twoTone" />
+                        </button>
                         {e.kind=="text" && <Text element={e} />}
                         {e.kind=="draw" && <Draw element={e}/>}
                         {e.kind=="image" && <Image element={e}/>}
