@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { withHistory, Link } from 'react-router-dom';
+import { withHistory, Link, Redirect } from 'react-router-dom';
 import {withTracker} from 'meteor/react-meteor-data'
 import { Accounts } from 'meteor/accounts-base';
 import backgroun from '../../../../client/assets/images/back3.jpg'
@@ -168,7 +168,7 @@ class Adduser extends Component {
               </div>
             </div>
           </div>
-        :null
+        :<Redirect to ="/404" />
         :null
         }
       </div>

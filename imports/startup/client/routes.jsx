@@ -28,6 +28,7 @@ import Test from '../../ui/pages/new/test.jsx'
 import Teachers from '../../ui/pages/teacher/teachers.jsx';
 import addusers from '../../ui/pages/users/adduser';
 import users from '../../ui/pages/users/allusers';
+import notfound from '../../ui/pages/404/404';
 
 import Contact from '../../ui/pages/new/contact.jsx';
 import Elements from '../../ui/pages/new/elements.jsx';
@@ -44,6 +45,7 @@ export const renderRoutes = () => (
       <Route path="/login" component={LoginPage}/>
       <Route path="/signup" component={SignupPage}/>
       <Route exact={true} path="/" component={AppContainer}/>
+      <Route path="/home" component={AppContainer}/>
 
       <Route exact={true} path="/Courses" component={Courses}/>
       <Route path="/Courses/:id" component={Course_details}/>
@@ -62,6 +64,8 @@ export const renderRoutes = () => (
       <Route path="/Teachers" component={Teachers}/>
       <Route path="/addusers" component={addusers}/>
       <Route path="/users" component={users}/>
+      <Route path="/404" component={notfound}/>
+      <Route path="/:id" component={notfound}/>
 
 
       <Route path="/test" component={Test}/>
