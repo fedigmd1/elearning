@@ -35,7 +35,7 @@ class donnerCours extends Component {
   render() {
     return (   
       <div style={{ background: '#ECECEC'}}>
-      <Header/>
+        <Header/>
         <br/><br/><br/><br/><br/><br/><br/>
         <center>
           {this.props.course ?

@@ -63,8 +63,8 @@ class profil extends Component {
           </div>
           
           <br/><br/><br/><br/><br/><br/><br/>
-          {this.props.match.params.id ? (this.props.currentUser)
-          && (this.props.currentUser._id==this.props.match.params.id) ?
+          {this.props.match.params.id ? this.props.currentUser
+          && this.props.currentUser._id == this.props.match.params.id ?
             <div>
               <Col className="text-right ">
                 <button className="btn btn-warning" onClick={this.logout}>Logout</button>
@@ -73,12 +73,13 @@ class profil extends Component {
               </Col>
               <Current currentUser={this.props.currentUser}/>
             </div>
-            : this.props.user && (this.props.user._id==this.props.match.params.id) ?  (
+            : this.props.user && this.props.user._id==this.props.match.params.id
+            && this.props.user.profile.type !="Admin" ?
             <div>
               <Col/>
               <User user={this.props.user} />
             </div>
-              ): <div className="titre"><br/><center><h1>Sorry! This User does not exist !</h1></center></div>
+              : <div className="titre"><br/><center><h1>Sorry! This User does not exist !</h1></center></div>
               : this.props.currentUser ? (
               <div>
                 <Col className="text-right">

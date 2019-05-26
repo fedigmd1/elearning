@@ -58,7 +58,7 @@ export default class SignupPage extends Component {
           });
         }
         else 
-        {self.props.history.push('/login'); }
+        {self.props.history.push('/'); }
       });   
     }
     reader.onerror = function (error) {

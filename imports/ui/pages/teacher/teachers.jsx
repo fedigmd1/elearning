@@ -50,6 +50,8 @@ class Teachers extends Component {
           })
         }
         <br/><br/>
+
+        { this.props.currentUser && this.props.currentUser.profile.type == "Membre" &&
         <div className="super_container become">
           <div className="container">
             <div className="row row-eq-height">
@@ -81,7 +83,7 @@ class Teachers extends Component {
             </div>
           </div>
         </div>
-        
+        }
         <Footer/>
       </div>
     );

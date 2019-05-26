@@ -15,6 +15,8 @@ import Cour from './course_details'
 
 import backgroun from '../../../../client/assets/images/back.jpg'
 import Photo from './course_elements/xphotocourse';
+import { Popconfirm, message, Icon } from 'antd';
+
 
 
 class Cours extends Component { 
@@ -47,6 +49,21 @@ class Cours extends Component {
       });
     }
   }
+
+  deleteThisCourse(id) {
+    this.setState({ id: id })
+    console.log(id);
+    
+    
+  }
+
+  confirm(e) {
+    if (this.state.id != ""){
+        Meteor.call('courses.remove', this.state.id)
+      }
+    message.success('Course has been deleted');
+  }
+
 
   render(){
 
@@ -87,6 +104,20 @@ class Cours extends Component {
               {this.props.courses ? this.props.courses.map((course, i) => {
                 return (
                   <div key={i} className="col-lg-4 course_box">
+                    {this.props.currentUser && this.props.currentUser.profile.type == "Admin" &&
+                      <div>
+                        <Popconfirm
+                          title="Are you sure to delete this course?"
+                          onConfirm={this.confirm.bind(this)}
+                          okText="Yes"
+                          cancelText="No"
+                        >
+                          <button className="delete btn btn-danger" onClick={()=> this.deleteThisCourse(course._id)}>
+                            <Icon type="close-circle" />
+                          </button>
+                        </Popconfirm>
+                      </div>
+                    }
                     <div className="card">
                       <center>
                         <img

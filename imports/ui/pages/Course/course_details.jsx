@@ -77,8 +77,8 @@ class cours extends Component {
            :null 
           }
             <br/>
-            { (this.props.currentUser && this.props.course ) ? 
-              this.props.currentUser._id == this.props.course.owner ?
+            { this.props.currentUser && this.props.course && this.props.currentUser.profile.type == 'Membre' ?
+              this.props.currentUser._id == this.props.course.owner  ?
                 ( <Link to={`/Course/${this.props.course._id}`}><Button type="danger">Animate Course</Button></Link> ) 
                 : <Link to={`/Course/${this.props.course._id}`}><Button type="danger">Assist Course</Button></Link>
               : null
@@ -86,7 +86,7 @@ class cours extends Component {
           <br/><br/><br/><br/>
           {this.props.currentUser ? 
             this.props.course ?
-              this.props.course.owner != this.props.currentUser._id ?  
+              this.props.course.owner != this.props.currentUser._id && this.props.currentUser.profile.type == 'Membre' ?  
                 <div>   
                   <br/><br/>
                   <h1 className="titre">Rating now : {this.props.course.rating}/5</h1>

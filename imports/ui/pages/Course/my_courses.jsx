@@ -6,9 +6,7 @@ import { Link } from 'react-router-dom'
 import Header from '../header/header'
 import Footer from '../footer/footer'
 import {Courses} from '../../../api/courses.jsx'
-import { Icon } from 'antd'
-
-import { Popconfirm, message } from 'antd';
+import { Popconfirm, message, Icon } from 'antd';
 
 
 class Cours extends Component { 
@@ -18,15 +16,14 @@ class Cours extends Component {
     this.setState({ id: id })
     console.log(id);
     
-    
   }
 
-confirm(e) {
-  if (this.state.id != ""){
-      Meteor.call('courses.remove', this.state.id)
-    }
-  message.success('Your course has been deleted');
-}
+  confirm(e) {
+    if (this.state.id != ""){
+        Meteor.call('courses.remove', this.state.id)
+      }
+    message.success('Your course has been deleted');
+  }
 
 
 

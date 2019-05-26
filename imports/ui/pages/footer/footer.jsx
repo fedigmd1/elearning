@@ -2,14 +2,14 @@ import React, { Component } from 'react'
 import { withHistory, Link } from 'react-router-dom'
 import { createContainer } from 'meteor/react-meteor-data'
 import { Icon } from 'antd';
-
+import {withTracker} from 'meteor/react-meteor-data'
 
 import logo from '../../../../client/assets/images/Eduland.png'
 import placeholder from '../../../../client/assets/images/placeholder.svg'
 import smartphone from '../../../../client/assets/images/smartphone.svg'
 import envelope from '../../../../client/assets/images/envelope.svg'
 
-export default class Footer extends Component {
+class Footer extends Component {
 
 
   render(){
@@ -33,14 +33,6 @@ export default class Footer extends Component {
                   <div className="newsletter_form_container mx-auto">
                     <form action="post">
                       <div className="newsletter_form d-flex flex-md-row flex-column flex-xs-column align-items-center justify-content-center">
-                        <input
-                          id="newsletter_email"
-                          className="newsletter_email"
-                          type="email"
-                          placeholder="Email Address"
-                          required="required"
-                          data-error="Valid email is required."
-                        />
                         <button
                           id="newsletter_submit"
                           type="submit"
@@ -71,74 +63,78 @@ export default class Footer extends Component {
                     Eduland is an online platform that offers members real-time courses.
                   </p>
                 </div>
-                {/* Footer Column - Menu */}
-                <div className="col-lg-3 footer_col">
-                  <div className="footer_column_title">Menu</div>
-                  <div className="footer_column_content">
-                    <ul>
-                      <li className="footer_list_item">
-                        <a href="/">Home</a>
-                      </li>
-                      <li className="footer_list_item">
-                        <a href="/Courses">Courses</a>
-                      </li>
-                      <li className="footer_list_item">
-                        <a href="/reclamation">Contact</a>
-                      </li>
-                    </ul>
+                {this.props.currentUser && this.props.currentUser.profile.type =="Membre" &&
+                <React.Fragment>
+                  {/* Footer Column - Menu */}
+                  <div className="col-lg-3 footer_col">
+                    <div className="footer_column_title">Menu</div>
+                    <div className="footer_column_content">
+                      <ul>
+                        <li className="footer_list_item">
+                          <a href="/">Home</a>
+                        </li>
+                        <li className="footer_list_item">
+                          <a href="/Courses">Courses</a>
+                        </li>
+                        <li className="footer_list_item">
+                          <a href="/reclamation">Contact</a>
+                        </li>
+                      </ul>
+                    </div>
                   </div>
-                </div>
-                {/* Footer Column - Usefull Links */}
-                <div className="col-lg-3 footer_col">
-                  <div className="footer_column_title">Usefull Links</div>
-                  <div className="footer_column_content">
-                    <ul>
-                      <li className="footer_list_item">
-                        <a href="/search">Search</a>
-                      </li>
-                      <li className="footer_list_item">
-                        <a href="/forum">Forum</a>
-                      </li>
-                      <li className="footer_list_item">
-                        <a href="/suggestion">Suggestions</a>
-                      </li>
-                    </ul>
+                  {/* Footer Column - Usefull Links */}
+                  <div className="col-lg-3 footer_col">
+                    <div className="footer_column_title">Usefull Links</div>
+                    <div className="footer_column_content">
+                      <ul>
+                        <li className="footer_list_item">
+                          <a href="/search">Search</a>
+                        </li>
+                        <li className="footer_list_item">
+                          <a href="/forum">Forum</a>
+                        </li>
+                        <li className="footer_list_item">
+                          <a href="/suggestion">Suggestions</a>
+                        </li>
+                      </ul>
+                    </div>
                   </div>
-                </div>
-                {/* Footer Column - Contact */}
-                <div className="col-lg-3 footer_col">
-                  <div className="footer_column_title">Contact</div>
-                  <div className="footer_column_content">
-                    <ul>
-                      <li className="footer_contact_item">
-                        <div className="footer_contact_icon">
-                          <img
-                            src={placeholder}
-                            alt="https://www.flaticon.com/authors/lucy-g"
-                          />
-                        </div>
-                        Sahloul 3 Sousse-Tunis 
-                      </li>
-                      <li className="footer_contact_item">
-                        <div className="footer_contact_icon">
-                          <img
-                            src={smartphone}
-                            alt="https://www.flaticon.com/authors/lucy-g"
-                          />
-                        </div>
-                        +216 53 897 129
-                      </li>
-                      <li className="footer_contact_item">
-                        <div className="footer_contact_icon">
-                          <img
-                            src={envelope}
-                            alt="https://www.flaticon.com/authors/lucy-g"
-                          />
-                        </div>gammoudifedi@gmail.com
-                      </li>
-                    </ul>
+                  {/* Footer Column - Contact */}
+                  <div className="col-lg-3 footer_col">
+                    <div className="footer_column_title">Contact</div>
+                    <div className="footer_column_content">
+                      <ul>
+                        <li className="footer_contact_item">
+                          <div className="footer_contact_icon">
+                            <img
+                              src={placeholder}
+                              alt="https://www.flaticon.com/authors/lucy-g"
+                            />
+                          </div>
+                          Sahloul 3 Sousse-Tunis 
+                        </li>
+                        <li className="footer_contact_item">
+                          <div className="footer_contact_icon">
+                            <img
+                              src={smartphone}
+                              alt="https://www.flaticon.com/authors/lucy-g"
+                            />
+                          </div>
+                          +216 53 897 129
+                        </li>
+                        <li className="footer_contact_item">
+                          <div className="footer_contact_icon">
+                            <img
+                              src={envelope}
+                              alt="https://www.flaticon.com/authors/lucy-g"
+                            />
+                          </div>gammoudifedi@gmail.com
+                        </li>
+                      </ul>
+                    </div>
                   </div>
-                </div>
+                </React.Fragment>
+                }
               </div>
             </div>
             {/* Footer Copyright */}
@@ -177,6 +173,10 @@ export default class Footer extends Component {
 
 }
         
-        
-        
-        
+
+export default withTracker(() => {
+  return {
+    currentUser: Meteor.user(),
+
+  };
+}) (Footer);

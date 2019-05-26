@@ -26,6 +26,8 @@ import suggestion from '../../ui/pages/suggestion/suggestions'
 import notifications from '../../ui/pages/notification/notifications'
 import Test from '../../ui/pages/new/test.jsx'
 import Teachers from '../../ui/pages/teacher/teachers.jsx';
+import addusers from '../../ui/pages/users/adduser';
+import users from '../../ui/pages/users/allusers';
 
 import Contact from '../../ui/pages/new/contact.jsx';
 import Elements from '../../ui/pages/new/elements.jsx';
@@ -58,6 +60,8 @@ export const renderRoutes = () => (
       <Route path="/suggestions" component={suggestion}/>
       <Route path="/notifications" component={notifications}/>
       <Route path="/Teachers" component={Teachers}/>
+      <Route path="/addusers" component={addusers}/>
+      <Route path="/users" component={users}/>
 
 
       <Route path="/test" component={Test}/>

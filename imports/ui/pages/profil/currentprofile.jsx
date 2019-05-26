@@ -28,11 +28,13 @@ export default class Current extends Component {
             </div>
             <br/>
           </Row>  
-          <Row>  
-            <Col sm="12" md={{ size: 6, offset: 5 }}>
-              <Link to={`/MyCourses/${this.props.currentUser._id}`}><h3 className="titre btn btn-danger">My courses</h3></Link>
-            </Col>
-          </Row>  
+          {this.props.currentUser.profile.type != "Admin" &&
+            <Row>  
+              <Col sm="12" md={{ size: 6, offset: 5 }}>
+                <Link to={`/MyCourses/${this.props.currentUser._id}`}><h3 className="titre btn btn-danger">My courses</h3></Link>
+              </Col>
+            </Row>  
+          }
         </Container>
       </div>
     ); 

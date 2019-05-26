@@ -4,13 +4,10 @@ import { createContainer } from 'meteor/react-meteor-data'
 import logo from '../../../../client/assets/images/Eduland.png'
 import phone_call from '../../../../client/assets/images/phone-call.svg'
 import AppContainer from '../../containers/AppContainer'
-import {withTracker} from 'meteor/react-meteor-data'
-import { Notifications } from '../../../api/notification';
 import { notification } from 'antd';
-import Headeradmin from './headeradmin';
 
 
-class Header extends Component {
+export default class Headeradmin extends Component {
   constructor(props){
     super(props);
   }
@@ -37,7 +34,6 @@ class Header extends Component {
             )
           })
         }
-        { this.props.currentUser && this.props.currentUser.profile.type == "Membre" ?
 
         <header className="header d-flex flex-row">
           <div className="header_content d-flex flex-row align-items-center">
@@ -62,13 +58,13 @@ class Header extends Component {
                     <a href="/profil">Profile</a>
                   </li>
                   <li className="main_nav_item">
-                    <a href="/AddCourse">Add Course</a>
+                    <a href="/addusers">Add user</a>
                   </li>
                   <li className="main_nav_item">
-                    <a href="/suggestions">suggestions</a>
+                    <a href="/users">Users</a>
                   </li>
                   <li className="main_nav_item">
-                    <a href="/forum">Forum</a>
+                    <a href="/teachers">Teachers</a>
                   </li>
                   <li className="main_nav_item">
                     <a href="/reclamation">Reclamations</a>
@@ -83,21 +79,8 @@ class Header extends Component {
             <span>+216 53 897 129</span>
           </div>
         </header>
-        : <Headeradmin currentUser={this.props.currentUser} notifications={this.props.notifications} />
-        
-      }
       </div>
     );
   }
 
 }
-
-export default withTracker(() => {
-  Meteor.subscribe('notifications');
-
-  return {
-    notifications: Notifications.find({}, {sort: { createdAt: -1}}).fetch(),
-    currentUser: Meteor.user(),
-
-  };
-}) (Header);
