@@ -4,6 +4,7 @@ import '../imports/api/elements.jsx';
 import '../imports/api/explications';
 import '../imports/api/forums.jsx';
 import '../imports/api/reclamations';
+import '../imports/api/suggestions';
 import '../imports/api/users.jsx';
 
 

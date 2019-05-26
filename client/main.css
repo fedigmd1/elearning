@@ -1584,3 +1584,23 @@ margin-left: 1%;
 	padding-left: 39px;
 	padding-right: 42px;
 }
+
+.become_title h1::before
+{
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 55px;
+	height: 4px;
+	content: '';
+	background: #347ce7f1;
+}
+
+.become_button
+{
+	width: 188px;
+	height: 53px;
+	background: #347ce7f1;
+	margin-top: 37px;
+}

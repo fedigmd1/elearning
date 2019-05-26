@@ -61,7 +61,7 @@ class Cours extends Component {
             />
           </div>
           <br/><br/><br/>
-          <div className="home_content text_content">
+          <div className="home_content text_contente">
             <h1>Courses</h1>
           </div>
         </div>

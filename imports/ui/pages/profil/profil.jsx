@@ -66,8 +66,10 @@ class profil extends Component {
           {this.props.match.params.id ? (this.props.currentUser)
           && (this.props.currentUser._id==this.props.match.params.id) ?
             <div>
-              <Col className="text-right">
+              <Col className="text-right ">
                 <button className="btn btn-warning" onClick={this.logout}>Logout</button>
+                <button className="btn btn-info">Edit</button>
+                
               </Col>
               <Current currentUser={this.props.currentUser}/>
             </div>
@@ -81,6 +83,7 @@ class profil extends Component {
               <div>
                 <Col className="text-right">
                   <button className="btn btn-warning" onClick={this.logout}>Logout</button>
+                  <button className="btn btn-info">Edit</button>
                 </Col>                
                 <Current currentUser={this.props.currentUser}/>       
               </div>  

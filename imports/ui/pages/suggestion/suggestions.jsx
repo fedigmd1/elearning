@@ -1,28 +1,32 @@
 import React, {Component} from 'react'
 import ReactDOM from 'react-dom'
 import { Icon } from 'antd'
+import {withTracker} from 'meteor/react-meteor-data'
+import { Suggestions } from '../../../api/suggestions'
 import Header from '../header/header'
 import Footer from '../footer/footer';
 
-export default class AddReclamation extends Component {
+class Suggestion extends Component {
   constructor(props){
     super(props)
     this.state = {
       message: ""
     }
   }
-  reclamation (event, id) {
+  suggestion (event, id) {
     event.preventDefault();
     if ( this.state.message == "" ){
       alert("empty field")
       return null
     }
-    Meteor.call('reclamation.insert', id, this.state.message)
+    
+    Meteor.call('suggestions.insert', id, this.state.message)    
+
     this.setState({ message: "" })
   }
 
-  deletereclamation(id) {
-    Meteor.call('reclamation.remove', id);
+  deletesuggestion(id) {
+    Meteor.call('suggestions.remove', id);
   }
 
 
@@ -31,11 +35,11 @@ export default class AddReclamation extends Component {
       <div className="form-group" style={{ background: '#ECECEC'}}>
         <Header/>
         <br/><br/><br/><br/><br/><br/><br/><br/>
-        { this.props.currentUser && this.props.reclamations &&
-          this.props.reclamations.map((reclamation, i) => {
+        { this.props.currentUser && this.props.suggestions &&
+          this.props.suggestions.map((suggestion, i) => {
             return (
               <div key={i}>
-                {this.props.currentUser._id == reclamation.senderId ?
+                
                   <div className="container">
                     <div className="row">
                       <table className="table table-dark col">
@@ -43,46 +47,50 @@ export default class AddReclamation extends Component {
                           <tr>
                             <th scope="col"></th>
                             <th scope="col">Name</th>
-                            <th scope="col">Message</th>
-                            <th scope="col">Response</th>
+                            <th scope="col">Idea</th>
                           </tr>
                         </thead>
                         <tbody>
                           <tr>
+                            {this.props.currentUser._id == suggestion.owner ?
                             <th scope="row">
-                              <button className="delete btn btn-outline-danger" onClick={() => this.deletereclamation(reclamation._id)}>
+                              <button className="delete btn btn-outline-danger"
+                                onClick={() => this.deletesuggestion(suggestion._id)}>
                                 &times;
                               </button>
                             </th>
-                            <td>{reclamation.sendername}</td>
-                            <td>{reclamation.message}</td>
-                            <td>{reclamation.response}</td>
+                            :
+                            <th scope="row">
+                            </th>
+                            }
+                            <td>{suggestion.username}</td>
+                            <td>{suggestion.demande}</td>
+                            
                           </tr>
                         </tbody>
                       </table>
                     </div>
                   </div>
-                  : null
-                }
               </div>
             )
           })
         }
         { this.props.currentUser && this.props.currentUser.profile.type == "Membre" ?
           <center>
-            <form className="form-group text-center inputaddcours " onSubmit={(e) => this.reclamation(e, this.props.currentUser._id)}>
+            <form className="form-group text-center inputaddcours "
+              onSubmit={(e) => this.suggestion(e, this.props.currentUser._id)}>
               <input
                 type="text"
                 className="form-control"
                 value={this.state.message}
                 onChange={(e) => this.setState({ message: e.target.value })}
-                placeholder="Add Reclamation"
+                placeholder="Add Suggestion"
                 />
               <br/>
               <button 
                 type="button" 
                 className="btn btn-outline-success" 
-                onClick={(e) => this.reclamation(e, this.props.currentUser._id)}
+                onClick={(e) => this.suggestion(e, this.props.currentUser._id)}
               >
                 Add
               </button>
@@ -96,3 +104,14 @@ export default class AddReclamation extends Component {
     )
   }
 }
+
+export default withTracker(() => {
+  Meteor.subscribe('suggestions')
+  let currentUser = Meteor.user()
+  let suggestions= Suggestions.find({}, {sort: { createdAt: -1}}).fetch()
+
+  return {
+    currentUser,
+    suggestions,
+  };
+}) (Suggestion); 

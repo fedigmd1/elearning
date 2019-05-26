@@ -48,7 +48,7 @@ export default class AllReclamations extends Component {
         this.props.reclamations ? this.props.reclamations.map((reclamation, i) =>{
         return (
           <div key={i}>
-          <div class="container">
+          <div className="container">
                 <div class="row">
                 <table className="table table-dark col">
                   <thead>

@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom'
 import Header from '../header/header'
 import Footer from '../footer/footer'
 import {Courses} from '../../../api/courses.jsx'
+import { Icon } from 'antd'
 
 import { Popconfirm, message } from 'antd';
 
@@ -38,21 +39,21 @@ confirm(e) {
           {this.props.courses ? this.props.courses.map((course, i) => {
             return (
               <div key={i} className="col-lg-4 course_box">
-              {this.props.currentUser ? this.props.currentUser._id == course.owner ?
+              {this.props.currentUser && this.props.currentUser._id == course.owner &&
+                <div>
+                  <Popconfirm
+                    title="Are you sure to delete this course?"
+                    onConfirm={this.confirm.bind(this)}
+                    okText="Yes"
+                    cancelText="No"
+                  >
 
-                <Popconfirm
-                  title="Are you sure to delete this course?"
-                  onConfirm={this.confirm.bind(this)}
-                  okText="Yes"
-                  cancelText="No"
-                >
-
-                <button className="delete btn btn-danger" onClick={()=> this.deleteThisCourse(course._id)}>
-                  &times;
-                </button>
-                </Popconfirm>
-                :null
-                :null
+                  <button className="delete btn btn-danger" onClick={()=> this.deleteThisCourse(course._id)}>
+                    <Icon type="close-circle" />
+                  </button>
+                  </Popconfirm>
+                  <button className="btn btn-info"><Icon type="setting" /></button>
+                </div>
               }
                 <div className="card">
                   <center>

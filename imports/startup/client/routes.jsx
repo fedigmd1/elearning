@@ -22,19 +22,17 @@ import Course from '../../ui/pages/Course/Course'
 import Search from '../../ui/pages/search/formulaire';
 import Forum from '../../ui/pages/forums/forums'
 import reclamation from '../../ui/pages/reclamation/reclamation'
+import suggestion from '../../ui/pages/suggestion/suggestions'
 import notifications from '../../ui/pages/notification/notifications'
-
 import Test from '../../ui/pages/new/test.jsx'
+import Teachers from '../../ui/pages/teacher/teachers.jsx';
 
 import Contact from '../../ui/pages/new/contact.jsx';
 import Elements from '../../ui/pages/new/elements.jsx';
 import New_Post from '../../ui/pages/new/new_post.jsx';
 import New from '../../ui/pages/new/new.jsx';
-import Teachers from '../../ui/pages/new/teachers.jsx';
 import test1 from '../../ui/pages/new/test1.jsx';
 import containersCourse from '../../ui/containers/Course';
-
-
 
 
 
@@ -57,7 +55,9 @@ export const renderRoutes = () => (
       <Route path="/search" component={Search}/>
       <Route path="/Forum" component={Forum}/>
       <Route path="/reclamation" component={reclamation}/>
+      <Route path="/suggestions" component={suggestion}/>
       <Route path="/notifications" component={notifications}/>
+      <Route path="/Teachers" component={Teachers}/>
 
 
       <Route path="/test" component={Test}/>
@@ -66,7 +66,6 @@ export const renderRoutes = () => (
       <Route path="/Elements" component={Elements}/>
       <Route path="/New_Post" component={New_Post}/>
       <Route path="/New" component={New}/>
-      <Route path="/Teachers" component={Teachers}/>
       <Route path="/test1" component={test1}/>
       
     </div>
