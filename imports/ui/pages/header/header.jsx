@@ -68,7 +68,7 @@ class Header extends Component {
                     <a href="/forum">Forum</a>
                   </li>
                   <li className="main_nav_item">
-                    <a href="/Contact">contact</a>
+                    <a href="/reclamation">Reclamation</a>
                   </li>
 
                 </ul>

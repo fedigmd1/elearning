@@ -96,7 +96,7 @@ export default class AppContainer extends Component {
               style={{ backgroundImage: `url(${search_background1})` }}
             />
           </div>
-          <div className="text_content">
+          <div className="text_contente">
             <h1>Get your Education today</h1>
           </div>
         </div>

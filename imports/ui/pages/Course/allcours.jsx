@@ -100,6 +100,7 @@ class Cours extends Component {
                         <div className="card-title">
                           <Link to={`/Courses/${course._id}`}><span>{course.text}</span></Link>   
                         </div>
+                        <br/>
                         <div className="card-text">
                           {course.description}
                         </div>

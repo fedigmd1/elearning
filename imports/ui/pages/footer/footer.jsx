@@ -68,9 +68,7 @@ export default class Footer extends Component {
                     </div>
                   </div>
                   <p className="footer_about_text">
-                    Astrolab-agency est une entreprise informatique
-                    spécialiste dans le domaine du développement
-                    web et mobile.
+                    Eduland is an online platform that offers members real-time courses.
                   </p>
                 </div>
                 {/* Footer Column - Menu */}
@@ -82,16 +80,10 @@ export default class Footer extends Component {
                         <a href="/">Home</a>
                       </li>
                       <li className="footer_list_item">
-                        <a href="#">About Us</a>
-                      </li>
-                      <li className="footer_list_item">
                         <a href="/Courses">Courses</a>
                       </li>
                       <li className="footer_list_item">
-                        <a href="/News">News</a>
-                      </li>
-                      <li className="footer_list_item">
-                        <a href="/Contact">Contact</a>
+                        <a href="/reclamation">Contact</a>
                       </li>
                     </ul>
                   </div>
@@ -102,19 +94,13 @@ export default class Footer extends Component {
                   <div className="footer_column_content">
                     <ul>
                       <li className="footer_list_item">
-                        <a href="#">Testimonials</a>
+                        <a href="/search">Search</a>
                       </li>
                       <li className="footer_list_item">
-                        <a href="#">FAQ</a>
+                        <a href="/forum">Forum</a>
                       </li>
                       <li className="footer_list_item">
-                        <a href="#">Community</a>
-                      </li>
-                      <li className="footer_list_item">
-                        <a href="#">Campus Pictures</a>
-                      </li>
-                      <li className="footer_list_item">
-                        <a href="#">Tuitions</a>
+                        <a href="/suggestion">Suggestions</a>
                       </li>
                     </ul>
                   </div>
