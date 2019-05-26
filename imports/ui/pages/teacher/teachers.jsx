@@ -60,16 +60,12 @@ class Teachers extends Component {
                   <h1>Become a teacher</h1>
                 </div>
                 <p className="become_text">
-                  In aliquam, augue a gravida rutrum, ante nisl fermentum
-                  nulla, vitae tempor nisl ligula vel nunc. Proin quis mi
-                  malesuada, finibus tortor fermentum. Etiam eu purus nec eros
-                  varius luctus. Praesent finibus risus facilisis ultricies
-                  venenatis. Suspendisse fermentum sodales lacus, lacinia
-                  gravida elit dapibus sed. Cras in lectus elit. Maecenas
-                  tempus nunc vitae mi egestas venenatis. Aliquam rhoncus,
-                  purus in vehicula porttitor, lacus ante consequat purus, id
-                  elementum enim purus nec enim. In sed odio rhoncus,
-                  tristique ipsum id, pharetra neque.
+                  become a teacher: At Eduland, we believe in the power
+                  of learning to uplift, empower, and transform. 
+                  We invite you to join us and experience a new way 
+                  in creating and providing ammazing courses that directly 
+                  connect the students of today with the jobs of today, 
+                  tomorrow, and beyond.
                 </p>
                 <div className="become_button text-center trans_200">
                   <a href="/addcourse">Become a teacher</a>

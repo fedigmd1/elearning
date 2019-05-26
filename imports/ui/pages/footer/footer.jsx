@@ -24,25 +24,6 @@ class Footer extends Component {
               <div className="row">
                 <div className="col">
                   <div className="section_title text-center">
-                    <h1>Subscribe to newsletter</h1>
-                  </div>
-                </div>
-              </div>
-              <div className="row">
-                <div className="col text-center">
-                  <div className="newsletter_form_container mx-auto">
-                    <form action="post">
-                      <div className="newsletter_form d-flex flex-md-row flex-column flex-xs-column align-items-center justify-content-center">
-                        <button
-                          id="newsletter_submit"
-                          type="submit"
-                          className="newsletter_submit_btn trans_300"
-                          value="Submit"
-                        >
-                          Subscribe
-                        </button>
-                      </div>
-                    </form>
                   </div>
                 </div>
               </div>
@@ -60,7 +41,8 @@ class Footer extends Component {
                     </div>
                   </div>
                   <p className="footer_about_text">
-                    Eduland is an online platform that offers members real-time courses.
+                    In our platform we take online education to the next level with 
+                    a real time course. Eduland we aim for perfection.
                   </p>
                 </div>
                 {this.props.currentUser && this.props.currentUser.profile.type =="Membre" &&

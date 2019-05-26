@@ -65,11 +65,9 @@ export const renderRoutes = () => (
       <Route path="/addusers" component={addusers}/>
       <Route path="/users" component={users}/>
       <Route path="/404" component={notfound}/>
-      <Route path="/:id" component={notfound}/>
 
 
       <Route path="/test" component={Test}/>
-
       <Route path="/Contact" component={Contact}/>
       <Route path="/Elements" component={Elements}/>
       <Route path="/New_Post" component={New_Post}/>

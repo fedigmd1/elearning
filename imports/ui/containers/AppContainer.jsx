@@ -152,15 +152,20 @@ export default class AppContainer extends Component {
                 {/* Register */}
                 <div className="register_section d-flex flex-column align-items-center justify-content-center">
                   <div className="register_content text-center">
-                    <h1 className="register_title">
-                      Register now and get a discount <span>50%</span>{" "}
-                      discount until 1 January
-                    </h1>
+                    <h3 className="register_title">
+                      Join us now for free and gain an amazing chance to meet a community
+                      of talented people that will take you to meet your dreams with new 
+                      creative ways
+                    </h3>
                     <p className="register_text">
-                      In aliquam, augue a gravida rutrum, ante nisl fermentum
-                      nulla, vitae tempor nisl ligula vel nunc. Proin quis mi
-                      malesuada, finibus tortor fermentum. Aliquam, augue a
-                      gravida rutrum, ante nisl fermentum nulla, vitae tempo.
+                      EduLand is where learners come to learn the skills they need, with 
+                      new revolutionary ways like they have never experienced before. 
+                      We’re a nonprofit with the mission to provide a free, world-class
+                      education for anyone, anywhere.
+                      In our platform we take online education to the next level with 
+                      a real time course that allows learners to interact with instructors 
+                      directely, it is like we are bringing you the classroom to your own room.
+                      Eduland we aim for perfection.
                     </p>
                     <div className="button button_1 register_button mx-auto trans_200"
                     onClick={this.logout1}>
