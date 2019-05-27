@@ -45,7 +45,7 @@ Meteor.methods({
     });
 
     let notification = ("Added a new course : " + text )
-    let type = "courses"
+    let type = "coursesadd"
     Meteor.call('notifications.insert', Meteor.users.findOne(this.userId).username, notification, type)
 
   },
@@ -60,7 +60,7 @@ Meteor.methods({
     }
     
     let notification = "removed a course : " + course.text
-    let type = "courses"
+    let type = "coursesdel"
     Meteor.call('notifications.insert', course.username, notification, type)
     
     Courses.remove({

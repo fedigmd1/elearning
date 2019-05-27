@@ -31,7 +31,7 @@ Meteor.methods({
     });
 
     let notification =  " added a new suggestion"
-    let type = "suggestions"
+    let type = "suggestionsadd"
     Meteor.call('notifications.insert', Meteor.users.findOne(this.userId).username, notification, type)
 
   },
@@ -47,7 +47,7 @@ Meteor.methods({
     }
 
     let notification =  " remove his suggestion"
-    let type = "suggestions"
+    let type = "suggestionsdel"
     Meteor.call('notifications.insert', Meteor.users.findOne(this.userId).username, notification, type)
     
     Suggestions.remove(suggestionsId);

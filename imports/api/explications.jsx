@@ -24,6 +24,9 @@ Meteor.methods({
       throw new Meteor.Error('not-authorized');
     }
 
+    const element = Elements.findOne(elementId)
+    const course = Courses.findOne(element.courseId)
+
     Explications.insert({
       elementId,
       elementkind,
@@ -33,8 +36,8 @@ Meteor.methods({
       response: ""
     });
 
-    let notification = "Added a new question in"+ +" course"
-    let type = "explications"
+    let notification = "Added a new question in"+ course.text +" course"
+    let type = "explicationsadd"
     Meteor.call('notifications.insert', senderName, notification, type)
 
   },
@@ -54,9 +57,9 @@ Meteor.methods({
     
     Explications.update(explicationId, { $set: { response: response } });
 
-    let notification =  " answered your question"
-    let type = "explications"
-    Meteor.call('notifications.insert', course.username, notification, type)
+    let notification =  " the teacher answered your question in " + course.text + " course"
+    let type = "explicationsres"
+    Meteor.call('notifications.insert', explication.senderName, notification, type)
   },
 
   'explications.remove'(explicationId) {
@@ -70,9 +73,9 @@ Meteor.methods({
       // make sure only the sender or the course owner can delete it
       throw new Meteor.Error('not-authorized');
     }
-    let notification =  " removed explanation of " + explication.senderName
+    let notification =  " removed explications of " + explication.senderName
     let type = "explications"
-    Meteor.call('notifications.insert', course.username, notification, type)
+    Meteor.call('notifications.insert', course.senderName, notification, type)
 
     explications.remove(explicationId);
   },

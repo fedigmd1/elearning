@@ -28,17 +28,54 @@ class Header extends Component {
     return (
 
       <div className="super_container">
-        {this.props.notifications && this.props.notifications.map((notification, i) =>{
-            return (
-              <div key={i}>
-                {notification.view == false && 
-                this.openNotificationWithIcon('warning', notification.type, notification.username, notification.text, notification._id)}
-              </div>
-            )
-          })
-        }
-        { this.props.currentUser && this.props.currentUser.profile.type == "Membre" ?
+        <div>
+          {this.props.notifications && this.props.notifications.map((notification, i) =>{
+              return (
+                <div key={i}>
+                  { notification.view == false && this.props.currentUser ?
 
+                  notification.type =="coursesadd" && notification.owner != this.props.currentUser._id ?
+                  this.openNotificationWithIcon('info', notification.type, notification.username, notification.text, notification._id)
+                  
+                  :notification.type =="coursesdel" && notification.owner != this.props.currentUser._id ?
+                  this.openNotificationWithIcon('error', notification.type, notification.username, notification.text, notification._id)
+                 
+                  : notification.type =="explicationsres" && notification.owner == this.props.currentUser._id ?
+                  this.openNotificationWithIcon('success', notification.type, notification.username, notification.text, notification._id)
+                  
+                  : notification.type =="explicationsadd" && notification.owner != this.props.currentUser._id ?
+                  this.openNotificationWithIcon('warning', notification.type, notification.username, notification.text, notification._id)
+                  
+                  : notification.type =="forums" && notification.owner != this.props.currentUser._id ?
+                  this.openNotificationWithIcon('info', notification.type, notification.username, notification.text, notification._id)
+                  
+                  : notification.type =="reclamationsadd" && notification.owner != this.props.currentUser._id 
+                    && this.props.currentUser.profile.type == "Admin" ?
+                  this.openNotificationWithIcon('warning', notification.type, notification.username, notification.text, notification._id)
+                 
+                  : notification.type =="reclamationsdel" && notification.owner != this.props.currentUser._id 
+                    && this.props.currentUser.profile.type == "Admin" ?
+                  this.openNotificationWithIcon('error', notification.type, notification.username, notification.text, notification._id)
+                 
+                  : notification.type =="reclamationsres" && notification.owner == this.props.currentUser._id ?
+                  this.openNotificationWithIcon('success', notification.type, notification.username, notification.text, notification._id)
+                  
+                  : notification.type =="suggestionsadd" && notification.owner != this.props.currentUser._id ?
+                  this.openNotificationWithIcon('info', notification.type, notification.username, notification.text, notification._id)
+                  
+                  : notification.type =="suggestionsdel" && notification.owner != this.props.currentUser._id &&
+                  this.openNotificationWithIcon('error', notification.type, notification.username, notification.text, notification._id)
+
+                  : null
+                  }
+                </div>
+              )
+            })
+          }
+        </div>
+
+
+        { this.props.currentUser && this.props.currentUser.profile.type == "Membre" ?
         <header className="header d-flex flex-row">
           <div className="header_content d-flex flex-row align-items-center">
             {/* Logo */}

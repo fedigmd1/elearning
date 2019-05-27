@@ -31,7 +31,7 @@ Meteor.methods({
     });
 
     let notification =  " Added a new reclamation"
-    let type = "reclamations"
+    let type = "reclamationsadd"
     Meteor.call('notifications.insert', Meteor.users.findOne(senderId).username, notification, type)
 
   },
@@ -49,7 +49,7 @@ Meteor.methods({
     const reclamation = Reclamations.findOne(reclamationId)
     
     let notification =  " We answered your reclamation"
-    let type = "reclamations"
+    let type = "reclamationsres"
     Meteor.call('notifications.insert', reclamation.sendername, notification, type)
 
 
@@ -62,7 +62,14 @@ Meteor.methods({
     // Make sure the user is logged in before inserting a reclamation
       throw new Meteor.Error('not-authorized');
     }
+    
+    const reclamation = Reclamations.findOne(reclamationId)
     Reclamations.remove(reclamationId);
+
+
+    let notification =  " delete his reclamation"
+    let type = "reclamationsdel"
+    Meteor.call('notifications.insert', reclamation.sendername, notification, type)
   },
 
 });

@@ -21,6 +21,7 @@ Meteor.methods({
     
     Notifications.insert({
       username,
+      owner: Meteor.users.findOne({username: username})._id ,
       text,
       view: false ,
       type,
