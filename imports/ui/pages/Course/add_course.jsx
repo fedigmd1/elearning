@@ -136,7 +136,7 @@ class AddCourse extends Component {
             </div>
             <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
 
-              { this.props.currentUser ?
+              { this.props.currentUser ? 
                 <form className="new-course inputaddcours" >
                   <div className="form-group text-center">
                     <input

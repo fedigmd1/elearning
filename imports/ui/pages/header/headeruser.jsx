@@ -2,15 +2,18 @@ import React, { Component } from 'react'
 import logo from '../../../../client/assets/images/Eduland.png'
 import phone_call from '../../../../client/assets/images/phone-call.svg'
 
-export default class Headeradmin extends Component {
+
+export default class Headeruser extends Component {
   constructor(props){
     super(props);
   }
+
 
   render(){
     return (
 
       <div className="super_container">
+        
         <header className="header d-flex flex-row">
           <div className="header_content d-flex flex-row align-items-center">
             {/* Logo */}
@@ -34,13 +37,13 @@ export default class Headeradmin extends Component {
                     <a href="/profil">Profile</a>
                   </li>
                   <li className="main_nav_item">
-                    <a href="/addusers">Add user</a>
+                    <a href="/AddCourse">Add Course</a>
                   </li>
                   <li className="main_nav_item">
-                    <a href="/users">Users</a>
+                    <a href="/suggestions">suggestions</a>
                   </li>
                   <li className="main_nav_item">
-                    <a href="/teachers">Teachers</a>
+                    <a href="/forum">Forum</a>
                   </li>
                   <li className="main_nav_item">
                     <a href="/reclamation">Reclamations</a>
