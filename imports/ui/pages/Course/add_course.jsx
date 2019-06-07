@@ -7,6 +7,7 @@ import Course from '../../containers/Course'
 import Header from '../header/header';
 import Footer from '../footer/footer';
 import backgroun from '../../../../client/assets/images/background.jpg'
+import Notfound from '../404/404';
 
 
 class AddCourse extends Component {
@@ -121,84 +122,91 @@ class AddCourse extends Component {
 
   render () {
     return (
-      <div className="">
-        <Header/>
-        <center>
-          <div className="home">
-            <div className="home_background_container prlx_parent">
-              <div
-                className="home_background prlx"
-                style={{ backgroundImage: `url(${backgroun})` }}
-              />
-            </div>
-            <div className="home_content text_content">
-              <h1>Add a new course</h1>
-            </div>
-            <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+      <div>
+        {this.props.currentUser ?
+          this.props.currentUser.profile.type == "Membre" ?
+            <div className="">
+              <Header/>
+              <center>
+                <div className="home">
+                  <div className="home_background_container prlx_parent">
+                    <div
+                      className="home_background prlx"
+                      style={{ backgroundImage: `url(${backgroun})` }}
+                    />
+                  </div>
+                  <div className="home_content text_content">
+                    <h1>Add a new course</h1>
+                  </div>
+                  <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
 
-              { this.props.currentUser ? 
-                <form className="new-course inputaddcours" >
-                  <div className="form-group text-center">
-                    <input
-                      type="text"
-                      className="form-control"
-                      value={this.state.nom}
-                      onChange={(e) => this.setState({ nom: e.target.value })}
-                      placeholder="Course name"
-                    />
-                  </div>
-                  <div className="form-group text-center">
-                    <input
-                      type="text"
-                      className="form-control"
-                      value={this.state.description}
-                      onChange={(e) => this.setState({ description: e.target.value })}
-                      placeholder="Description"
-                    />
-                  </div>
-                  <div className="form-group text-center">
-                    <input
-                      type="text"
-                      className="form-control"
-                      value={this.state.duration}
-                      onChange={(e) => this.setState({ duration: e.target.value })}
-                      placeholder="Duration"
-                    />
-                  </div>
-                  <div className="form-group text-center">
-                    <input
-                      type="time"
-                      className="form-control"
-                      value={this.state.time}
-                      onChange={(e) => this.setState({ time: e.target.value })}
-                      
-                    />
-                  </div>
-                  <div className="form-group text-center">
-                    <input
-                      type="date"
-                      className="form-control"
-                      value={this.state.date}
-                      onChange={(e) => this.setState({ date: e.target.value })}
-                      
-                    />
-                  </div>
-                  <div className="form-group text-center">
-                    <input 
-                      type="file"
-                      className="form-control"
-                      onChange={(e) => this.setState({ image: e.target.files[0] })}
-                    />
-                  </div>
-                  <div className="form-group text-center btn btn-success">
-                    <button className="btn btn-success" onClick={this.handleSubmit.bind(this)}>Add Course</button>
-                  </div>
-                </form>
-                : null
-              }          
-          </div>
-        </center>
-        <Footer/>
+                    { this.props.currentUser ? 
+                      <form className="new-course inputaddcours" >
+                        <div className="form-group text-center">
+                          <input
+                            type="text"
+                            className="form-control"
+                            value={this.state.nom}
+                            onChange={(e) => this.setState({ nom: e.target.value })}
+                            placeholder="Course name"
+                          />
+                        </div>
+                        <div className="form-group text-center">
+                          <input
+                            type="text"
+                            className="form-control"
+                            value={this.state.description}
+                            onChange={(e) => this.setState({ description: e.target.value })}
+                            placeholder="Description"
+                          />
+                        </div>
+                        <div className="form-group text-center">
+                          <input
+                            type="text"
+                            className="form-control"
+                            value={this.state.duration}
+                            onChange={(e) => this.setState({ duration: e.target.value })}
+                            placeholder="Duration"
+                          />
+                        </div>
+                        <div className="form-group text-center">
+                          <input
+                            type="time"
+                            className="form-control"
+                            value={this.state.time}
+                            onChange={(e) => this.setState({ time: e.target.value })}
+                            
+                          />
+                        </div>
+                        <div className="form-group text-center">
+                          <input
+                            type="date"
+                            className="form-control"
+                            value={this.state.date}
+                            onChange={(e) => this.setState({ date: e.target.value })}
+                            
+                          />
+                        </div>
+                        <div className="form-group text-center">
+                          <input 
+                            type="file"
+                            className="form-control"
+                            onChange={(e) => this.setState({ image: e.target.files[0] })}
+                          />
+                        </div>
+                        <div className="form-group text-center btn btn-success">
+                          <button className="btn btn-success" onClick={this.handleSubmit.bind(this)}>Add Course</button>
+                        </div>
+                      </form>
+                      : null
+                    }          
+                </div>
+              </center>
+              <Footer/>
+            </div>
+          :<Notfound />
+        :null
+        }
       </div>
     )    
   }

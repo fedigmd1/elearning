@@ -72,6 +72,25 @@ Meteor.methods({
 
   },
 
+
+  'courses.remove2'(courseId) {
+    check(courseId, String);
+
+    const course = Courses.findOne(courseId);
+    
+    let notification = "removed a course : " + course.text
+    let type = "coursesdelusers"
+    Meteor.call('notifications.insert2', notification, type)
+    
+    Courses.remove({
+      _id: course._id
+    });
+    Elements.remove({
+      courseId: courseId
+    });
+
+  },
+
   'courses.image'(courseId, image) {
     check(courseId, String);
     check(setChecked, Boolean);

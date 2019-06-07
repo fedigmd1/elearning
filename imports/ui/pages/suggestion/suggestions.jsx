@@ -1,6 +1,8 @@
 import React, {Component} from 'react'
 import ReactDOM from 'react-dom'
 import { Icon } from 'antd'
+import { withHistory } from 'react-router-dom';
+import { Redirect } from 'react-router-dom'
 import {withTracker} from 'meteor/react-meteor-data'
 import { Suggestions } from '../../../api/suggestions'
 import Header from '../header/header'
@@ -10,9 +12,31 @@ class Suggestion extends Component {
   constructor(props){
     super(props)
     this.state = {
+      login: this.getMeteorData(),
       message: ""
     }
   }
+
+
+
+  
+  getMeteorData(){
+    return { isAuthenticated: Meteor.userId() !== null };
+  }
+
+  componentWillMount(){
+    if (!this.state.login.isAuthenticated) {
+      this.props.history.push('/login');
+    }
+  }
+
+  componentDidUpdate(prevProps, prevState){
+    if (!this.state.login.isAuthenticated) {
+      this.props.history.push('/login');
+    }
+  }
+
+
   suggestion (event, id) {
     event.preventDefault();
     if ( this.state.message == "" ){
@@ -35,7 +59,7 @@ class Suggestion extends Component {
       <div className="form-group" style={{ background: '#ECECEC'}}>
         <Header/>
         <br/><br/><br/><br/><br/><br/><br/><br/>
-        { this.props.currentUser && this.props.suggestions &&
+        {this.props.suggestions ?
           this.props.suggestions.map((suggestion, i) => {
             return (
               <div key={i}>
@@ -74,6 +98,7 @@ class Suggestion extends Component {
               </div>
             )
           })
+        :null                    
         }
         { this.props.currentUser && this.props.currentUser.profile.type == "Membre" ?
           <center>
@@ -101,6 +126,7 @@ class Suggestion extends Component {
         <br/><br/><br/><br/><br/><br/>
         <Footer/>
       </div>
+     
     )
   }
 }

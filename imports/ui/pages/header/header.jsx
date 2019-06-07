@@ -17,7 +17,7 @@ class Header extends Component {
   }
 
   openNotificationWithIcon = (type, title, user, content, id) => {
-    console.log("hhhhhh");
+
     notification[type]({
       message: title,
       description: user+' '+content,
@@ -41,10 +41,14 @@ class Header extends Component {
                   :notification.type =="coursesdel" && notification.owner != this.props.currentUser._id ?
                   this.openNotificationWithIcon('error', notification.type, notification.username, notification.text, notification._id)
                  
+                  :notification.type =="coursesdelusers" && this.props.currentUser.profile.type == "Membre" ?
+                  this.openNotificationWithIcon('error', notification.type, notification.username, notification.text, notification._id)
+                 
                   : notification.type =="explicationsres" && notification.owner == this.props.currentUser._id ?
                   this.openNotificationWithIcon('success', notification.type, notification.username, notification.text, notification._id)
                   
-                  : notification.type =="explicationsadd" && notification.owner != this.props.currentUser._id ?
+                  : notification.type =="explicationsadd" && notification.owner != this.props.currentUser._id
+                    && this.props.currentUser.profile.type == "Membre" ?
                   this.openNotificationWithIcon('warning', notification.type, notification.username, notification.text, notification._id)
                   
                   : notification.type =="forums" && notification.owner != this.props.currentUser._id ?
@@ -54,8 +58,11 @@ class Header extends Component {
                     && this.props.currentUser.profile.type == "Admin" ?
                   this.openNotificationWithIcon('warning', notification.type, notification.username, notification.text, notification._id)
                  
-                  : notification.type =="reclamationsdel" && notification.owner != this.props.currentUser._id 
+                  : notification.type =="reclamationsdeladmin" && notification.owner != this.props.currentUser._id 
                     && this.props.currentUser.profile.type == "Admin" ?
+                  this.openNotificationWithIcon('error', notification.type, notification.username, notification.text, notification._id)
+                 
+                  : notification.type =="reclamationsdeluser" && notification.owner == this.props.currentUser._id ?
                   this.openNotificationWithIcon('error', notification.type, notification.username, notification.text, notification._id)
                  
                   : notification.type =="reclamationsres" && notification.owner == this.props.currentUser._id ?

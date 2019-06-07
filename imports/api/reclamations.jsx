@@ -68,7 +68,24 @@ Meteor.methods({
 
 
     let notification =  " delete his reclamation"
-    let type = "reclamationsdel"
+    let type = "reclamationsdeladmin"
+    Meteor.call('notifications.insert', reclamation.sendername, notification, type)
+  },
+
+  'reclamation.remove2'(reclamationId) {
+    check(reclamationId, String);
+    
+    if (! this.userId) {
+    // Make sure the user is logged in before inserting a reclamation
+      throw new Meteor.Error('not-authorized');
+    }
+    
+    const reclamation = Reclamations.findOne(reclamationId)
+    Reclamations.remove(reclamationId);
+
+
+    let notification =  " We delete your reclamation"
+    let type = "reclamationsdeluser"
     Meteor.call('notifications.insert', reclamation.sendername, notification, type)
   },
 

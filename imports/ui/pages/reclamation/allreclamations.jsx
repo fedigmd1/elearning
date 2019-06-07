@@ -25,7 +25,7 @@ export default class AllReclamations extends Component {
     this.setState({ response: "", clicked: false})
   }
   deletereclamation(id) {
-    Meteor.call('reclamation.remove', id);
+    Meteor.call('reclamation.remove2', id);
   }
 
 

@@ -28,29 +28,11 @@ import search_background from '../../../client/assets/images/search_background.j
 export default class AppContainer extends Component {
   constructor(props){
     super(props)
-    
-    this.state = {
-      login: this.getMeteorData()
-      }
+  
     this.logout = this.logout.bind(this)
     this.logout1 = this.logout1.bind(this)
   }
 
-  getMeteorData(){
-    return { isAuthenticated: Meteor.userId() !== null };
-  }
-
-  componentWillMount(){
-    if (!this.state.login.isAuthenticated) {
-      this.props.history.push('/login');
-    }
-  }
-
-  componentDidUpdate(prevProps, prevState){
-    if (!this.state.login.isAuthenticated) {
-      this.props.history.push('/login');
-    }
-  }
 
   
   logout(e){
@@ -121,7 +103,7 @@ export default class AppContainer extends Component {
                     <img src={books} className="svg" alt="" />
                     <div className="hero_box_content">
                       <h2 className="hero_box_title">Our Library</h2>
-                      <a href="/Courses" className="hero_box_link">
+                      <a href="/forum" className="hero_box_link">
                         view more
                       </a>
                     </div>

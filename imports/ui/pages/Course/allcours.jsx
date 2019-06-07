@@ -25,6 +25,7 @@ class Cours extends Component {
     super(props);
 
     this.state = {
+      id: "",
       text: "",
     };
   }
@@ -52,16 +53,15 @@ class Cours extends Component {
 
   deleteThisCourse(id) {
     this.setState({ id: id })
-    console.log(id);
-    
     
   }
 
   confirm(e) {
     if (this.state.id != ""){
-        Meteor.call('courses.remove', this.state.id)
-      }
-    message.success('Course has been deleted');
+      console.log("test test");
+      Meteor.call('courses.remove2', this.state.id)
+      message.success('Course has been deleted');
+    }
   }
 
 
@@ -87,8 +87,8 @@ class Cours extends Component {
             <center>  
               <h1 className="text_content" >Sort by</h1>
               <select onChange={e=> {this.sortCourses(e)}}>
-                <option value="text">Nom</option>
-                <option value="createdAt">Date de creation</option>
+                <option value="text">Name</option>
+                <option value="createdAt">CreatedAt</option>
               </select>
             </center>
             <div className="" >
@@ -104,7 +104,7 @@ class Cours extends Component {
               {this.props.courses ? this.props.courses.map((course, i) => {
                 return (
                   <div key={i} className="col-lg-4 course_box">
-                    {this.props.currentUser && this.props.currentUser.profile.type == "Admin" &&
+                    {this.props.currentUser ? this.props.currentUser.profile.type == "Admin" &&
                       <div>
                         <Popconfirm
                           title="Are you sure to delete this course?"
@@ -117,6 +117,7 @@ class Cours extends Component {
                           </button>
                         </Popconfirm>
                       </div>
+                      :null
                     }
                     <div className="card">
                       <center>

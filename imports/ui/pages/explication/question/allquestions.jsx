@@ -60,7 +60,7 @@ class Questionform extends Component {
             {this.props.explications? this.props.explications.map((e,i) => {
               return (
                 <div key={i}>
-                <h4><strong>{e.senderName}:</strong>{e.question}</h4><h3>{e.response}</h3>
+                <h4><strong>{e.senderName}:</strong>{e.question}</h4>=><h5>{e.response}</h5>
                 </div>
                 )
               })

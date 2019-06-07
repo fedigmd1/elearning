@@ -1,8 +1,9 @@
 import React, {Component} from 'react'
 import ReactDOM from 'react-dom'
+import { withHistory } from 'react-router-dom';
 import {withTracker} from 'meteor/react-meteor-data'
 import { Forums } from '../../../api/forums';
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 import { Icon } from 'antd'
 import Addforums from './addforums';
 import Header from '../header/header'
@@ -13,10 +14,27 @@ class Forum extends Component {
   constructor(props){
     super(props)
     this.state = {
+      login: this.getMeteorData(),
       question: "",
     }
     this.deleteThisForum = this.deleteThisForum.bind(this);
     this.addforum = this.addforum.bind(this);
+  }
+
+  getMeteorData(){
+    return { isAuthenticated: Meteor.userId() !== null };
+  }
+
+  componentWillMount(){
+    if (!this.state.login.isAuthenticated) {
+      this.props.history.push('/login');
+    }
+  }
+
+  componentDidUpdate(prevProps, prevState){
+    if (!this.state.login.isAuthenticated) {
+      this.props.history.push('/login');
+    }
   }
 
   addforum = () => {
@@ -34,6 +52,7 @@ class Forum extends Component {
   render() {
   
     return (
+      
       <div className="" style={{ background: '#ECECEC'}}>
         <Header/>
         <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
@@ -46,7 +65,7 @@ class Forum extends Component {
                     <button className="delete btn btn-danger" onClick={(event) => this.deleteThisForum(event, forum._id)}>
                       &times;
                     </button>
-                  } */}               
+                  }*/}
                   <div>
                   <table classeName="table">
                   <tbody>
@@ -63,14 +82,21 @@ class Forum extends Component {
           }
           <br/><br/><br/><br/>
           </div>
-          <div>
-            <Icon className="col-md-6 offset-md-3" type="plus-circle" onClick={() => this.addforum()} style={{ fontSize: '30px', color: '#000' }} />
-            {this.state.question == "exist" ? <Addforums /> : null}
-          </div>
+          {this.props.currentUser ?
+            this.props.currentUser.profile.type =="Membre" ?
+              <div>
+                <Icon className="col-md-6 offset-md-3" type="plus-circle" onClick={() => this.addforum()} style={{ fontSize: '30px', color: '#000' }} />
+                {this.state.question == "exist" ? <Addforums /> : null}
+              </div>
+            :null
+          :null
+          }
         </center>
         <br/><br/><br/><br/>
         <Footer/>
       </div>
+        
+    
     );
   }
 }

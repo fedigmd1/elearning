@@ -29,6 +29,24 @@ Meteor.methods({
       createdAt: new Date(),
     });
   },
+
+  'notifications.insert2'(text, type) {
+
+    // Make sure the user is logged in before inserting a notifications
+    if (! this.userId) {
+      throw new Meteor.Error('not-authorized');
+    }
+    
+    Notifications.insert({
+      username: "We ",
+      owner: "Admin" ,
+      text,
+      view: false ,
+      type,
+      checked: false,
+      createdAt: new Date(),
+    });
+  },
   
 
   'notifications.setview'(notificationId) {

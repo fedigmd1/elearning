@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import ReactDOM from 'react-dom'
+import { withHistory } from 'react-router-dom';
 import { Reclamations } from '../../../api/reclamations';
 import {withTracker} from 'meteor/react-meteor-data'
 import AddReclamation from './addreclamation';
@@ -9,6 +10,27 @@ import AllReclamations from './allreclamations';
 class Reclamation extends Component {
   constructor(props){
     super(props)
+    this.state = {
+      login: this.getMeteorData(),
+    }
+  }
+
+
+  
+  getMeteorData(){
+    return { isAuthenticated: Meteor.userId() !== null };
+  }
+
+  componentWillMount(){
+    if (!this.state.login.isAuthenticated) {
+      this.props.history.push('/login');
+    }
+  }
+
+  componentDidUpdate(prevProps, prevState){
+    if (!this.state.login.isAuthenticated) {
+      this.props.history.push('/login');
+    }
   }
 
   render () {

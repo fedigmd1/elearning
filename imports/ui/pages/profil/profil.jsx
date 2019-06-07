@@ -15,7 +15,9 @@ class profil extends Component {
   
   constructor(props){
     super(props);
-    this.state = this.getMeteorData();
+    this.state = {
+      login: this.getMeteorData() }
+
     this.logout = this.logout.bind(this);
   }
 
@@ -24,13 +26,13 @@ class profil extends Component {
   }
 
   componentWillMount(){
-    if (!this.state.isAuthenticated) {
+    if (!this.state.login.isAuthenticated) {
       this.props.history.push('/login');
     }
   }
 
   componentDidUpdate(prevProps, prevState){
-    if (!this.state.isAuthenticated) {
+    if (!this.state.login.isAuthenticated) {
       this.props.history.push('/login');
     }
   }
