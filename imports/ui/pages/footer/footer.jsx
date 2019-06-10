@@ -76,7 +76,7 @@ class Footer extends Component {
                           <a href="/forum">Forum</a>
                         </li>
                         <li className="footer_list_item">
-                          <a href="/suggestion">Suggestions</a>
+                          <a href="/suggestions">Suggestions</a>
                         </li>
                       </ul>
                     </div>
