@@ -18,33 +18,39 @@ class Teachers extends Component {
         <Header/>
         <br/><br/><br/><br/><br/><br/><br/><br/>
         {this.props.users && this.props.courses &&
-        this.props.users._id == this.props.courses.owner &&
           this.props.users.map((user,i) => {
           return (
             <div key={i}>
-            {user.profile.type == "Membre" &&
-              <div className="col-lg-4 ">
-                <div className="card ">
-                  <center>
-                    <br/>
-                    <img
-                      className="card-img-top img-thumbnail"
-                      style={{ width: 250, height: 250, background: '#ECECEC' }}
-                      src={user.profile.avatar}
-                      alt="photo de profil"
-                    />  
-                  </center>
-                  <div className="card-body text-center">
-                    <div className="card-title">
-                      <Link to={`/profil/${user._id}`}>
-                        <span>{user.profile.firstname} </span><span> {user.profile.lastname}</span>
-                      </Link>
-                    </div>       
-                    <br/>   
-                  </div>   
-                </div>
-              </div>                                                               
-            }
+              {user.profile.type == "Membre" ?
+                this.props.courses.map((course,i) => {
+                return (
+                  <div key={i}>
+                    {course.owner == user._id ?
+                      <div className="col-lg-4 ">
+                        <div className="card ">
+                          <center>
+                            <br/>
+                            <img
+                              className="card-img-top img-thumbnail"
+                              style={{ width: 250, height: 250, background: '#ECECEC' }}
+                              src={user.profile.avatar}
+                              alt="photo de profil"
+                            />  
+                          </center>
+                          <div className="card-body text-center">
+                            <div className="card-title">
+                              <Link to={`/profil/${user._id}`}>
+                                <span>{user.profile.firstname} </span><span> {user.profile.lastname}</span>
+                              </Link>
+                            </div>       
+                            <br/>   
+                          </div>   
+                        </div>
+                      </div>                                                               
+                    :null}
+                  </div>
+                )})                                                              
+              :null}
             </div>
           )
           })
