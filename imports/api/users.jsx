@@ -21,3 +21,12 @@ Meteor.users.remove({ _id: this._id }, function(error, result) {
         //console.log("Number of users removed: " + result);
     }
 });
+
+
+Meteor.methods({
+
+  'users.insert'(user) {
+    
+    Accounts.createUser(user); 
+  },
+});

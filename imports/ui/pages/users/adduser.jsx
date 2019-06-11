@@ -21,7 +21,7 @@ class Adduser extends Component {
       password: '',
       avatar: '',
       image:'',
-      category: '',
+      category: 'Admin',
       login: this.getMeteorData(),      
 
     };
@@ -72,7 +72,7 @@ class Adduser extends Component {
       profile:{ firstname: firstname, lastname: lastname, avatar: reader.result, type: category },
       password: password}
 
-    Accounts.createUser(user, (err) => {
+      if (  Meteor.call('users.insert', user , (err) => {
         if(err){
           self.setState({
             error: err.reason
@@ -81,7 +81,13 @@ class Adduser extends Component {
         else {
           self.props.history.push('/'); 
           message.success('You added a new user !');}
-      });   
+      }
+      ))
+      {
+        self.props.history.push('/');
+      }
+      
+
     }
     reader.onerror = function (error) {
       console.log('Error: ', error);
